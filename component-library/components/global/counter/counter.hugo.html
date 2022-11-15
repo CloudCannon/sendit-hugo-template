@@ -1,0 +1,37 @@
+<section
+  class="counter-up {{ if .alternateStyle }}
+counter-up-two pb-xxl-14 pb-lg-13
+{{ end }}"
+  id="counter-up"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-header">
+          <h2>{{.title}} <span>{{.title_suffix}}</span></h2>
+          <p>{{.description | markdownify}}</p>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="counter-up-wrapper d-grid">
+          {{ range .numbers }}
+          <div class="counter-up-content">
+            <div class="counter-up-content-item">
+              <div class="counter-percent">
+                {{ if .prefix }}
+                <span class="percent">{{.prefix}}</span>
+                {{ end }}
+                <span class="counter">{{.number}}</span>
+                {{ if .suffix }}
+                <span class="percent">{{.suffix}}</span>
+                {{ end }}
+              </div>
+              <p>{{.text}}</p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

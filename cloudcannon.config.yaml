@@ -1,0 +1,44 @@
+collections_config:
+  pages:
+    _enabled_editors:
+      - visual
+  blog:
+    _enabled_editors:
+      - content
+      - visual
+
+_inputs:
+  content:
+    type: markdown
+  icon:
+    type: select
+    options:
+      values:
+        - ph-user-square
+  description:
+    type: markdown
+    options:
+      bold: true
+      italic: true
+      link: true
+      removeformat: true
+  isActive:
+    type: switch
+  social_icon:
+    type: select
+    options:
+      values:
+        - ph-facebook-logo
+        - ph-instagram-logo
+        - ph-twitter-logo
+        - ph-github-logo
+        - ph-youtube-logo
+
+
+_structures:
+  features:
+    values:
+      - value: 
+          item: 
+          isActive: 
+

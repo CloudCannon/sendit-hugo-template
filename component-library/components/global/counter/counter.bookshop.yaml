@@ -1,0 +1,26 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Counter
+  description: Counter section
+  icon: "functions"
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  title: "Scale your "
+  title_suffix: "Business"
+  description: "We have an extensive library of pre-written sales emails, proven marketing templates, and more to get you started on your next project."
+  alternateStyle: false
+  numbers:
+    - number: 200
+      suffix: "m"
+      prefix: "$"
+      text: "Venture capital raised"
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs: {}

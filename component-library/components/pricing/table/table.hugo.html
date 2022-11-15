@@ -1,0 +1,66 @@
+<section class="pricing pb-xxl-20 pb-lg-15 pb-md-5">
+  <div class="container">
+    <div class="row">
+      {{ range .pricing_tier }}
+        <div class="col-lg-4">
+          <div class= 
+          {{ if .isActive }}
+            "card pricing-item active"
+          {{else}}
+            "card pricing-item"
+          {{ end }}>
+            <h5 class="card-title">{{.tier}}</h5>
+            <p class="card-text">
+              {{.description | markdownify}}
+            </p>
+            {{ if .hasDiscount }}
+            <div class="price">
+              <p class="pricingtable">${{.discountPrice}}</p>
+              <div class="discount">
+                <p>${{.price}}</p>
+                <div class="vector vector-one">
+                  <img src="/images/pricing/Vector1.svg" alt="Vector" loading="lazy"/>
+                </div>
+              </div>
+              <div class="shape top-0">
+                <img src="/images/pricing/shape-two.png" alt="shape" loading="lazy"/>
+              </div>
+            </div>
+            {{else}}
+            <div class="price">
+              <p><span>${{.price}}</span></p>
+              <div class="shape">
+                <img src="/images/pricing/shape-one.png" alt="shape" loading="lazy"/>
+              </div>
+            </div>
+            {{ end }}
+            <div class="card-body">
+              <ul class="list-unstyled">
+                {{ range .feature }}
+                  {{ if .isActive }}
+                  <li>
+                    <i class="ph-check"></i>
+                    {{.item}}
+                  </li>
+                  {{else}}
+                  <li class="deactive">
+                    <i class="ph-check deactive"></i>
+                    {{.item}}
+                  </li>
+                  {{ end }}
+                {{ end }}
+              </ul>
+              <div class="link">
+                {{ with .btn }}
+                <a href="{{.link}}" class="btn btn-lg btn-white">
+                  {{.text}}
+                </a>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

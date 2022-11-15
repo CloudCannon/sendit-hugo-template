@@ -1,0 +1,24 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Home Hero
+  description: Home Hero section
+  icon: "cottage"
+  tags: ["hero"]
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  title: Beautiful email campaigns
+  description: With Sendit, you can quickly create beautiful rich emails that capture a reader’s attention, engage them, and convert them into customers.
+  image_path: /images/hero/hero-image-2.png
+  link:
+    text: "Try Free"
+    url: "/sign-up"
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs: {}

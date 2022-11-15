@@ -1,0 +1,79 @@
+{{ define "main" }}
+<section class="privacy-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="privacy-hero-content text-center">
+          <h1>{{.Params.hero.title}}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="privacy">
+  <div class="container">
+    <div class="row">
+      {{ with .Params }}
+      <div class="privacy-wrapper">
+        <div class="col-lg-7 mx-auto">
+          <div
+            data-bs-spy="scroll"
+            data-bs-target="#navbar-example2"
+            data-bs-offset="0"
+            class="scrollspy-example"
+            tabindex="0"
+          >
+            {{ $privacyContent := .privacy }} {{ range $index,$data :=
+            $privacyContent }} {{ if eq .key "descriptive" }}
+            <div class="privacy-items" id="item{{add $index 1}}">
+              <div class="card">
+                <h3 class="sub-title">{{.heading}}</h3>
+                {{ range .texts }}
+                <div class="card-body">
+                  <p class="card-text">{{.value}}</p>
+                </div>
+                {{ end }}
+              </div>
+            </div>
+            {{ else if eq .key "bulletpoints"}}
+            <div class="privacy-items" id="item{{add $index 1}}">
+              <div class="card">
+                <h3 class="sub-title">{{.heading}}</h3>
+                <div class="card-body">
+                  <ul>
+                    {{ range .texts }}
+                    <li>{{.value}}</li>
+                    {{ end }}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {{ end }} {{ end }}
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <nav id="scrol-nav" class="navbar navbar-light privacy-nav">
+            <ul class="nav nav-pills">
+              {{ $privacyContent := .privacy }} {{ range $index,$data :=
+              $privacyContent}} {{ if eq $index 0 }}
+              <li class="nav-item">
+                <a class="nav-link active" href="#item{{add $index 1}}"
+                  >{{.heading}}</a
+                >
+              </li>
+              {{else}}
+              <li class="nav-item">
+                <a class="nav-link" href="#item{{add $index 1}}">
+                  {{.heading}}</a
+                >
+              </li>
+              {{ end }} {{ end }}
+            </ul>
+          </nav>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,31 @@
+{
+  "name": "sendit_hugo",
+  "version": "1.0.0",
+  "description": "Starter template for hugo and bookshop",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-p hugo-server",
+    "dev": "run-p hugo-server bookshop",
+    "init": "npx @bookshop/init@latest",
+    "hugo-server": "hugo server -D --watch",
+    "build": "hugo --source ./ --destination public --baseURL /",
+    "bookshop": "npx @bookshop/browser@latest",
+    "bookshop-update": "npx @bookshop/up@latest",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CloudCannon/sendit-hugo-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@bookshop/browser": "^3.1.2",
+    "@bookshop/generate": "^3.1.2",
+    "@bookshop/hugo-engine": "^3.1.2"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

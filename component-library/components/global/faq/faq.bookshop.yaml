@@ -1,0 +1,24 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: FAQ
+  description: FAQ section
+  icon: "checklist"
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  title: Have
+  title_suffix: Questions?
+  description: We’re always here to help. Here are the most frequently asked questions.
+  faq:
+    - title: Is there a maximum numbers of emails I can send each month?
+      description: No, the prices include unlimited emails. Send to your heart’s content.
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  description:
+    type: markdown

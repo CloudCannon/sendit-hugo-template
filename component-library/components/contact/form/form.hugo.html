@@ -1,0 +1,119 @@
+<section class="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 me-auto order-2 order-lg-1">
+        <div class="contact-form-Information">
+          <div class="address">
+            {{ with .address }}
+            <h3>{{.heading}}</h3>
+            <p>{{.address}}</p>
+            {{ end }}
+            <div class="item mb-4">
+              {{ with .phone }}
+              <h3>{{.heading}}</h3>
+              <a href="tel:{{.cell}}"
+                >{{.cell}}
+                <span>
+                  <img
+                    src="/images/contact/call-add.svg"
+                    alt="call-add"
+                    loading="lazy"
+                  />
+                </span>
+              </a>
+              {{ end }}
+            </div>
+            <div class="item">
+              {{ with .email }}
+              <h3>{{.heading}}</h3>
+              <a href="mailto:{{.email}}"
+                >{{.email}}
+                <span>
+                  <img
+                    src="/images/contact/directbox-send.svg"
+                    alt="send-box"
+                    loading="lazy"
+                  />
+                </span>
+              </a>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2">
+        <div class="contact-form">
+          {{ with .form }}
+          <form method="post">
+            <h3>{{.heading}}</h3>
+            {{ with .fullName }}
+            <div class="col-md-12">
+              <label for="Name" class="label">{{.heading}}</label>
+              <input
+                type="text"
+                class="form-control"
+                id="Name"
+                name="name"
+                placeholder="{{.placeHolder}}"
+                required=""
+              />
+            </div>
+            {{ end }} {{ with .phoneNumber }}
+            <div class="col-md-12">
+              <label for="Name" class="label">{{.heading}}</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="Name"
+                name="phone-number"
+                placeholder="{{.placeHolder}}"
+                required=""
+              />
+            </div>
+            {{ end }} {{ with .email }}
+            <div class="col-md-12">
+              <label for="email" class="label">{{.heading}}</label>
+              <input
+                type="email"
+                class="form-control mb-6"
+                id="email"
+                name="_replyto"
+                placeholder="{{.placeHolder}}"
+                required=""
+              />
+            </div>
+            {{ end }} {{ with .message }}
+            <div class="col-12">
+              <label for="email" class="label">{{.heading}}</label>
+              <textarea
+                class="form-control mb-4"
+                id="floatingTextarea2"
+                name="message"
+                placeholder="{{.placeHolder}}"
+                rows="8"
+                spellcheck="false"
+              ></textarea>
+            </div>
+            {{ end }}
+            <input type="text" name="_gotcha" style="display: none" />
+            {{ with .submitBtn }}
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-lg mt-7">
+                <span class="position-relative">{{.text}}</span>
+              </button>
+            </div>
+            {{ end }}
+          </form>
+          {{ end }}
+          <div class="effect">
+            <img
+              src="/images/contact/effects.png"
+              alt="effects"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Pricing Hero
+  description: Pricing Hero section
+  icon: "credit_card"
+  tags: ["hero"]
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  title: A plan for everyone
+  description: Sendit is easy to get started and we have a pricing plan for businesses of all sizes.
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs: {}
