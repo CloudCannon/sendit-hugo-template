@@ -4,15 +4,15 @@ logo_url: /home
 copyright: "MyCompany. All rights reserved."
 social:
   - link: "https://www.facebook.com/mycompany"
-    icon: "ph-facebook-logo"
+    social_icon: "ph-facebook-logo"
   - link: "https://www.instagram.com/mycompany"
-    icon: "ph-instagram-logo"
+    social_icon: "ph-instagram-logo"
   - link: "https://www.twitter.com/mycompany"
-    icon: "ph-twitter-logo"
+    social_icon: "ph-twitter-logo"
   - link: "https://www.github.com/mycompany"
-    icon: "ph-github-logo"
+    social_icon: "ph-github-logo"
   - link: "https://www.youtube.com/mycompany"
-    icon: "ph-youtube-logo"
+    social_icon: "ph-youtube-logo"
 sections:
   -
     title: Main Pages
