@@ -24,7 +24,7 @@ _inputs:
       removeformat: true
   isActive:
     type: switch
-  social_icon:
+  icon:
     type: select
     options:
       values:
