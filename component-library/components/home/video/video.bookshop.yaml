@@ -9,12 +9,12 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  image_path: "/images/video/video-thum.jpg"
-  videoUrl: "https://vimeo.com/45830194"
+  image: "/images/video/video-thum.jpg"
+  image_alt: Thumbnail for video
+  video_url: "https://vimeo.com/45830194"
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
-
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs: {}

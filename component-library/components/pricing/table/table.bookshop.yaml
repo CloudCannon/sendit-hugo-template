@@ -11,22 +11,25 @@ spec:
 blueprint:
   pricing_tier:
     - tier: free
-      description: Everything you need to get started.
+      description: For starters Includes unlimited members
+      currency_symbol: $
       price: 0
-      hasDiscount: false
-      discountPrice: 0
-      isActive: false
-      feature:
-      btn:
-        link: /sign-up
+      has_discount: false
+      discount_price: 0
+      highlight_tier: false
+      features:
+        - item: 1 Site Activation
+          active_feature: true
+      button:
+        link: /login
         text: Try This Free
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
-_inputs: 
-  feature:
+_inputs:
+  features:
     type: array
-    options:
-      structures: _structures.features
+  description:
+    type: markdown

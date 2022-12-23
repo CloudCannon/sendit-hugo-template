@@ -11,13 +11,14 @@ spec:
 blueprint:
   title: Have
   title_suffix: Questions?
-  description: We’re always here to help. Here are the most frequently asked questions.
-  faq:
-    - title: Is there a maximum numbers of emails I can send each month?
-      description: No, the prices include unlimited emails. Send to your heart’s content.
+  description: We believe that a good email marketing strategy is the key to growth. So we’re helping you grow your business with tools and resources that make email marketing easy.
+  FAQ:
+    - title: What if I unplug all selected apps at once?
+      description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim illo quasi quia doloremque dignissimos rerum perspiciatis, officiis optio natus beatae!
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
+
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
   description:

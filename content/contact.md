@@ -1,5 +1,13 @@
 ---
 title: Contact
+url: /contact/
+seo:
+  page_description: 
+  canonical_url: 
+  featured_image: 
+  author_twitter_handle: 
+  open_graph_type:
+  noindex: false
 content_blocks:
   - _bookshop_name: contact/hero
     title: Let's talk.
@@ -11,23 +19,27 @@ content_blocks:
     phone:
       heading: Phone
       cell: (123) 456 - 7895
+      image: /images/contact/call-add.svg
+      image_alt: call-add
     email:
       heading: Email
       email: info@example.com
+      image: /images/contact/directbox-send.svg
+      image_alt: send-box
     form:
       heading: Say Hello
-      fullName:
+      fullname:
         heading: Full Name
-        placeHolder: Enter First Name
-      phoneNumber:
+        placeholder: Enter First Name
+      phone_number:
         heading: Phone number
-        placeHolder: Enter Phone Number
+        placeholder: Enter Phone Number
       email:
         heading: Email Address
-        placeHolder: Enter Email Address
+        placeholder: Enter Email Address
       message:
-        heading: Your Message
-        placeHolder: Enter your message
-      submitBtn:
+        heading: Your Messages
+        placeholder: Enter your message
+      submit_button:
         text: Send message
 ---

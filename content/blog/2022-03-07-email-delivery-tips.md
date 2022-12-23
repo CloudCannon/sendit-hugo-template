@@ -1,14 +1,26 @@
 ---
-date: 2022-06-10T00:00:00Z
-title: 5 things to improve you email templates
-categories:
-  - Marketing
-author: Aaron Britt
-thumbImg:
-  image_path: /images/blog/blog-thumb-6.jpg
-featuredImg:
-  image_path: /images/blog/featured-image-2.jpg
+date: 2022-03-07
+title: Email delivery tips
+tags:
+  - blog
+  - email
+author: Gerard Hopper
+thumb_img:
+  image: /images/blog/blog-thumb-1.jpg
+  image_alt: Arial shot of people working
+featured_img:
+  image: /images/blog/featured-image-1.jpg
+  image_alt: Child using a computer
+seo:
+  page_description: 
+  canonical_url: 
+  featured_image: /images/blog/featured-image-1.jpg
+  author_twitter_handle: 
+  open_graph_type: article
+  noindex: false
+url: /blog/email-delivery-tips
 ---
+
 When you send an email campaign, you expect it to reach your readers, right? But what if the emails go straight to your subscribers' spam folders instead of their inboxes? To make sure your emails reach their recipients successfully, follow these email delivery tips.
 
 ### Use an ESP
@@ -23,7 +35,7 @@ Before you send out any campaign using an email marketing tool, make sure that y
 
 Use double opt-in when sending out marketing emails. This means that the recipient must have previously agreed to receive emails from you before they can see content in their inboxes or on their mobile devices. This helps prevent people from signing up for newsletters they don't want and can help protect against spam complaints from users who didn't know they had signed up for something in the first place.
 
-### Keep your content short and sweet.
+### Keep your content short and sweet
 
 Your customers don't want to read lengthy emails full of text, so keep your messages short and sweet. If you have multiple products to promote, break up each product offer into its own email instead of sending one page-long message with multiple links embedded in it. That way, customers can easily find what they're looking for without having to scroll all over the page.
 

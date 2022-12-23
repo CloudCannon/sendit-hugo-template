@@ -9,25 +9,33 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  title: On a mission to change email marketing
-  description: We’re here to breathe new air into email marketing and help grow your business.
+  title: One mission to make the better marketing
+  description: We believe that a good email marketing strategy is the key to growth. So we’re helping you grow your business with tools and resources that make email marketing easy.
   hero_images:
-    - image_path: /images/about/aboutfeature-three.jpg
-      placer: front_bottom
-  link:
-    text: "Try Free"
-    url: "/sign-up"
+    - image: /images/about/aboutfeature-two.png
+      image_alt: People working
+      placement: front_buttom
+    - image: /images/about/aboutfeature-three.png
+      image_alt: Group of people looking at a computer
+      placement: back_top_right
+    - image: /images/about/aboutfeature-four.png
+      image_alt: Staff group photo
+      placement: back_top_left
+  button:
+    text: "See more"
+    link: "/signup"
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
-
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  placer:
+  description:
+    type: markdown
+  placement:
     type: select
     options:
       values:
-        - front_bottom
+        - front_buttom
         - back_top_right
         - back_top_left

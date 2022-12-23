@@ -7,19 +7,20 @@
       <div class="col-lg-6">
         <div class="hero-two-content">
           <h1 class="mb-4">{{.title}}</h1>
-          <p class="mb-7 w-xxl-80">{{.description | markdownify}}</p>
+          <div class="mb-7 w-xxl-80">{{.description | markdownify}}</div>
           <div class="">
             {{with .link}}
-            <a href="{{.url}}" class="btn btn-primary btn-lg"> {{.text}} </a>
-            {{end}}
+              <a href="{{.url}}" class="btn btn-primary btn-lg">
+                {{.text}}
+              </a>
+            {{ end }}
           </div>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="hero-two-banner">
-          <img src="{{.image_path}}" alt="hero-two-images" />
+          <img src="{{.image}}" alt="{{.image_alt}}" />
           <div class="hero-two-banner-shape">
-            <img src="/images/hero/hero-three-shape.png" alt="shape" />
           </div>
         </div>
       </div>

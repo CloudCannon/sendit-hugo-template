@@ -9,18 +9,19 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  image_path: /images/feature/feature-card-one.png
-  title: Simply click and send
-  description: Make your message stand out, thanks to the guided copywriting and design features, triggering a positive response from your customers.
-  btn:
-    link: /sign-up
-    text: Try Free
+  image: /images/feature/feature-card-one.png
+  image_alt: Message inbox
+  title: Text Message in One Minute
+  description: We believe that a good email marketing strategy is the key to growth. So we’re helping you grow your business with tools and resources that make email marketing easy.
+  button:
+    link: /signup
+    text: Try This Free
   reversed: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
-_inputs: 
+_inputs:
   description:
-    type: "markdown"
+    type: markdown

@@ -1,0 +1,79 @@
+<head>
+    <meta charset="utf-8" />
+    <title>{{ print .Page.Title " | " .Site.Title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
+
+    {{ if .Params.SEO.page_description }}
+       <meta name="description" content="{{ .Params.SEO.page_description }}">
+       <meta property="og:description" content="{{ .Params.SEO.page_description }}" />
+    {{ else }}
+       <meta name="description" content="{{ .Site.Data.site.description }}">
+       <meta property="og:description" content="{{ .Site.Data.site.description }}" />
+    {{ end }}
+
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="{{ .Site.Data.site.twitter_site }}" />
+    {{ if eq .Permalink "/" }}
+       <meta name="og:title" content="{{ .Site.Data.site.site_title }}" />
+       <meta property="og:type" content="website" />
+       <meta name="og:image" content="{{ .Site.Data.site.image }}" />
+       <meta name="twitter:creator" content="{{ .Site.Data.site.twitter_site }}" />
+       <meta name="twitter:title" content="{{ .Site.Data.site.site_title }}" />
+       {{ if .Site.Data.site.twitter_image }}
+          <meta name="twitter:image" content="{{ .Site.Data.site.twitter_image }}" />
+       {{ else }}
+          <meta name="twitter:image" content="{{ .Site.Data.site.image }}" />
+       {{ end }}
+    {{ else }}
+       <meta name="og:title" content="{{ .Params.title }}" />
+       <meta name="twitter:title" content="{{ .Params.title }}" />
+       {{ if .Params.SEO.open_graph_type }}
+          <meta property="og:type" content="{{ .Params.SEO.open_graph_type }}" />
+       {{ else }}
+          <meta property="og:type" content="website" />
+       {{ end }}
+       {{ if .Params.SEO.featured_image }}
+          <meta name="og:image" content="{{ .Params.SEO.featured_image }}" />
+          <meta name="twitter:image" content="{{ .Params.SEO.featured_image }}" />
+       {{ else }}
+          <meta name="og:image" content="{{ .Site.Data.site.image }}" />
+          {{ if .Site.Data.site.twitter_image }}
+             <meta name="twitter:image" content="{{ .Site.Data.site.twitter_image }}" />
+          {{ else }}
+             <meta name="twitter:image" content="{{ .Site.Data.site.image }}" />
+          {{ end }}
+       {{ end }}
+       {{ if .Params.SEO.author_twitter_handle }}  
+          <meta name="twitter:creator" content="{{ .Params.SEO.author_twitter_handle }}" />
+       {{ else }}
+          <meta name="twitter:creator" content="{{ .Site.Data.site.twitter_site }}" />
+       {{ end }}
+    {{ end }}
+
+    {{ if .Params.SEO.no_index }}
+       <meta name="robots" content="noindex">
+       <meta name="googlebot" content="noindex">
+    {{ end }}
+
+    
+    {{ if .Params.SEO.canonical_url }}
+       <link rel="canonical" href="{{ .Site.Data.site.BaseURL }}{{ .Params.SEO.canonical_url | .Permalink }}" />
+    {{ else }}
+       <link rel="canonical" href="{{ .Site.Data.site.BaseURL }}{{ .Permalink }}" />
+    {{ end }}
+
+    
+    <link href="/vendor/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="/vendor/phosphor-icons/css/phosphor.css" rel="stylesheet" />
+    <link href="/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" />
+    {{ $style := resources.Get "/scss/theme.scss" | resources.ToCSS |
+    resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+
+    
+    <link rel="shortcut icon" href="{{ .Site.Data.site.favicon_icon }}" type="image/x-icon" />
+    <link rel="icon" href="{{ .Site.Data.site.favicon_image }}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{{ .Site.Data.site.favicon_image }}">
+</head>
+      

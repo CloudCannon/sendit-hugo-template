@@ -11,8 +11,12 @@
       {{ range .team_members }}
       <div class="col-lg-3 col-md-6">
         <div class="team-member">
-          <div class="team-member-thumb rounded-box">
-            <img src="{{.image_path}}" alt="team-member-1 png" loading="lazy" />
+          <div class="team-member-thumb">
+            <img
+              src="{{.image}}"
+              alt="{{.image_alt}}"
+              loading="lazy"
+              style="border-radius: 20px" />
           </div>
           <div class="team-member-details">
             <h3>{{.name}}</h3>
