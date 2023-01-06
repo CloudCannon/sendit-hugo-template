@@ -1,0 +1,37 @@
+.contact-hero {
+  background: var(--color-secondary)-dark;
+  padding: calc(var(--base-padding) * 17.4) 0 calc(var(--base-padding) * 9.6);
+  @include media-breakpoint-down-xl {
+    padding: calc(var(--base-padding) * 13) 0 calc(var(--base-padding) * 5);
+  }
+  @include media-breakpoint-down-lg {
+    padding: calc(var(--base-padding) * 12) 0 calc(var(--base-padding) * 20);
+    text-align: center;
+  }
+  @include media-breakpoint-down-md {
+    padding: calc(var(--base-padding) * 10) 0 calc(var(--base-padding) * 68);
+  }
+  @include media-breakpoint-down-sm {
+    padding: calc(var(--base-padding) * 8.5) 0 calc(var(--base-padding) * 66);
+  }
+  &-content {
+    h1 {
+      font-size: calc(var(--base-font-size) * 4);
+      margin-bottom: calc(var(--base-margin) * 1.5);
+      @include media-breakpoint-down-sm {
+        font-size: calc(var(--base-font-size) * 2.5);
+        line-height: 50px;
+      }
+    }
+    p {
+      font-size: calc(var(--base-font-size) * 1.4);
+      color: var(--color-text);
+      font-weight: 500;
+      line-height: 36.3px;
+      width: 80%;
+      @include media-breakpoint-down-lg {
+        width: 100%;
+      }
+    }
+  }
+}

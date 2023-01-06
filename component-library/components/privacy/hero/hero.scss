@@ -1,0 +1,19 @@
+.privacy-hero {
+  background: #f7f8fa;
+  padding: var(--base-padding) * 13.5 0 var(--base-padding) * 37;
+  @include media-breakpoint-down-xxl {
+    padding: var(--base-padding) * 12 0 var(--base-padding) * 37;
+  }
+  @include media-breakpoint-down-sm {
+    padding: var(--base-padding) * 10 0 var(--base-padding) * 37;
+  }
+  &-content {
+    h1 {
+      font-size: var(--base-font-size) * 4;
+      margin-bottom: var(--base-margin) * 1.5;
+      @include media-breakpoint-down-md {
+        font-size: var(--base-font-size) * 2.5;
+      }
+    }
+  }
+}

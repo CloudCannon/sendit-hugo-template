@@ -1,41 +1,43 @@
 ---
-logo: /images/footer-logo.svg
-logo_url: /home
-copyright: "MyCompany. All rights reserved."
+logo: "/images/footer-logo.svg"
+copyright: " MyCompany, All rights reserved!"
 social:
-  - link: "https://www.facebook.com/mycompany"
+  - link: "https://www.facebook.com"
     icon: "ph-facebook-logo"
-  - link: "https://www.instagram.com/mycompany"
+    icon_alt: "Facebook"
+  - link: "https://www.instagram.com"
     icon: "ph-instagram-logo"
-  - link: "https://www.twitter.com/mycompany"
+    icon_alt: "Instagram"
+  - link: "https://www.twitter.com"
     icon: "ph-twitter-logo"
-  - link: "https://www.github.com/mycompany"
+    icon_alt: "Twitter"
+  - link: "https://www.github.com"
     icon: "ph-github-logo"
-  - link: "https://www.youtube.com/mycompany"
+    icon_alt: "GitHub"
+  - link: "https://www.youtube.com"
     icon: "ph-youtube-logo"
+    icon_alt: "YouTube"
 sections:
-  -
-    title: Main Pages
+  - title: Main Pages
     links:
-      - link: "/"
-        text: "Home"
-      - link: "/feature"
-        text: "Feature"
-      - link: "/pricing"
-        text: "Price"
-      - link: "/about"
-        text: "About"
-  -
-    title: "Community"
+      - link: /
+        text: Home
+      - link: /feature
+        text: Feature
+      - link: /pricing
+        text: Price
+      - link: /about
+        text: About
+  - title: Community
     links:
-      - link: "/blog"
-        text: "Blog"
-      - link: "/404.html"
-        text: "404"
-  -
-    title: "Company"
+      - link: /blog
+        text: Blog
+  - title: Company
     links:
-      - link: "/contact"
-        text: "Contact"
-      - link: "/privacy"
-        text: "Privacy and Policy"
+      - link: /contact
+        text: Contact
+      - link: /privacy
+        text: Privacy and Policy
+_inputs:
+  logo:
+    type: image

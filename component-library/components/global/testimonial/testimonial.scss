@@ -1,0 +1,67 @@
+/********** 
+  11. Testimonial Section Styles 
+**********/
+.testimonial {
+  background: var(--color-header);
+  position: relative;
+  border-bottom: 1px solid var(--color-text);
+  overflow: hidden;
+  padding: 70px 0;
+  @include media-breakpoint-down-sm {
+    border-bottom: none;
+  }
+  &-content {
+    padding-right: 50px;
+    @include media-breakpoint-down-xl {
+      padding-right: 0;
+    }
+    @include media-breakpoint-down-lg {
+      text-align: center;
+      padding-bottom: calc(var(--base-padding) * 3);
+    }
+    h2 {
+      color: var(--color-white);
+      font-size: calc(var(--base-font-size) * 2.8);
+      margin-bottom: calc(var(--base-margin) * 1.4);
+      span {
+        color: var(--color-anchor);
+      }
+      @include media-breakpoint-down-xl {
+        font-size: calc(var(--base-font-size) * 2.5);
+      }
+      @include media-breakpoint-down-sm {
+        font-size: calc(var(--base-font-size) * 2);
+      }
+    }
+    p {
+      font-size: 22px;
+      color: var(--color-cyan);
+      font-weight: 500;
+      line-height: 36.3px;
+      letter-spacing: -0.4px;
+      @include media-breakpoint-down-md {
+        font-size: calc(var(--base-font-size) * 1.25);
+      }
+    }
+  }
+  &-item {
+    background-color: var(--color-white);
+    padding: 15px 30px;
+    border-radius: 12px;
+    &-person {
+      margin-top: 1rem;
+      .thumb {
+        img {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          margin-bottom: 15px;
+        }
+      }
+      .content {
+        p {
+        }
+      }
+    }
+  }
+}

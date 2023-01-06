@@ -1,0 +1,42 @@
+.pricing-inner {
+  position: relative;
+  padding: calc(var(--base-padding) * 14) calc(var(--base-padding) * 0 ) calc(var(--base-padding) * 27);
+  @include media-breakpoint-down-xxl {
+    padding: calc(var(--base-padding) * 10) calc(var(--base-padding) * 0 ) calc(var(--base-padding) * 27);
+  }
+  @include media-breakpoint-down-lg {
+    padding: calc(var(--base-padding) * 10) calc(var(--base-padding) * 0 ) calc(var(--base-padding) * 25);
+  }
+  @include media-breakpoint-down-md {
+    padding: calc(var(--base-padding) * 10) calc(var(--base-padding) * 0 ) calc(var(--base-padding) * 27);
+  }
+  @include media-breakpoint-down-sm {
+    padding: calc(var(--base-padding) * 8.)5 calc(var(--base-padding) * 0 ) calc(var(--base-padding) * 27);
+  }
+  .section-header {
+    padding: 0 0 calc(var(--base-padding) * 1);
+    h2 {
+      font-size: calc(var(--base-font-size) * 4);
+      line-height: 80px;
+      margin-bottom: calc(var(--base-margin) * 1.5);
+      @include media-breakpoint-down-xl {
+        font-size: calc(var(--base-font-size) * 3.9);
+      }
+      @include media-breakpoint-down-lg {
+        font-size: calc(var(--base-font-size) * 3.5);
+        line-height: 70px;
+      }
+      @include media-breakpoint-down-md {
+        font-size: calc(var(--base-font-size) * 3);
+        line-height: 60px;
+      }
+      @include media-breakpoint-down-sm {
+        font-size: calc(var(--base-font-size) * 2.5);
+        line-height: 50px;
+      }
+    }
+    p {
+      font-size: var(--base-font-size) * 1.35);
+    }
+  }
+}

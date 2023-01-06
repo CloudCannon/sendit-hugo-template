@@ -6,8 +6,10 @@
           <h1 class="">{{.title}}</h1>
           <p>{{.description | markdownify}}</p>
           <div class="d-block mb-6">
-            {{ with .btn }}
-            <a href="{{.link}}" class="btn btn-primary btn-lg"> {{.text}} </a>
+            {{ with .button }}
+              <a href="{{.link}}" class="btn btn-primary btn-lg">
+                {{.text}}
+              </a>
             {{ end }}
           </div>
         </div>

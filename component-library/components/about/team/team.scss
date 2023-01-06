@@ -1,0 +1,60 @@
+.team {
+  padding: calc(var(--base-padding) * 3) calc(var(--base-padding) * 0) calc(var(--base-padding) * 9.4);
+  @include media-breakpoint-down-xxl {
+    padding: calc(var(--base-padding) * 3) calc(var(--base-padding) * 0) calc(var(--base-padding) * 5);
+  }
+  @include media-breakpoint-down-xl {
+    padding: calc(var(--base-padding) * 3) calc(var(--base-padding) * 0) calc(var(--base-padding) * 3);
+  }
+  @include media-breakpoint-down-md {
+    padding: calc(var(--base-padding) * 0) calc(var(--base-padding) * 0) calc(var(--base-padding) * 4);
+  }
+  @include media-breakpoint-down-sm {
+    padding: calc(var(--base-padding) * 0) calc(var(--base-padding) * 0) calc(var(--base-padding) * 2);
+  }
+  .section-header {
+    padding-bottom: calc(var(--base-padding) * 3.5);
+    @include media-breakpoint-down-xxl {
+      padding: calc(var(--base-padding) * 3) calc(var(--base-padding) * 0) calc(var(--base-padding) * 3.5);
+    }
+    @include media-breakpoint-down-md {
+      padding: calc(var(--base-padding) * 3) calc(var(--base-padding) * 0) calc(var(--base-padding) * 1.5);
+    }
+  }
+  &-member {
+    margin-bottom: var(--base-margin) * 3.1;
+    @include media-breakpoint-down-lg {
+      margin-bottom: var(--base-margin) * 2.5;
+      text-align: center;
+    }
+
+    &-thumb {
+      margin-bottom: var(--base-margin) * 1.5;
+      img {
+        max-width: 100%;
+        @include media-breakpoint-down-md {
+          width: 100%;
+        }
+      }
+    }
+    &-details {
+      h3 {
+        font-size: var(--base-font-size) * 1.6;
+        color: var(--color-header);
+        margin-bottom: var(--base-margin) * 0.3;
+        font-weight: 600;
+      }
+      p {
+        font-size: var(--base-font-size) * 1.25;
+        color: var(--color-text)-light;
+        font-family: var(--font-primary);
+        @include media-breakpoint-down-xl {
+          font-size: var(--base-font-size) * 1.2;
+        }
+        @include media-breakpoint-down-lg {
+          font-size: var(--base-font-size) * 1.25;
+        }
+      }
+    }
+  }
+}

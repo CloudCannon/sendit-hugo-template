@@ -1,30 +1,40 @@
 ---
 title: About
+url: /about/
+seo:
+  page_description: 
+  canonical_url: 
+  featured_image: 
+  author_twitter_handle: 
+  open_graph_type:
+  noindex: false
 content_blocks:
   - _bookshop_name: about/hero
     title: On a mission to change email marketing
-    description: >-
-      We're here to breathe new air into email marketing and help grow your
-      business.
+    description: We're here to breathe new air into email marketing and help grow your business.
     hero_images:
-      - image_path: /images/about/aboutfeature-two.jpg
-        placer: front_bottom
-      - image_path: /images/about/aboutfeature-three.jpg
-        placer: back_top_right
-      - image_path: /images/about/aboutfeature-four.jpg
-        placer: back_top_left
-    link:
+      - image: /images/about/aboutfeature-two.jpg
+        image_alt: People working on laptops
+        placement: "front_buttom"
+      - image: /images/about/aboutfeature-three.jpg
+        image_alt: Group working on a laptop
+        placement: "back_top_right"
+      - image: /images/about/aboutfeature-four.jpg
+        image_alt: Staff group photo
+        placement: "back_top_left"
+    button:
       text: "Try This Free"
-      url: "/sign-up"
+      link: "/signup"
+
   - _bookshop_name: global/counter
     title: Built for your
     title_suffix: Business
     description: We've built Sendit from the ground up the help grow your business faster.
-    alternateStyle: true
+    alternate_style: true
     numbers:
-      - number: 200
+      - prefix: $
+        number: 200
         suffix: m
-        prefix: $
         text: Venture capital raised
       - number: 2016
         text: Established in
@@ -34,42 +44,58 @@ content_blocks:
       - number: 44325
         suffix: +
         text: Active users and growing
+
   - _bookshop_name: about/video
     title: We love what we do
-    description: >-
-      Our team has decades of experience working with email marketing campaigns
-      and we’re passionate about helping you connect with your customers.
-    btn:
-      link: https://www.instagram.com/staticmania
+    description: Our team has decades of experience working with email marketing campaigns and we’re passionate about helping you connect with your customers.
+    button:
+      link: https://www.linkedin.com/
       text: Follow on Linkedin
     video:
-      image_path: /images/works/banner.jpg
+      image: /images/works/banner.jpg
+      image_alt: Thumbnail image for video
       link: https://vimeo.com/45830194
+
   - _bookshop_name: about/team
     title: Our leadership team
     team_members:
       - name: Nikolas Mcconnell
         designation: Co-Founder & CEO
-        image_path: /images/team/1.jpg
+        image: /images/team/1.jpg
+        image_alt: "Team member: Nikolas Mcconnell"
+
       - name: Keiren Mcculloch
         designation: CMO
-        image_path: /images/team/2.jpg
+        image: /images/team/2.jpg
+        image_alt: "Team member: Keiren Mcculloch"
+
       - name: Piers Reyes
         designation: Head of Marketing
-        image_path: /images/team/3.jpg
+        image: /images/team/3.jpg
+        image_alt: "Team member: Piers Reyes"
+
       - name: Zachary Arias
         designation: Co-founder & CTO
-        image_path: /images/team/4.jpg
+        image: /images/team/4.jpg
+        image_alt: "Team member: Zachary Arias"
+
       - name: Harmony Dunlop
         designation: Head of Sales
-        image_path: /images/team/5.jpg
+        image: /images/team/5.jpg
+        image_alt: "Team member: Harmony Dunlop"
+
       - name: Elize Schwartz
         designation: CRO
-        image_path: /images/team/6.jpg
+        image: /images/team/6.jpg
+        image_alt: "Team member: Elize Schwartz"
+
       - name: Coen Simmons
         designation: Head of Design
-        image_path: /images/team/7.jpg
+        image: /images/team/7.jpg
+        image_alt: "Team member: Coen Simmons"
+
       - name: Fran Figureson
         designation: Head of People
-        image_path: /images/team/8.jpg
+        image: /images/team/8.jpg
+        image_alt: "Team member: Fran Figureson"
 ---

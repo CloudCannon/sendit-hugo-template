@@ -2,64 +2,54 @@
   <div class="container">
     <div class="row">
       {{ range .pricing_tier }}
-        <div class="col-lg-4">
-          <div class= 
-          {{ if .isActive }}
-            "card pricing-item active"
-          {{else}}
-            "card pricing-item"
-          {{ end }}>
-            <h5 class="card-title">{{.tier}}</h5>
-            <p class="card-text">
-              {{.description | markdownify}}
-            </p>
-            {{ if .hasDiscount }}
+      <div class="col-lg-4">
+        <div
+          class="card pricing-item {{ if .highlight_tier }} active {{ end }}">
+          <h5 class="card-title">{{.tier}}</h5>
+          <p class="card-text">{{.description}}</p>
+          {{ if .has_discount }}
             <div class="price">
-              <p class="pricingtable">${{.discountPrice}}</p>
+              <p class="pricingtable">{{.currency_symbol}}{{.discount_price}}</p>
               <div class="discount">
-                <p>${{.price}}</p>
+                <p>{{.currency_symbol}}{{.price}}</p>
                 <div class="vector vector-one">
-                  <img src="/images/pricing/Vector1.svg" alt="Vector" loading="lazy"/>
+                  <img
+                    src="/images/pricing/cross-shape.png"
+                    alt="cross-shape"
+                    loading="lazy" />
                 </div>
               </div>
-              <div class="shape top-0">
-                <img src="/images/pricing/shape-two.png" alt="shape" loading="lazy"/>
+              <div class="shape-two top-0">
               </div>
             </div>
-            {{else}}
+          {{ else }}
             <div class="price">
-              <p><span>${{.price}}</span></p>
-              <div class="shape">
-                <img src="/images/pricing/shape-one.png" alt="shape" loading="lazy"/>
+              <p><span>{{.currency_symbol}}{{.price}}</span></p>
+              <div class="shape-one">
               </div>
             </div>
-            {{ end }}
-            <div class="card-body">
-              <ul class="list-unstyled">
-                {{ range .feature }}
-                  {{ if .isActive }}
-                  <li>
-                    <i class="ph-check"></i>
-                    {{.item}}
-                  </li>
-                  {{else}}
-                  <li class="deactive">
-                    <i class="ph-check deactive"></i>
-                    {{.item}}
-                  </li>
-                  {{ end }}
-                {{ end }}
-              </ul>
-              <div class="link">
-                {{ with .btn }}
+          {{ end }}
+          <div class="card-body">
+            <ul class="list-unstyled">
+              {{ range .feature }}
+              <li
+                class="{{ if eq .active_feature false }} deactive {{ end }}">
+                <i
+                  class="ph-check {{ if eq .active_feature false }} deactive {{ end }}"></i>
+                {{ .item }}
+              </li>
+              {{ end }}
+            </ul>
+            <div class="link">
+              {{ with .button }}
                 <a href="{{.link}}" class="btn btn-lg btn-white">
                   {{.text}}
                 </a>
-                {{ end }}
-              </div>
+              {{ end }}
             </div>
           </div>
         </div>
+      </div>
       {{ end }}
     </div>
   </div>

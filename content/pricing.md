@@ -1,110 +1,119 @@
 ---
 title: Pricing
+url: /pricing/
+seo:
+  page_description: 
+  canonical_url: 
+  featured_image: 
+  author_twitter_handle: 
+  open_graph_type:
+  noindex: false
 content_blocks:
   - _bookshop_name: pricing/hero
     title: A plan for everyone
-    description: >-
-      Sendit is easy to get started and we have a pricing plan for businesses of
-      all sizes.
+    description: Sendit is easy to get started and we have a pricing plan for businesses of all sizes.
+
   - _bookshop_name: pricing/table
     pricing_tier:
       - tier: Free
         description: Everything you need to get started.
+        currency_symbol: $
         price: 0
-        hasDiscount: false
-        discountPrice: 0
-        isActive: false
-        feature:
+        has_discount: false
+        discount_price: 0
+        highlight_tier: false
+        features:
           - item: 1 Email Campaign
-            isActive: true
+            active_feature: true
           - item: 1 Year Premium Support
-            isActive: true
+            active_feature: true
           - item: Regular Update for 1 Year
-            isActive: true
+            active_feature: true
           - item: 90+ Widgets & Extensions
-            isActive: true
+            active_feature: true
           - item: 23+ Templates
-            isActive: true
+            active_feature: true
           - item: Over 800 Section Blocks
-            isActive: false
+            active_feature: false
           - item: Support
-            isActive: false
+            active_feature: false
           - item: 3 filters
-            isActive: false
+            active_feature: false
           - item: Unlimited activity history
-            isActive: false
-        btn:
-          link: /sign-up
+            active_feature: false
+        button:
+          link: /signup
           text: Try This Free
       - tier: Pro
-        description: More collaborative power.
+        description: More collaborative power and unlimited boards for fast-growing.
+        currency_symbol: $
         price: 199
-        hasDiscount: true
-        discountPrice: 125
-        isActive: true
-        feature:
-          - item: 5 Email Campaigns
-            isActive: true
+        has_discount: true
+        discount_price: 125
+        highlight_tier: true
+        features:
+          - item: 1 Email Campaign
+            active_feature: true
           - item: 1 Year Premium Support
-            isActive: true
+            active_feature: true
           - item: Regular Update for 1 Year
-            isActive: true
+            active_feature: true
           - item: 90+ Widgets & Extensions
-            isActive: true
+            active_feature: true
           - item: 23+ Templates
-            isActive: true
+            active_feature: true
           - item: Over 800 Section Blocks
-            isActive: true
+            active_feature: true
           - item: Support
-            isActive: false
+            active_feature: false
           - item: 3 filters
-            isActive: false
+            active_feature: false
           - item: Unlimited activity history
-            isActive: false
-        btn:
-          link: /sign-up
+            active_feature: false
+        button:
+          link: /signup
           text: Try This Free
       - tier: Business
-        description: All the bells and whistles.
+        description: For starters Includes unlimited members
+        currency_symbol: $
         price: 499
-        hasDiscount: true
-        discountPrice: 350
-        isActive: false
-        feature:
-          - item: 20 Email Campaigns
-            isActive: true
+        has_discount: true
+        discount_price: 350
+        highlight_tier: false
+        features:
+          - item: 1 Email Campaign
+            active_feature: true
           - item: 1 Year Premium Support
-            isActive: true
+            active_feature: true
           - item: Regular Update for 1 Year
-            isActive: true
+            active_feature: true
           - item: 90+ Widgets & Extensions
-            isActive: true
+            active_feature: true
           - item: 23+ Templates
-            isActive: true
+            active_feature: true
           - item: Over 800 Section Blocks
-            isActive: true
+            active_feature: true
           - item: Support
-            isActive: true
+            active_feature: true
           - item: 3 filters
-            isActive: true
+            active_feature: true
           - item: Unlimited activity history
-            isActive: true
-        btn:
-          link: /sign-up
+            active_feature: true
+        button:
+          link: /signup
           text: Try This Free
+
   - _bookshop_name: global/faq
     title: Have
     title_suffix: Questions?
-    description: We're always here to help. Here are the most frequently asked questions.
-    faq:
+    description: We believe that a good email marketing strategy is the key to growth. So we’re helping you grow your business with tools and resources that make email marketing easy.
+    FAQ:
       - title: Is there a maximum numbers of emails I can send each month?
         description: No, the prices include unlimited emails. Send to your heart's content.
       - title: Where can I find out more information?
         description: Right here on this website, or contact our support team.
       - title: Do you have pricing for non-profits?
-        description: >-
-          Yes, contact our support team and we'll get you set up on our
-          non-profit plan.
+        description: Yes, contact our support team and we'll get you set up on our non-profit plan.
       - title: What forms of payment do you accept?
         description: We accept credit cards, checks, and cash.
       - title: In which currencies can I make payments?

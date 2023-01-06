@@ -1,0 +1,192 @@
+.pricing {
+   position: relative;
+   margin-top: -var(--base-margin) * 21.5;
+   @include media-breakpoint-down-md {
+      margin-top: -var(--base-margin) * 25;
+   }
+   .card {
+      transition: all 0.3s ease-in-out;
+      padding: var(--base-padding) * 3.9 var(--base-padding) * 0 var(--base-padding) * 3.7;
+      background: var(--color-white);
+      border-radius: 20px;
+      box-shadow: 0px 0px 80px rgba(150, 0, 0, 0.06);
+      z-index: 10;
+      border: 1px solid var(--color-white);
+      @include media-breakpoint-down-xl {
+         padding: var(--base-padding) * 3 var(--base-padding) * 0 var(--base-padding) * 3.7;
+      }
+      @include media-breakpoint-down-lg {
+         margin: 0 var(--base-margin) * 5 var(--base-margin) * 3.5;
+      }
+      @include media-breakpoint-down-sm {
+         margin: 0 var(--base-margin) * 0 var(--base-margin) * 3.5;
+         padding: var(--base-padding) * 3.9 var(--base-padding) * 0 var(--base-padding) * 2.2;
+      }
+      .card-title {
+         font-size: var(--base-font-size) * 1.9;
+         font-weight: 700;
+         color: var(--color-text);
+         margin-bottom: 8px;
+         line-height: 37.5px;
+         padding-left: var(--base-padding) * 2.9;
+         transition: all 0.3s ease-in-out;
+         @include media-breakpoint-down-xl {
+            padding-left: var(--base-padding) * 1.5;
+         }
+         @include media-breakpoint-down-lg {
+            padding-left: var(--base-padding) * 2.9;
+         }
+         @include media-breakpoint-down-md {
+            padding-left: var(--base-padding) * 1.5;
+         }
+      }
+      .card-text {
+         font-size: var(--base-font-size) * 1.25;
+         line-height: 29px;
+         margin-bottom: var(--base-margin) * 1.5;
+         letter-spacing: -0.5px;
+         font-weight: 400;
+         font-family: var(--font-primary);
+         padding-left: var(--base-padding) * 2.9;
+         @include media-breakpoint-down-xxl {
+            font-size: var(--base-font-size) * 1.1;
+         }
+         @include media-breakpoint-down-xl {
+            font-size: var(--base-font-size) * 1;
+            padding-left: var(--base-padding) * 1.5;
+         }
+         @include media-breakpoint-down-lg {
+            font-size: var(--base-font-size) * 1.25;
+            padding-left: var(--base-padding) * 2.9;
+         }
+         @include media-breakpoint-down-md {
+            padding-left: var(--base-padding) * 1.5;
+         }
+      }
+      .price {
+         display: flex;
+         position: relative;
+         margin-bottom: var(--base-margin) * 3.1;
+         transition: all 0.4s ease-in-out;
+         color: var(--color-header);
+         border-top: 1px solid var(--color-anchor)-dark;
+         border-bottom: 1px solid var(--color-anchor)-dark;
+         p {
+            margin-bottom: 0;
+            padding-left: var(--base-padding) * 2.9;
+            font-size: var(--base-font-size) * 2.8;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            transition: all 0.4s ease-in-out;
+            z-index: 2;
+            margin-right: var(--base-margin) * 0.8;
+            color: #000;
+         }
+         .discount {
+            position: relative;
+            display: flex;
+            align-items: center;
+            p {
+               margin: 0;
+               padding: 0;
+               font-size: var(--base-font-size) * 1.6;
+               font-family: var(--font-primary);
+               font-weight: 600;
+               transition: all 0.4s ease-in-out;
+               z-index: 2;
+               color: var(--color-text)-light;
+            }
+            .vector,
+            vector-one {
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+            }
+            .vector-one {
+               left: 58%;
+            }
+         }
+         .shape-one {
+            -webkit-mask-image: url(/images/pricing/shape-one.png);
+            mask-image: url(/images/pricing/shape-one.png);
+            background: $color-background-effects;
+         }
+         .shape-two {
+            -webkit-mask-image: url(/images/pricing/shape-two.png);
+            mask-image: url(/images/pricing/shape-two.png);
+            background: $color-background-effects;
+         }
+         .shape-two, .shape-one {
+            position: absolute;
+            top: 10px;
+            z-index: -1;
+            left: 10%;
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+            width: 35%;
+            height: 100%;
+         }
+      }
+      &-body {
+         padding: var(--base-padding) * 0 var(--base-padding) * 2.9;
+         @include media-breakpoint-down-xxl {
+            padding: var(--base-padding) * 0 var(--base-padding) * 1.9;
+         }
+         @include media-breakpoint-down-xl {
+            padding: var(--base-padding) * 0 var(--base-padding) * 1.5;
+         }
+         @include media-breakpoint-down-lg {
+            padding: var(--base-padding) * 0 var(--base-padding) * 2.9;
+         }
+         @include media-breakpoint-down-md {
+            padding: var(--base-padding) * 0 var(--base-padding) * 2.2;
+         }
+         ul {
+            margin-bottom: var(--base-margin) * 4.5;
+            li {
+               display: flex;
+               align-items: center;
+               color: var(--color-text)-light;
+               font-size: var(--base-font-size) * 1.25;
+               line-height: 33px;
+               margin-bottom: var(--base-margin) * 1.9;
+               font-weight: 700;
+               letter-spacing: -0.4px;
+               font-family: var(--font-secondary);
+               i {
+                  margin-right: var(--base-margin) * 1.1;
+                  color: var(--color-primary);
+                  @include media-breakpoint-down-xl {
+                     margin-right: var(--base-margin) * 1;
+                  }
+               }
+               &:last-child {
+                  margin-bottom: 0;
+               }
+               @include media-breakpoint-down-xl {
+                  font-size: var(--base-font-size) * 1.1;
+               }
+               @include media-breakpoint-down-lg {
+                  font-size: var(--base-font-size) * 1.25;
+               }
+            }
+            .deactive {
+               color: var(--color-deactive);
+            }
+         }
+      }
+   }
+   .active {
+      border: 1px solid var(--color-primary);
+      .card-title {
+         color: var(--color-primary);
+      }
+      .link {
+         a {
+            color: var(--color-white);
+            background: var(--color-primary);
+         }
+      }
+   }
+}

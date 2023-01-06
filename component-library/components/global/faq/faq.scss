@@ -1,0 +1,19 @@
+.faq-two {
+  padding-bottom: calc(var(--base-padding) * 9.4);
+  background: var(--color-gray)-dark;
+  @include media-breakpoint-down-xl {
+    padding-bottom: calc(var(--base-padding) * 5);
+  }
+  @include media-breakpoint-down-md {
+    padding-bottom: calc(var(--base-padding) * 3);
+  }
+  .section-header {
+    padding-bottom: calc(var(--base-padding) * 4.4);
+    @include media-breakpoint-down-sm {
+      padding-bottom: calc(var(--base-padding) * 3);
+    }
+  }
+  .shows {
+    border: 1px solid var(--color-anchor);
+  }
+}

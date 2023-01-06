@@ -1,21 +1,27 @@
 ---
+url: /privacy/
 title: Privacy
-hero:
-  title: Terms & Condition
-privacy:
-  - key: descriptive
-    heading: SendIt Terms And Conditions
-    texts:
-      - value: "A slider is great way to display a slideshow"
-      - value: "The WordPress sites being easy to use, offers many plugins
-        for slider. You could imagine slideshows in your head and
-        make them true on the screen."
-  - key: bulletpoints
-    heading: Account Information & Payments
-    texts:
-      - value: "The main benefit of using sliders is presenting all the
-        contents in a visually pleasing manner."
-      - value: "The WordPress sites being easy to use, offers many plugins
-        for slider. You could imagine slideshows in your head and
-        make them true on the screen."
+seo:
+  page_description:
+  canonical_url:
+  featured_image:
+  author_twitter_handle:
+  open_graph_type:
+  no_index: false
+content_blocks:
+  - _bookshop_name: privacy/hero
+    title: Terms & Conditions
+  - _bookshop_name: privacy/privacy
+    terms_and_conditions:
+      - heading: Sendit Terms And Conditions
+        description: >-
+          <p>A slider is great way to display a slideshow.</p>  <p>The WordPress
+          sites being easy to use, offers many plugins for slider. You could
+          imagine slideshows in your head and make them true on the screen.</p>
+      - heading: Account Information & Payments
+        description: >-
+          <ul><li>The main benefit of using sliders is presenting all the
+          contents in a visually pleasing manner.</li><li>The WordPress sites
+          being easy to use, offers many plugins for slider. You could imagine
+          slideshows in your head and make them true on the screen.</li></ul>
 ---

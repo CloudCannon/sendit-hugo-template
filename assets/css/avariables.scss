@@ -1,0 +1,34 @@
+body {
+	--font-primary: "Sora", sans-serif;
+	--font-secondary: "Space Grotesk", sans-serif;
+	--base-font-size: 1rem;
+	--regular-font-weight: 400;
+	--medium-font-weight: 500;
+	--semibold-font-weight: 600;
+	--bold-font-weight: 700;
+	--extbold-font-weight: 800;
+	--base-letter-spacing: 0.5px;
+
+	//Colors Variables
+	--color-white: #fff;
+	--color-gray: #fcfcfc;
+	--color-cyan: #808080;
+	--color-primary: #e53b2a;
+	--color-secondary: #fffbf3;
+	--color-anchor: #ffba08;
+
+	--color-header: #000;
+	--color-text: #282828;
+	--color-deactive: #ababab;
+
+	// Spacer Variables
+	--base-padding: 1rem;
+	--base-margin: 1rem;
+
+	// Transition Variables
+	--base-transition: all 0.5s ease-in-out;
+
+	//Others Varibles
+	--base-border-width: 1px;
+	--base-border-radius: 8px;
+}
