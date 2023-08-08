@@ -18,11 +18,11 @@ items:
     enable_dropdown: true
     dropdown:
       - dropdown_text: "All Articles"
-      - dropdown_link: "/blog"
+        dropdown_link: "/blog"
       - dropdown_text: "Marketing"
-      - dropdown_link: "/tags/marketing"
+        dropdown_link: "/categories/marketing"
       - dropdown_text: "Technology"
-      - dropdown_link: "/tags/technology"
+        dropdown_link: "/categories/technology"
   - link: "/contact/"
     text: "Contact"
 btn:
