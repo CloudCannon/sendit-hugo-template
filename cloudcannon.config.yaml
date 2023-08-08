@@ -47,18 +47,18 @@ collections_config:
         - nav.yaml
         - footer.yaml
   
-  collection_groups:
-    - heading: Pages 
-      collections:
-        - pages
-    - heading: Blogging 
-      collections:
-        - blog
-    - heading: Site Settings ]
-      collections:
-        - meta_data
-        - site_navigation
-  
+collection_groups:
+  - heading: Pages 
+    collections:
+      - pages
+  - heading: Blogging 
+    collections:
+      - blog
+  - heading: Site Settings
+    collections:
+      - meta_data
+      - site_navigation
+
 
 
 
