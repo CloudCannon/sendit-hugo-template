@@ -9,23 +9,23 @@
     <meta name="description" content="{{ .Params.seo.page_description }}">
     <meta property="og:description" content="{{ .Params.seo.page_description }}" />
 {{ else }}
-    <meta name="description" content="{{ .Site.Params.description }}">
-    <meta property="og:description" content="{{ .Site.Params.description }}" />
+    <meta name="description" content="{{ site.Data.meta.description }}">
+    <meta property="og:description" content="{{ site.Data.meta.description }}" />
 {{ end }}
 
 <!-- Meta tags for open graph and twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="{{ .Site.Params.twitter_site }}" />
+<meta name="twitter:site" content="{{ site.Data.meta.twitter_site }}" />
 {{ if eq .Permalink "/" }}
-    <meta name="og:title" content="{{ .Site.Title }}" />
+    <meta name="og:title" content="{{ site.Data.meta.site_title }}" />
     <meta property="og:type" content="website" />
-    <meta name="og:image" content="{{ .Site.Params.image }}" />
-    <meta name="twitter:creator" content="{{ .Site.Params.twitter_site }}" />
-    <meta name="twitter:title" content="{{ .Site.Title }}" />
-    {{ with .Site.Params.twitter_image }}
+    <meta name="og:image" content="{{ site.Data.meta.image }}" />
+    <meta name="twitter:creator" content="{{ site.Data.meta.twitter_site }}" />
+    <meta name="twitter:title" content="{{ site.Data.meta.title }}" />
+    {{ with site.Data.meta.twitter_image }}
     <meta name="twitter:image" content="{{ . }}" />
     {{ else }}
-    <meta name="twitter:image" content="{{ .Site.Params.image }}" />
+    <meta name="twitter:image" content="{{ site.Data.meta.image }}" />
     {{ end }}
 {{ else }}
     <meta name="og:title" content="{{ .Title }}" />
@@ -39,11 +39,11 @@
     <meta name="og:image" content="{{ . }}" />
     <meta name="twitter:image" content="{{ . }}" />
     {{ else }}
-    <meta name="og:image" content="{{ .Site.Params.image }}" />
-    {{ with .Site.Params.twitter_image }}
+    <meta name="og:image" content="{{ site.Data.meta.image }}" />
+    {{ with site.Data.meta.twitter_image }}
         <meta name="twitter:image" content="{{ . }}" />
     {{ else }}
-        <meta name="twitter:image" content="{{ .Site.Params.image }}" />
+        <meta name="twitter:image" content="{{ site.Data.meta.image }}" />
     {{ end }}
     {{ end }}
     {{ with .Params.seo.author_twitter_handle }}  
@@ -61,7 +61,7 @@
 
 <!-- Canonical URL for SEO -->
 {{ with .Params.seo.canonical_url }}
-    <link rel="canonical" href="{{ .Site.BaseURL }}{{ . | absURL }}" />
+    <link rel="canonical" href="{{ site.Data.meta.BaseURL }}{{ . | absURL }}" />
 {{ else }}
-    <link rel="canonical" href="{{ .Site.BaseURL }}{{ .Permalink }}" />
+    <link rel="canonical" href="{{ site.Data.meta.BaseURL }}" />
 {{ end }}
