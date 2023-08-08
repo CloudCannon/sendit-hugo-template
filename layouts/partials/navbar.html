@@ -1,14 +1,15 @@
 {{ $permalink := .RelPermalink }}
 {{ $permalink := path.Join $permalink "/"}}
- {{ $current := . }}
+{{ $current := . }}
 {{ with .Site.Data.nav }}
+
 <header>
-   <nav class="navbar navbar-expand-lg position-fixed w-100 zindex-dropdown" id="mainnavigationBar">
-      <div class="container-fluid">
-         <a class="navbar-brand" href="/">
-            <img src="{{.logo}}" alt="Nav-Logo" />
-         </a>
-         <button
+    <nav class="navbar navbar-expand-lg position-fixed w-100 zindex-dropdown" id="mainnavigationBar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="{{ .logo }}" alt="Nav-Logo" />
+            </a>
+            <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -82,26 +83,29 @@
                </svg>
             </span>
          </button>
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto mb-20 mb-lg-0">
-              
-               {{ range .items }}
-               <li class="nav-item">
-                  <a class="nav-link {{ if eq $current.RelPermalink .link }}active{{ end }}" href="{{.link}}">
-                    {{.text}}
-                  </a>
-               </li>
-               {{ end }}
-            </ul>
-         </div>
-         <div class="d-none d-lg-block">
-            <div class="nav-item">
-               {{ with .btn }}
-               <a href="{{.link}}" class="btn btn-sm btn-links">{{.text}}</a>
-               {{ end }}
-            </div>
-         </div>
-      </div>
-   </nav>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-20 mb-lg-0">
+                    {{ range .items }}
+                        {{ $url := .link }}
+                        <li class="nav-item dropdown">
+                            {{ if and .enable_dropdown .dropdown }}
+                                <a class="nav-link dropdown-link {{ if eq $current.Permalink $url }}active{{ end }}" href="{{ .link }}" id="navbarDropdown" role="button" aria-expanded="false">{{ .text }}</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {{ range .dropdown }}
+                                        <li>
+                                            <a class="dropdown-item" href="{{ .dropdown_link }}">{{ .dropdown_text }}</a>
+                                        </li>
+                                    {{ end }}
+                                </ul>
+                            {{ else }}
+                                <a class="nav-link {{ if eq $current.Permalink $url }}active{{ end }}" href="{{ .link }}">{{ .text }}</a>
+                            {{ end }}
+                        </li>
+                    {{ end }}
+                </ul>
+            </div>  
+        </div>
+    </nav>
 </header>
+
 {{ end }}
