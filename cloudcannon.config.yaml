@@ -1,11 +1,66 @@
+collections_config_override: true
+data_config:
+  blog-tags: true
 collections_config:
   pages:
+    icon: feed
+    disable_add_folder: true
+    output: true 
+    path: content
+    schemas:
+      page: 
+        path: schemas/page.html
     _enabled_editors:
       - visual
   blog:
+    icon: article 
+    path: content/blog
+    schemas:
+      post: 
+        path: schemas/post.html
     _enabled_editors:
       - content
       - visual
+  meta_data:
+    output: true
+    path: data
+    icon: settings
+    disable_add: true 
+    disable_add_folder: true
+    _enabled_editors:
+      - data 
+    filter:
+      exclude:
+        - footer.yaml
+        - nav.yaml
+  site_navigation:
+    output: true
+    path: data 
+    icon: table_rows 
+    disable_add: true 
+    disable_add_folder: true
+    _enabled_editors:
+      - data 
+    filter: 
+      base: none 
+      include: 
+        - nav.yaml
+        - footer.yaml
+  
+  collection_groups:
+    - heading: Pages 
+      collections:
+        - pages
+    - heading: Blogging 
+      collections:
+        - blog
+    - heading: Site Settings ]
+      collections:
+        - meta_data
+        - site_navigation
+  
+
+
 
 _inputs:
   content:
@@ -33,12 +88,88 @@ _inputs:
         - ph-twitter-logo
         - ph-github-logo
         - ph-youtube-logo
-
+  page_description:
+    comment: If empty, defaults to the description set in the Site SEO data file 
+    type: text 
+  canonical_url:
+    comment: If empty, defaults to the URL of the page 
+    type: text
+  featured_image:
+    comment: If empty, defaults to the image set in the Site SEO data file
+    type: image
+  author_twitter_handle:
+    type: twitter
+    comment: Defaults to the twitter site value set in the Site SEO data file
+  no_index:
+    type: checkbox
+    comment: When selected this removes the page from your sitemap and adds the noindex robots meta tag
+  open_graph_type:
+    type: select
+    options:
+      values: 
+        - website
+        - article
+        - profile
+  favicon_icon:
+    type: image
+    comment: For the shortcut icon meta tag
+  faivcon_image:
+    type: image
+    comment: For the icon meta tag
+  enable_dropdown:
+    type: switch
+  dropdown:
+    type: array
+    options: 
+      structures: _structures.dropdown
+    label: Dropdown Items
+    hidden: "!enable_dropdown"
+  dropdown_link:
+    type: url
+    label: Link
+  dropdown_text:
+    type: text
+    label: Name
+  logo:
+    type: image
+  categories:
+      type: multiselect
+      options: 
+        values: data.blog-tags
+  twitter_site:
+    type: twitter
+    label: Twitter Username
+  logo_url:
+      comment: Link for the logo in the top left of the footer
+  copyright:
+    comment: Automatically prefixed with the current year
+  
 
 _structures:
+  content_blocks:
+    style: modal
+  dropdown: 
+    values: 
+      value: 
+        dropdown_text:
+        dropdown_link: 
+  social: 
+    values: 
+      value: 
+        link:
+        icon:
+  sections: 
+    values:
+      value:  
+        title:
+        links:
+  links: 
+    values: 
+      value: 
+        link: 
+        text: 
   features:
     values:
       - value: 
           item: 
           isActive: 
-
