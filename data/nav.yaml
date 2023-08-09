@@ -1,32 +1,29 @@
----
-logo: "/images/logo.svg"
+logo: /images/logo.svg
 items:
-  - link: "/"
-    text: "Home"
+  - link: /
+    text: Home
     enable_dropdown: false
-  - link: "/feature/"
-    text: "Feature"
-    enable_dropdown: false 
-  - link: "/pricing/"
-    text: "Pricing"
+  - link: /feature/
+    text: Feature
     enable_dropdown: false
-  - link: "/about/"
-    text: "About"
+  - link: /pricing/
+    text: Pricing
     enable_dropdown: false
-  - link: "/blog/"
-    text: "Blog"
-    enable_dropdown: true
+  - link: /about/
+    text: About
+    enable_dropdown: false
+  - link: /blog/
+    text: Blog
+    enable_dropdown: false
     dropdown:
-      - dropdown_text: "All Articles"
-        dropdown_link: "/blog"
-      - dropdown_text: "Marketing"
-        dropdown_link: "/categories/marketing"
-      - dropdown_text: "Technology"
-        dropdown_link: "/categories/technology"
-  - link: "/contact/"
-    text: "Contact"
+      - dropdown_text: All Articles
+        dropdown_link: /blog
+      - dropdown_text: Marketing
+        dropdown_link: /categories/marketing
+      - dropdown_text: Technology
+        dropdown_link: /categories/technology
+  - link: /contact/
+    text: Contact
 btn:
-  link: "/contact/"
-  text: "Get Started"
----
-
+  link: /contact/
+  text: Get Started
