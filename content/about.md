@@ -22,7 +22,7 @@ content_blocks:
         placer: back_top_left
     link:
       text: Try This Free
-      url: /sign-up
+      url: /#
   - _bookshop_name: global/counter
     title: Built for your
     title_suffix: Business

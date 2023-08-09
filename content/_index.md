@@ -17,7 +17,7 @@ content_blocks:
       image_path: /images/hero/hero-image-2.png
       link:
          text: Try This Free
-         url: /sign-up
+         url: /# 
    -
       _bookshop_name: global/counter
       title: Scale your
@@ -64,7 +64,7 @@ content_blocks:
          Send an email campaign with one click, in just minutes. Automate
          your emails and content, while keeping the human touch.
       btn:
-         link: /sign-up
+         link: /#
          text: Try This Free
       reversed: false
    -
@@ -75,7 +75,7 @@ content_blocks:
          Sales analytics and automation made simple: see every sales lead
          in one place, regardless of where it came from.
       btn:
-         link: /sign-up
+         link: /#
          text: Try This Free
       reversed: true
    -
@@ -87,7 +87,7 @@ content_blocks:
          companies. Browse our collection of email marketing templates and
          start sending beautiful emails in minutes.
       btn:
-         link: /sign-up
+         link: /#
          text: Try This Free
       reversed: false
    -

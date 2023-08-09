@@ -41,7 +41,7 @@ content_blocks:
           - item: Unlimited activity history
             isActive: false
         btn:
-          link: /sign-up
+          link: /#
           text: Try This Free
       - tier: Pro
         description: More collaborative power.
@@ -69,7 +69,7 @@ content_blocks:
           - item: Unlimited activity history
             isActive: false
         btn:
-          link: /sign-up
+          link: /#
           text: Try This Free
       - tier: Business
         description: All the bells and whistles.
@@ -97,7 +97,7 @@ content_blocks:
           - item: Unlimited activity history
             isActive: true
         btn:
-          link: /sign-up
+          link: /#
           text: Try This Free
   - _bookshop_name: global/faq
     title: Have
