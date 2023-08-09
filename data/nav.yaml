@@ -14,7 +14,7 @@ items:
     enable_dropdown: false
   - link: /blog/
     text: Blog
-    enable_dropdown: false
+    enable_dropdown: true
     dropdown:
       - dropdown_text: All Articles
         dropdown_link: /blog
