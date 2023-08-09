@@ -173,3 +173,6 @@ _structures:
       - value: 
           item: 
           isActive: 
+
+path:
+  uploads: static/images
