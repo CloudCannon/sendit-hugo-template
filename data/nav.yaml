@@ -25,6 +25,7 @@ items:
         dropdown_link: "/categories/technology"
   - link: "/contact/"
     text: "Contact"
+    enable_dropdown: false
 btn:
   link: "/contact/"
   text: "Get Started"
