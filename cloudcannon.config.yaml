@@ -130,6 +130,10 @@ _inputs:
   dropdown_text:
     type: text
     label: Name
+  items: 
+    type: array 
+    options: 
+      structures: _structures.items
   logo:
     type: image
   categories:
@@ -172,7 +176,13 @@ _structures:
     values:
       - value: 
           item: 
-          isActive: 
+          isActive:
+  items:
+    values:
+      value:
+        link: 
+        text:
+        enable_dropdown:
 
 paths:
   uploads: static/images
