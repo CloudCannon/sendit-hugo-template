@@ -1,4 +1,3 @@
-collections_config_override: true
 data_config:
   blog-tags: true
 collections_config:
