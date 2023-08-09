@@ -183,6 +183,7 @@ _structures:
         link: 
         text:
         enable_dropdown:
+        dropdown:
 
 paths:
   uploads: static/images
