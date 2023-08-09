@@ -174,5 +174,5 @@ _structures:
           item: 
           isActive: 
 
-path:
+paths:
   uploads: static/images
