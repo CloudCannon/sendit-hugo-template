@@ -2,7 +2,7 @@
 title: About
 seo:
   page_description:
-  canonical_url: about2
+  canonical_url:
   featured_image:
   author_twitter_handle:
   open_graph_type:
