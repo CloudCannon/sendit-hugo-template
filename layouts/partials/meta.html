@@ -63,5 +63,5 @@
 {{ with .Params.seo.canonical_url }}
     <link rel="canonical" href="{{ site.Data.meta.BaseURL }}{{ . | absURL }}" />
 {{ else }}
-    <link rel="canonical" href="{{ .Permalink }}" />
+    <link rel="canonical" href="{{ .Permalink | absURL }}" />
 {{ end }}
