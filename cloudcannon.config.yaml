@@ -18,6 +18,10 @@ collections_config:
     schemas:
       post: 
         path: schemas/post.html
+    add_options:
+      - name: Add Article
+        editor: content
+        schema: post
     _enabled_editors:
       - content
       - visual
