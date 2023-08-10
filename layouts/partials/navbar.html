@@ -103,7 +103,16 @@
                         </li>
                     {{ end }}
                 </ul>
-            </div>  
+            </div> 
+            {{ if .enable_nav_btn }}
+                <div class="d-none d-lg-block">
+                    <div class="nav-item">
+                    {{ with .nav_btn }}
+                    <a href="{{.link}}" class="btn btn-sm btn-links">{{.text}}</a>
+                    {{ end }}
+                    </div>
+                </div> 
+            {{ end }}
         </div>
     </nav>
 </header>

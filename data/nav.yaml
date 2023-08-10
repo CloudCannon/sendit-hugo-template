@@ -25,6 +25,7 @@ items:
   - link: "/contact/"
     text: "Contact"
     enable_dropdown: false
-btn:
+enable_nav_btn: true
+nav_btn:
   link: /contact/
   text: Get Started

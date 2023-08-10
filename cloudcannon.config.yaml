@@ -147,6 +147,10 @@ _inputs:
       comment: Link for the logo in the top left of the footer
   copyright:
     comment: Automatically prefixed with the current year
+  enable_nav_btn:
+    type: switch
+  nav_btn:
+    hidden: "!enable_nav_btn"
   
 
 _structures:
