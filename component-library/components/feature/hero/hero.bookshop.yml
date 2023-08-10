@@ -12,7 +12,7 @@ blueprint:
   title: Run the best campaigns
   description: Sendit will change the way you think about email and marketing automation..
   btn:
-    link: /sign-up
+    link: /#
     text: Try This Free
   image_path: /images/feature/feature-hero.png
 

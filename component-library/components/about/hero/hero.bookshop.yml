@@ -16,7 +16,7 @@ blueprint:
       placer: front_bottom
   link:
     text: "Try Free"
-    url: "/sign-up"
+    url: "/#"
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
