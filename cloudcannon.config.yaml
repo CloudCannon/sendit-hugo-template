@@ -25,7 +25,7 @@ collections_config:
     _enabled_editors:
       - content
       - visual
-  meta_data:
+  data:
     output: true
     path: data
     icon: settings
@@ -60,7 +60,7 @@ collection_groups:
       - articles
   - heading: Site Settings
     collections:
-      - meta_data
+      - data
       - site_navigation
 
 
@@ -117,7 +117,7 @@ _inputs:
   favicon_icon:
     type: image
     comment: For the shortcut icon meta tag
-  faivcon_image:
+  favicon_image:
     type: image
     comment: For the icon meta tag
   enable_dropdown:
