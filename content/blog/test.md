@@ -18,6 +18,6 @@ thumbImg:
 featuredImg:
   image:
   image_alt:
-draft: true
+draft: false
 ---
 ![](/images/_screenshot.png)
