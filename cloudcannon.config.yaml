@@ -17,7 +17,7 @@ collections_config:
     disable_add_folder: true
     schemas:
       post: 
-        path: schemas/post.html
+        path: schemas/post.md
     add_options:
       - name: Add Article
         editor: content
