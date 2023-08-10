@@ -20,4 +20,3 @@ featuredImg:
   image_alt:
 draft: false
 ---
-![screenshot](/images/_screenshot.png "screenshot")
