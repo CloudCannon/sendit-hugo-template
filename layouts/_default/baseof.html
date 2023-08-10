@@ -13,16 +13,17 @@
     <link rel="stylesheet" href="{{$style.Permalink}}" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <script src="/vendor/jQuery/jquery.min.js" defer></script>
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script src="/vendor/counter-up/countup.js" defer></script>
+    <script src="/vendor/magnific-popup/magnific-popup.min.js" defer></script>
+    <script src="/js/script.js" defer></script>
     <title>{{print .Page.Title " | " .Site.Title}}</title>
   </head>
   <body>
     {{ partial "navbar.html" . }} {{ block "main" . }} {{ end }} {{ partial
     "footer.html" . }}
 
-    <script src="/vendor/jQuery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="/vendor/counter-up/countup.js"></script>
-    <script src="/vendor/magnific-popup/magnific-popup.min.js"></script>
-    <script src="/js/script.js"></script>
+  
   </body>
 </html>
