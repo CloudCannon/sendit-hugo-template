@@ -16,16 +16,16 @@ items:
     text: Blog
     enable_dropdown: true
     dropdown:
-      - dropdown_text: "All Articles"
-        dropdown_link: "/blog"
-      - dropdown_text: "Marketing"
-        dropdown_link: "/categories/marketing"
-      - dropdown_text: "Technology"
-        dropdown_link: "/categories/technology"
-  - link: "/contact/"
-    text: "Contact"
+      - dropdown_text: All Articles
+        dropdown_link: /blog
+      - dropdown_text: Marketing
+        dropdown_link: /categories/marketing
+      - dropdown_text: Technology
+        dropdown_link: /categories/technology
+  - link: /contact/
+    text: Contact
     enable_dropdown: false
-enable_nav_btn: true
+enable_nav_btn: false
 nav_btn:
   link: /contact/
   text: Get Started
