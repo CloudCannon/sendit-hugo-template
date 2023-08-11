@@ -1,5 +1,12 @@
 ---
 title: Pricing
+seo:
+  page_description: 
+  canonical_url: 
+  featured_image: 
+  author_twitter_handle: 
+  open_graph_type:
+  no_index: false
 content_blocks:
   - _bookshop_name: pricing/hero
     title: A plan for everyone
@@ -34,7 +41,7 @@ content_blocks:
           - item: Unlimited activity history
             isActive: false
         btn:
-          link: /sign-up
+          link: /#
           text: Try This Free
       - tier: Pro
         description: More collaborative power.
@@ -62,7 +69,7 @@ content_blocks:
           - item: Unlimited activity history
             isActive: false
         btn:
-          link: /sign-up
+          link: /#
           text: Try This Free
       - tier: Business
         description: All the bells and whistles.
@@ -90,7 +97,7 @@ content_blocks:
           - item: Unlimited activity history
             isActive: true
         btn:
-          link: /sign-up
+          link: /#
           text: Try This Free
   - _bookshop_name: global/faq
     title: Have

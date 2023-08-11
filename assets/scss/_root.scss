@@ -3,6 +3,15 @@
 **********/
 @use "sass:math";
 /*Font */
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../../../fonts/fontawesome-webfont.woff') format('woff'),
+       url('../../../fonts/fontawesome-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   font-family: $font-primary;
   font-size: $base-font-size;

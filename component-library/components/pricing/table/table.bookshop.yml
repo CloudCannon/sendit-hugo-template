@@ -18,7 +18,7 @@ blueprint:
       isActive: false
       feature:
       btn:
-        link: /sign-up
+        link: /#
         text: Try This Free
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

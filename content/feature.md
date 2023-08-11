@@ -1,5 +1,12 @@
 ---
 title: Feature
+seo:
+  page_description: 
+  canonical_url: 
+  featured_image: 
+  author_twitter_handle: 
+  open_graph_type:
+  no_index: false
 content_blocks:
    -
       _bookshop_name: feature/hero
@@ -8,7 +15,7 @@ content_blocks:
          Sendit will change the way you think about email and marketing
          automation.
       btn:
-         link: /sign-up
+         link: /#
          text: Try This Free
       image_path: /images/feature/feature-hero.png
    -
@@ -26,7 +33,7 @@ content_blocks:
          design features, triggering a positive response from your
          customers.
       btn:
-         link: /sign-up
+         link: /#
          text: Try This Free
       reversed: false
    -
@@ -37,7 +44,7 @@ content_blocks:
          Sales analytics and automation made simple: see every sales lead
          in one place, regardless of where it came from.
       btn:
-         link: /sign-up
+         link: /#
          text: Try This Free
       reversed: true
    -
@@ -49,7 +56,7 @@ content_blocks:
          companies. Browse our collection of email marketing templates and
          start sending beautiful emails in minutes.
       btn:
-         link: /sign-up
+         link: /#
          text: Try This Free
       reversed: false
    -

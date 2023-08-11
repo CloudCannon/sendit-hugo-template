@@ -1,5 +1,12 @@
 ---
 title: About
+seo:
+  page_description:
+  canonical_url:
+  featured_image:
+  author_twitter_handle:
+  open_graph_type:
+  no_index: false
 content_blocks:
   - _bookshop_name: about/hero
     title: On a mission to change email marketing
@@ -14,8 +21,8 @@ content_blocks:
       - image_path: /images/about/aboutfeature-four.jpg
         placer: back_top_left
     link:
-      text: "Try This Free"
-      url: "/sign-up"
+      text: Try This Free
+      url: /#
   - _bookshop_name: global/counter
     title: Built for your
     title_suffix: Business

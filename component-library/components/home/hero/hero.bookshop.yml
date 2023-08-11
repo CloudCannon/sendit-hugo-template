@@ -14,7 +14,7 @@ blueprint:
   image_path: /images/hero/hero-image-2.png
   link:
     text: "Try Free"
-    url: "/sign-up"
+    url: "/#"
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

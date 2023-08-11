@@ -13,7 +13,7 @@ blueprint:
   title: Simply click and send
   description: Make your message stand out, thanks to the guided copywriting and design features, triggering a positive response from your customers.
   btn:
-    link: /sign-up
+    link: /#
     text: Try Free
   reversed: false
 
