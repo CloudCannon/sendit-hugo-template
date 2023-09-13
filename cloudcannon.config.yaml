@@ -7,7 +7,7 @@ collections_config:
     output: true 
     path: content
     schemas:
-      page: 
+      default: 
         path: schemas/page.html
     _enabled_editors:
       - visual
@@ -16,12 +16,12 @@ collections_config:
     path: content/blog
     disable_add_folder: true
     schemas:
-      post: 
+      default: 
         path: schemas/post.md
     add_options:
       - name: Add Article
         editor: content
-        schema: post
+        schema: default
     _enabled_editors:
       - content
       - visual
