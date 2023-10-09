@@ -30,7 +30,7 @@ items:
     text: Contact
     enable_dropdown: false
     dropdown:
-enable_nav_btn: false
+enable_nav_btn: true
 nav_btn:
   link: /contact/
   text: Get Started
