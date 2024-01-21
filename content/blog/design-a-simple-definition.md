@@ -1,21 +1,20 @@
 ---
+_schema: default
 date: 2022-03-07T00:00:00Z
 title: Email delivery tips
+seo:
+  page_description:
+  canonical_url:
+  featured_image:
+  author_twitter_handle:
+  open_graph_type:
+  no_index: false
 categories:
   - Email
 author: Gerard Hopper
-thumbImg:
-  image_path: /images/blog/blog-thumb-1.jpg
-featuredImg:
-  image_path: /images/blog/featured-image.jpg
-seo:
-  page_description: 
-  canonical_url: 
-  featured_image: 
-  author_twitter_handle: 
-  open_graph_type:
-  no_index: false
-draft: false
+thumbImg: {}
+featuredImg: {}
+draft: true
 ---
 When you send an email campaign, you expect it to reach your readers, right? But what if the emails go straight to your subscribers' spam folders instead of their inboxes? To make sure your emails reach their recipients successfully, follow these email delivery tips.
 
