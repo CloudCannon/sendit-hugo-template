@@ -1,21 +1,21 @@
 ---
-date: 
-title: 
+date:
+title:
 seo:
-  page_description: 
-  canonical_url: 
-  featured_image: 
-  author_twitter_handle: 
+  page_description:
+  canonical_url:
+  featured_image:
+  author_twitter_handle:
   open_graph_type: article
   no_index: false
 categories:
   - blog
-author: 
+author:
 thumbImg:
-  image: 
-  image_alt: 
-featuredImg:
-  image: 
+  image:
   image_alt:
-draft: true 
+featuredImg:
+  image:
+  image_alt:
+draft: true
 ---

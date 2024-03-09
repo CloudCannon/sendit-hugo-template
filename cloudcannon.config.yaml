@@ -16,13 +16,16 @@ collections_config:
     icon: article
     path: content/blog
     disable_add_folder: true
+    preview:
+      image:
+        - key: thumbImg
+      metadata:
+        - icon: person
+          text:
+            - key: author
     schemas:
       default:
         path: schemas/post.md
-    add_options:
-      - name: Add Article
-        editor: content
-        schema: default
     _enabled_editors:
       - content
       - visual
@@ -124,9 +127,15 @@ _inputs:
   copyright:
     comment: Automatically prefixed with the current year
   enable_nav_btn:
+    label: Enable Navigation Button
     type: switch
   nav_btn:
+    label: Navigation Button
     hidden: "!enable_nav_btn"
+  thumbImg:
+    label: Thumbnail Image
+  featuredImg:
+    label: Featured Image
 
 _structures:
   content_blocks:

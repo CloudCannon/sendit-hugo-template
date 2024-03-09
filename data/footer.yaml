@@ -30,8 +30,6 @@ sections:
     links:
       - link: "/blog"
         text: "Blog"
-      - link: "/404.html"
-        text: "404"
   -
     title: "Company"
     links:
