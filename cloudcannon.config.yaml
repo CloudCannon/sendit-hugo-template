@@ -17,8 +17,6 @@ collections_config:
     path: content/blog
     disable_add_folder: true
     preview:
-      image:
-        - key: thumbImg
       metadata:
         - icon: person
           text:
@@ -136,6 +134,8 @@ _inputs:
     label: Thumbnail Image
   featuredImg:
     label: Featured Image
+  image_alt:
+    label: Image Description
 
 _structures:
   content_blocks:
