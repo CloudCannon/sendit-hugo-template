@@ -1,6 +1,6 @@
 ---
 date: 2022-06-10T00:00:00Z
-title: 5 things to improve you email templates
+title: 5 things to improve your email templates
 categories:
   - Marketing
 author: Aaron Britt

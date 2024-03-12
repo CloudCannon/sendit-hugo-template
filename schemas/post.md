@@ -12,10 +12,8 @@ categories:
   - blog
 author:
 thumbImg:
-  image:
-  image_alt:
+  image_path:
 featuredImg:
-  image:
-  image_alt:
+  image_path:
 draft: true
 ---
