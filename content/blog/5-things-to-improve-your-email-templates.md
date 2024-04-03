@@ -16,7 +16,7 @@ thumbImg:
   image_path: /images/blog/blog-thumb-6.jpg
 featuredImg:
   image_path: /images/blog/featured-image-2.jpg
-draft: true
+draft: false
 ---
 When you send an email campaign, you expect it to reach your readers, right? But what if the emails go straight to your subscribers' spam folders instead of their inboxes? To make sure your emails reach their recipients successfully, follow these email delivery tips.
 
