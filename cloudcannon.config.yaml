@@ -17,6 +17,12 @@ collections_config:
     path: content/blog
     disable_add_folder: true
     preview:
+      subtext:
+        - template: '{"Draft"|if=draft}'
+        - template: '{date|date_long}'
+        - key: url
+      image:
+        - key: thumbImg.image_path
       metadata:
         - icon: person
           text:
