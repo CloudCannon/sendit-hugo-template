@@ -1,70 +1,49 @@
 data_config:
   blog-tags: true
+
 collections_config:
   pages:
-    icon: feed
+    icon: wysiwyg
     disable_add_folder: true
-    output: true 
+    output: true
     path: content
     schemas:
-      default: 
+      default:
         path: schemas/page.html
     _enabled_editors:
       - visual
   articles:
-    icon: article 
+    icon: article
     path: content/blog
     disable_add_folder: true
+    preview:
+      subtext:
+        - template: '{"Draft"|if=draft}'
+        - template: '{date|date_long}'
+        - key: url
+      image:
+        - key: thumbImg.image_path
+      metadata:
+        - icon: person
+          text:
+            - key: author
     schemas:
-      default: 
+      default:
         path: schemas/post.md
-    add_options:
-      - name: Add Article
-        editor: content
-        schema: default
     _enabled_editors:
       - content
       - visual
   data:
-    output: true
+    output: false
     path: data
     icon: settings
-    disable_add: true 
+    disable_add: true
     disable_add_folder: true
     _enabled_editors:
-      - data 
-    filter:
-      exclude:
-        - footer.yaml
-        - nav.yaml
-  site_navigation:
-    output: true
-    path: data 
-    icon: table_rows 
-    disable_add: true 
-    disable_add_folder: true
-    _enabled_editors:
-      - data 
-    filter: 
-      base: none 
-      include: 
-        - nav.yaml
-        - footer.yaml
-  
-collection_groups:
-  - heading: Pages 
-    collections:
-      - pages
-  - heading: Blogging 
-    collections:
-      - articles
-  - heading: Site Settings
-    collections:
       - data
-      - site_navigation
 
-
-
+paths:
+  uploads: static/images
 
 _inputs:
   content:
@@ -93,10 +72,10 @@ _inputs:
         - ph-github-logo
         - ph-youtube-logo
   page_description:
-    comment: If empty, defaults to the description set in the Site SEO data file 
-    type: text 
+    comment: If empty, defaults to the description set in the Site SEO data file
+    type: text
   canonical_url:
-    comment: If empty, defaults to the URL of the page 
+    comment: If empty, defaults to the URL of the page
     type: text
   featured_image:
     comment: If empty, defaults to the image set in the Site SEO data file
@@ -110,7 +89,7 @@ _inputs:
   open_graph_type:
     type: select
     options:
-      values: 
+      values:
         - website
         - article
         - profile
@@ -124,7 +103,7 @@ _inputs:
     type: switch
   dropdown:
     type: array
-    options: 
+    options:
       structures: _structures.dropdown
     label: Dropdown Items
     hidden: "!enable_dropdown"
@@ -134,16 +113,16 @@ _inputs:
   dropdown_text:
     type: text
     label: Name
-  items: 
-    type: array 
-    options: 
+  items:
+    type: array
+    options:
       structures: _structures.items
   logo:
     type: image
   categories:
-      type: multiselect
-      options: 
-        values: data.blog-tags
+    type: multiselect
+    options:
+      values: data.blog-tags
   twitter_site:
     type: twitter
     label: Twitter Username
@@ -152,46 +131,50 @@ _inputs:
   copyright:
     comment: Automatically prefixed with the current year
   enable_nav_btn:
+    label: Enable Navigation Button
     type: switch
   nav_btn:
+    label: Navigation Button
     hidden: "!enable_nav_btn"
-  
+  thumbImg:
+    label: Thumbnail Image
+  featuredImg:
+    label: Featured Image
+  image_alt:
+    label: Image Description
 
 _structures:
   content_blocks:
     style: modal
-  dropdown: 
-    values: 
-      value: 
-        dropdown_text:
-        dropdown_link: 
-  social: 
-    values: 
-      value: 
-        link:
-        icon:
-  sections: 
+  dropdown:
     values:
-      value:  
-        title:
-        links:
-  links: 
-    values: 
-      value: 
-        link: 
-        text: 
+      - value:
+          dropdown_text:
+          dropdown_link:
+  social:
+    values:
+      - value:
+          link:
+          icon:
+  sections:
+    values:
+      - value:
+          title:
+          links:
+  links:
+    values:
+      - value:
+          link:
+          text:
   features:
     values:
-      - value: 
-          item: 
+      - value:
+          item:
           isActive:
   items:
     values:
-      value:
-        link: 
-        text:
-        enable_dropdown:
-        dropdown:
-
-paths:
-  uploads: static/images
+      - value:
+          link:
+          text:
+          enable_dropdown:
+          dropdown:

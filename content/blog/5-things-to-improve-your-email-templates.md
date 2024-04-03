@@ -1,13 +1,7 @@
 ---
+_schema: default
 date: 2022-06-10T00:00:00Z
-title: 5 things to improve you email templates
-categories:
-  - Marketing
-author: Aaron Britt
-thumbImg:
-  image_path: /images/blog/blog-thumb-6.jpg
-featuredImg:
-  image_path: /images/blog/featured-image-2.jpg
+title: 5 things to improve your email templates
 seo:
   page_description:
   canonical_url:
@@ -15,6 +9,13 @@ seo:
   author_twitter_handle:
   open_graph_type:
   no_index: false
+categories:
+  - Marketing
+author: Aaron Britt
+thumbImg:
+  image_path: /images/blog/blog-thumb-6.jpg
+featuredImg:
+  image_path: /images/blog/featured-image-2.jpg
 draft: false
 ---
 When you send an email campaign, you expect it to reach your readers, right? But what if the emails go straight to your subscribers' spam folders instead of their inboxes? To make sure your emails reach their recipients successfully, follow these email delivery tips.
