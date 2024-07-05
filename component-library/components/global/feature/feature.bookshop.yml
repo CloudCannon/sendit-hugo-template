@@ -23,4 +23,10 @@ preview:
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs: 
   description:
-    type: "markdown"
+    type: markdown
+  image:
+    type: image
+    options:
+      width: 696
+      height: 752
+      resize_style: crop
