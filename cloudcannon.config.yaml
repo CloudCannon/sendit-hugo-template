@@ -1,6 +1,6 @@
 data_config:
   blog-tags:
-    path: data/blog-tags.json  
+    path: data/blog-tags.yaml  
   
 collections_config:
   pages:
