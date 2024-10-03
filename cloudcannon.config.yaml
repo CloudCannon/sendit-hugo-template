@@ -1,11 +1,10 @@
 data_config:
   blog-tags: true
-
+  
 collections_config:
   pages:
     icon: wysiwyg
     disable_add_folder: true
-    output: true
     path: content
     schemas:
       default:
@@ -34,15 +33,24 @@ collections_config:
       - content
       - visual
   data:
-    output: false
     path: data
     icon: settings
     disable_add: true
     disable_add_folder: true
+    disable_url: true
     _enabled_editors:
       - data
 
+collection_groups:
+  - heading: Pages
+    collections:
+      - pages
+      - articles
+  - heading: Data
+    collections:
+      - data
 paths:
+  static: static
   uploads: static/images
 
 _inputs:
@@ -188,3 +196,6 @@ _structures:
           text:
           enable_dropdown:
           dropdown:
+
+_snippets_imports:
+  hugo: true
