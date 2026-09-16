@@ -1,4 +1,5 @@
 ---
+_schema: default
 title: About
 seo:
   page_description:
@@ -8,7 +9,7 @@ seo:
   open_graph_type:
   no_index: false
 content_blocks:
-  - _bookshop_name: about/hero
+  - _name: about/hero
     title: On a mission to change email marketing
     description: >-
       We're here to breathe new air into email marketing and help grow your
@@ -23,25 +24,29 @@ content_blocks:
     link:
       text: Try This Free
       url: /#
-  - _bookshop_name: global/counter
+  - _name: global/counter
     title: Built for your
     title_suffix: Business
     description: We've built Sendit from the ground up the help grow your business faster.
     alternateStyle: true
     numbers:
-      - number: 200
-        suffix: m
+      - number: '83'
         prefix: $
+        suffix: m
         text: Venture capital raised
-      - number: 2016
+      - number: '2016'
+        prefix: ''
+        suffix: ''
         text: Established in
-      - number: 40
+      - number: '40'
+        prefix: ''
         suffix: +
         text: Amazing team members
-      - number: 44325
+      - number: '44325'
+        prefix: ''
         suffix: +
         text: Active users and growing
-  - _bookshop_name: about/video
+  - _name: about/video
     title: We love what we do
     description: >-
       Our team has decades of experience working with email marketing campaigns
@@ -52,7 +57,7 @@ content_blocks:
     video:
       image_path: /images/works/banner.jpg
       link: https://vimeo.com/45830194
-  - _bookshop_name: about/team
+  - _name: about/team
     title: Our leadership team
     team_members:
       - name: Nikolas Mcconnell

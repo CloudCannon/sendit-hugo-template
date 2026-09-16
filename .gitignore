@@ -14,3 +14,9 @@ hugo.linux
 
 
 /node_modules
+
+# Hugo module cache
+/.hugo_cache/
+
+# Downloaded CloudCannon config schemas (validation only, never committed)
+.cloudcannon/migration/*.schema.json

@@ -1,0 +1,60 @@
+{{/*
+  Testimonial block. `slider` carries a <template> blueprint so an empty array
+  can gain a first card, and the grid renders even when empty in the editor.
+
+  `message` is data-type="span": it renders raw, so a rich text region would save
+  markdown that renders literally.
+*/}}
+<section class="testimonial">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8 mx-auto text-center mb-5">
+        <div class="testimonial-content">
+          <h2>
+            <editable-text data-prop="title" data-type="span">{{ .title }}</editable-text>
+            <span> <editable-text data-prop="title_suffix" data-type="span">{{ .title_suffix }}</editable-text></span>
+          </h2>
+          <p data-editable="text" data-prop="description" data-type="text">{{ .description | markdownify }}</p>
+        </div>
+      </div>
+    </div>
+    {{ if or .slider site.Params.ENV_CLIENT }}
+    <div class="row" data-editable="array" data-prop="slider">
+      <template>
+        <div class="col-lg-4 col-md-6 mb-5">
+          <div class="testimonial-item">
+            <div class="testimonial-item-person">
+              <div class="thumb">
+                <img alt="logo" class="img-fluid" loading="lazy"
+                  data-editable="image" data-prop-src="image_path" />
+              </div>
+              <div class="content">
+                <h3 data-editable="text" data-prop="author" data-type="span"></h3>
+                <p data-editable="text" data-prop="designation" data-type="span"></p>
+              </div>
+            </div>
+            <p data-editable="text" data-prop="message" data-type="span"></p>
+          </div>
+        </div>
+      </template>
+      {{ range .slider }}
+      <div class="col-lg-4 col-md-6 mb-5" data-editable="array-item">
+        <div class="testimonial-item">
+          <div class="testimonial-item-person">
+            <div class="thumb">
+              <img src="{{ .image_path }}" alt="logo" class="img-fluid" loading="lazy"
+                data-editable="image" data-prop-src="image_path" />
+            </div>
+            <div class="content">
+              <h3 data-editable="text" data-prop="author" data-type="span">{{ .author }}</h3>
+              <p data-editable="text" data-prop="designation" data-type="span">{{ .designation }}</p>
+            </div>
+          </div>
+          <p data-editable="text" data-prop="message" data-type="span">{{ .message }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>

@@ -1,7 +1,5 @@
 module sendit.local
 
-go 1.17
+go 1.19
 
-require (
-	github.com/cloudcannon/bookshop/hugo/v3 v3.0.0 // indirect
-)
+require github.com/CloudCannon/editable-regions v0.0.20-rc.3

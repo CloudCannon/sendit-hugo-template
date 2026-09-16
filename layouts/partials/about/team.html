@@ -1,0 +1,47 @@
+{{/*
+  Team grid. `team_members` carries a <template> blueprint so an empty array
+  can gain a first member.
+*/}}
+<div class="team">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-7 mx-auto">
+        <div class="section-header">
+          <h2 data-editable="text" data-prop="title" data-type="span">{{ .title }}</h2>
+        </div>
+      </div>
+    </div>
+    {{ if or .team_members site.Params.ENV_CLIENT }}
+    <div class="row" data-editable="array" data-prop="team_members">
+      <template>
+        <div class="col-lg-3 col-md-6">
+          <div class="team-member">
+            <div class="team-member-thumb rounded-box">
+              <img alt="" loading="lazy"
+                data-editable="image" data-prop-src="image_path" />
+            </div>
+            <div class="team-member-details">
+              <h3 data-editable="text" data-prop="name" data-type="span"></h3>
+              <p data-editable="text" data-prop="designation" data-type="span"></p>
+            </div>
+          </div>
+        </div>
+      </template>
+      {{ range .team_members }}
+      <div class="col-lg-3 col-md-6" data-editable="array-item">
+        <div class="team-member">
+          <div class="team-member-thumb rounded-box">
+            <img src="{{ .image_path }}" alt="{{ .name }}" loading="lazy"
+              data-editable="image" data-prop-src="image_path" />
+          </div>
+          <div class="team-member-details">
+            <h3 data-editable="text" data-prop="name" data-type="span">{{ .name }}</h3>
+            <p data-editable="text" data-prop="designation" data-type="span">{{ .designation }}</p>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</div>

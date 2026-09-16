@@ -1,13 +1,14 @@
-{{ $permalink := .RelPermalink }}
-{{ $permalink := path.Join $permalink "/"}}
-{{ $current := . }}
+{{/* Must be RelPermalink: compared against each nav item's `link`,
+     which is a root-relative path. */}}
+{{ $current := .RelPermalink }}
 {{ with .Site.Data.nav }}
 
 <header>
     <nav class="navbar navbar-expand-lg position-fixed w-100 zindex-dropdown" id="mainnavigationBar">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img src="{{ .logo }}" alt="Nav-Logo" />
+                <img src="{{ .logo }}" alt="Nav-Logo"
+                  data-editable="image" data-prop-src="@data[nav].logo" />
             </a>
             <button
             class="navbar-toggler"
@@ -84,21 +85,38 @@
             </span>
          </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto mb-20 mb-lg-0">
+                {{/* Nav links live in data/nav.yaml, so selectors are @data
+                     references and `nav` must be registered in data_config.
+                     Child selectors inside an item are relative. */}}
+                <ul class="navbar-nav mx-auto mb-20 mb-lg-0"
+                    data-editable="array" data-prop="@data[nav].items">
+                    <template>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="/" data-editable="text" data-prop="text" data-type="span"></a>
+                        </li>
+                    </template>
                     {{ range .items }}
                         {{ $url := .link }}
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" data-editable="array-item">
                             {{ if and .enable_dropdown .dropdown }}
-                                <a class="nav-link dropdown-link {{ if eq $current.Permalink $url }}active{{ end }}" href="{{ .link }}" id="navbarDropdown" role="button" aria-expanded="false">{{ .text }}</a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    {{ range .dropdown }}
+                                <a class="nav-link dropdown-link {{ if eq $current $url }}active{{ end }}" href="{{ .link }}" id="navbarDropdown" role="button" aria-expanded="false" data-editable="text" data-prop="text" data-type="span">{{ .text }}</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+                                    data-editable="array" data-prop="dropdown">
+                                    <template>
                                         <li>
-                                            <a class="dropdown-item" href="{{ .dropdown_link }}">{{ .dropdown_text }}</a>
+                                            <a class="dropdown-item" href="/" data-editable="text" data-prop="dropdown_text" data-type="span"></a>
+                                        </li>
+                                    </template>
+                                    {{ range .dropdown }}
+                                        <li data-editable="array-item">
+                                            <a class="dropdown-item" href="{{ .dropdown_link }}"
+                                              data-editable="text" data-prop="dropdown_text" data-type="span">{{ .dropdown_text }}</a>
                                         </li>
                                     {{ end }}
                                 </ul>
                             {{ else }}
-                                <a class="nav-link {{ if eq $current.Permalink $url }}active{{ end }}" href="{{ .link }}">{{ .text }}</a>
+                                <a class="nav-link {{ if eq $current $url }}active{{ end }}" href="{{ .link }}"
+                                  data-editable="text" data-prop="text" data-type="span">{{ .text }}</a>
                             {{ end }}
                         </li>
                     {{ end }}
@@ -108,7 +126,8 @@
                 <div class="d-none d-lg-block">
                     <div class="nav-item">
                     {{ with .nav_btn }}
-                    <a href="{{.link}}" class="btn btn-sm btn-links">{{.text}}</a>
+                    <a href="{{ .link }}" class="btn btn-sm btn-links"
+                      data-editable="text" data-prop="@data[nav].nav_btn.text" data-type="span">{{ .text }}</a>
                     {{ end }}
                     </div>
                 </div> 

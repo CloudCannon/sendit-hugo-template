@@ -1,12 +1,29 @@
 data_config:
   blog-tags:
-    path: data/blog-tags.yaml  
-  
+    path: data/blog-tags.yaml
+  # nav, footer and meta back the @data[...] regions in the navbar and footer
+  # partials. Without an entry here those selectors silently never resolve.
+  nav:
+    path: data/nav.yaml
+  footer:
+    path: data/footer.yaml
+  meta:
+    path: data/meta.yaml
+
 collections_config:
   pages:
     icon: wysiwyg
     disable_add_folder: true
     path: content
+    # Blog posts belong to `articles`; without this exclusion they would appear
+    # in both collections.
+    glob:
+      - '**/*.md'
+      - '!blog/*'
+    # Output URL, needed for the Visual Editor to open a file as a page.
+    # [full_slug] is [relative_base_path]/[slug], so it carries the
+    # subdirectory for content/privacy/_index.md -> /privacy/.
+    url: /[full_slug]/
     schemas:
       default:
         path: schemas/page.html
@@ -16,6 +33,7 @@ collections_config:
     icon: article
     path: content/blog
     disable_add_folder: true
+    url: /blog/[full_slug]/
     preview:
       subtext:
         - template: '{"Draft"|if=draft}'
@@ -88,12 +106,15 @@ _inputs:
     type: text
   featured_image:
     comment: If empty, defaults to the image set in the Site SEO data file
-  featured_image.image:
+  # These bind the blog post images. The keys must be the real field paths —
+  # `featured_image.image` / `thumb_image.image` were carried over from the
+  # Bookshop config and matched nothing, so the sizing never applied.
+  featuredImg.image_path:
     type: image
     options:
       width: 1296
       resize_style: crop
-  thumb_image.image:
+  thumbImg.image_path:
     type: image
     options:
       width: 500
@@ -161,10 +182,361 @@ _inputs:
     label: Featured Image
   image_alt:
     label: Image Description
+  # Every image_path in this site is an image path; per-component sizing is
+  # layered on top in the relevant _structures entry.
+  image_path:
+    type: image
+    label: Image
+  content_blocks:
+    type: array
+    options:
+      structures: _structures.content_blocks
+      empty_type: array
+
+# Toolbars keyed by the region's data-type: "span" needs none, "text" maps to
+# _editables.text, "block" to _editables.block, "@content" to _editables.content.
+# Most rich text here is "text" because its host is a <p>, which cannot legally
+# contain the lists and paragraphs the block toolbar offers.
+_editables:
+  text:
+    bold: true
+    italic: true
+    link: true
+    removeformat: true
+    undo: true
+    redo: true
+  block:
+    bold: true
+    italic: true
+    link: true
+    bulletedlist: true
+    numberedlist: true
+    removeformat: true
+    undo: true
+    redo: true
+  content:
+    blockquote: true
+    bold: true
+    format: p h2 h3 h4
+    italic: true
+    link: true
+    bulletedlist: true
+    numberedlist: true
+    horizontalrule: true
+    image: true
+    table: true
+    undo: true
+    redo: true
+    removeformat: true
 
 _structures:
+  # Page builder. id_key is the key the builder dispatches on: a block's _name
+  # picks the structure here and names the partial that renders it.
   content_blocks:
+    id_key: _name
     style: modal
+    values:
+      - label: Home Hero
+        description: Home Hero section
+        icon: cottage
+        tags: [hero]
+        value:
+          _name: home/hero
+          title: Beautiful email campaigns
+          description: With Sendit, you can quickly create beautiful rich emails that capture a reader's attention, engage them, and convert them into customers.
+          image_path: /images/hero/hero-image-2.png
+          link:
+            text: Try Free
+            url: /#
+        _inputs:
+          image_path:
+            type: image
+            options:
+              width: 716
+              height: 725
+              resize_style: crop
+
+      - label: Home Video
+        description: Home Video section
+        icon: videocam
+        tags: []
+        value:
+          _name: home/video
+          image_path: /images/video/video-thum.jpg
+          videoUrl: https://vimeo.com/45830194
+        _inputs:
+          videoUrl:
+            type: url
+            label: Video URL
+
+      - label: About Hero
+        description: About Hero section
+        icon: apps
+        tags: [hero]
+        value:
+          _name: about/hero
+          title: On a mission to change email marketing
+          description: We're here to breathe new air into email marketing and help grow your business.
+          hero_images:
+            - image_path: /images/about/aboutfeature-three.jpg
+              placer: front_bottom
+          link:
+            text: Try Free
+            url: /#
+        _inputs:
+          hero_images[*].placer:
+            type: select
+            options:
+              values:
+                - front_bottom
+                - back_top_right
+                - back_top_left
+          hero_images[*].image_path:
+            type: image
+            options:
+              width: 450
+              height: 450
+              resize_style: crop
+
+      - label: About Team
+        description: About Team section
+        icon: groups
+        tags: []
+        value:
+          _name: about/team
+          title: Our leadership
+          team_members:
+            - name: Pete Fish
+              designation: Co-Founder & CEO
+              image_path: /images/team/1.jpg
+        _inputs:
+          team_members[*].image_path:
+            type: image
+            options:
+              width: 516
+              height: 579
+              resize_style: crop
+
+      - label: About Video
+        description: About Video section
+        icon: play_circle
+        tags: []
+        value:
+          _name: about/video
+          title: We love what we do
+          description: Our team has decades of experience working with email marketing campaigns and we're passionate about helping you connect with your customers.
+          btn:
+            link: https://www.instagram.com/example
+            text: Follow on Linkedin
+          video:
+            image_path: /images/works/banner.jpg
+            link: https://vimeo.com/45830194
+
+      - label: Feature Hero
+        description: Feature Hero section
+        icon: contactless
+        tags: [hero]
+        value:
+          _name: feature/hero
+          title: Run the best campaigns
+          description: Sendit will change the way you think about email and marketing automation.
+          btn:
+            link: /#
+            text: Try This Free
+          image_path: /images/feature/feature-hero.png
+        _inputs:
+          image_path:
+            type: image
+            options:
+              width: 696
+              height: 721
+              resize_style: crop
+
+      - label: Contact Hero
+        description: Contact Hero section
+        icon: contact_support
+        tags: [hero]
+        value:
+          _name: contact/hero
+          title: Let's talk.
+          description: Have a question or suggestion? Feel free to drop us a message!
+
+      - label: Contact Form
+        description: Contact details and enquiry form
+        icon: check_box
+        tags: []
+        value:
+          _name: contact/form
+          address:
+            heading: Office Address
+            address: 123 Franklin St, Los Angeles, CA 90015
+          phone:
+            heading: Phone
+            cell: (123) 345 - 1234
+          email:
+            heading: Email
+            email: hello@example.com
+          form:
+            heading: Say Hello
+            fullName:
+              heading: Full Name
+              placeHolder: Enter First Name
+            phoneNumber:
+              heading: Phone number
+              placeHolder: Enter Phone Number
+            email:
+              heading: Email Address
+              placeHolder: Enter Email Address
+            message:
+              heading: Your Messages
+              placeHolder: Any Message
+            submitBtn:
+              text: Send message
+
+      - label: Pricing Hero
+        description: Pricing Hero section
+        icon: credit_card
+        tags: [hero]
+        value:
+          _name: pricing/hero
+          title: A plan for everyone
+          description: Sendit is easy to get started and we have a pricing plan for businesses of all sizes.
+
+      - label: Pricing Table
+        description: Pricing table section
+        icon: table_rows
+        tags: []
+        value:
+          _name: pricing/table
+          pricing_tier:
+            - tier: free
+              description: Everything you need to get started.
+              price: '0'
+              hasDiscount: false
+              discountPrice: '0'
+              isActive: false
+              feature: []
+              btn:
+                link: /#
+                text: Try This Free
+        _inputs:
+          pricing_tier[*].feature:
+            type: array
+            options:
+              structures: _structures.features
+              empty_type: array
+          # Strings, not numbers: inline text regions only accept strings, and
+          # pinning to `text` stops CloudCannon writing a number back.
+          pricing_tier[*].price:
+            type: text
+          pricing_tier[*].discountPrice:
+            type: text
+          pricing_tier[*].hasDiscount:
+            type: switch
+          pricing_tier[*].isActive:
+            type: switch
+            label: Highlight this tier
+
+      - label: Section Header
+        description: Centred heading and intro text
+        icon: task
+        tags: []
+        value:
+          _name: global/header
+          title: Sendit
+          title_suffix: Features
+          description: Sendit is the most complete solution to create beautiful email designs, manage mails and send them out at the best price.
+          no_top_pad: false
+        _inputs:
+          no_top_pad:
+            type: switch
+            label: Remove top padding
+
+      - label: Feature
+        description: Feature section
+        icon: stars
+        tags: []
+        value:
+          _name: global/feature
+          image_path: /images/feature/feature-card-one.png
+          title: Simply click and send
+          description: Make your message stand out, thanks to the guided copywriting and design features, triggering a positive response from your customers.
+          btn:
+            link: /#
+            text: Try Free
+          reversed: false
+        _inputs:
+          reversed:
+            type: switch
+            label: Image on the left
+          image_path:
+            type: image
+            options:
+              width: 696
+              height: 752
+              resize_style: crop
+
+      - label: Counter
+        description: Counter section
+        icon: functions
+        tags: []
+        value:
+          _name: global/counter
+          title: 'Scale your '
+          title_suffix: Business
+          description: We have an extensive library of pre-written sales emails, proven marketing templates, and more to get you started on your next project.
+          alternateStyle: false
+          numbers:
+            - number: '200'
+              suffix: m
+              prefix: $
+              text: Venture capital raised
+        _inputs:
+          numbers:
+            type: array
+            options:
+              structures: _structures.numbers
+          # String, not number — see the pricing tier note above.
+          numbers[*].number:
+            type: text
+          alternateStyle:
+            type: switch
+            label: Alternate style
+
+      - label: Testimonial
+        description: Testimonial section
+        icon: 3p
+        tags: []
+        value:
+          _name: global/testimonial
+          title: 'Build relationships that'
+          title_suffix: last
+          description: Customers from around the world are building game changing email marketing campaigns.
+          slider:
+            - image_path: /images/testimonial/logo-2.jpg
+              author: Pete Fish
+              designation: CMO at Clear Appeal
+              message: Sendit has taken Clear Appeal to the next level with its beautiful targetted email campaigns.
+        _inputs:
+          slider[*].image_path:
+            type: image
+            options:
+              width: 80
+              height: 80
+              resize_style: crop
+
+      - label: FAQ
+        description: FAQ section
+        icon: checklist
+        tags: []
+        value:
+          _name: global/faq
+          title: Have
+          title_suffix: Questions?
+          description: We're always here to help. Here are the most frequently asked questions.
+          faq:
+            - title: Is there a maximum numbers of emails I can send each month?
+              description: No, the prices include unlimited emails. Send to your heart's content.
   dropdown:
     values:
       - value:
@@ -185,6 +557,15 @@ _structures:
       - value:
           link:
           text:
+  # Every key the partial renders a region for must exist on a new row: an
+  # absent key resolves to undefined and errors in the editor. null is accepted.
+  numbers:
+    values:
+      - value:
+          number: null
+          prefix: null
+          suffix: null
+          text: null
   features:
     values:
       - value:

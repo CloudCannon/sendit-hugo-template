@@ -16,12 +16,12 @@
 <!-- Meta tags for open graph and twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="{{ site.Data.meta.twitter_site }}" />
-{{ if eq .Permalink "/" }}
+{{ if .IsHome }}
     <meta name="og:title" content="{{ site.Data.meta.site_title }}" />
     <meta property="og:type" content="website" />
     <meta name="og:image" content="{{ site.Data.meta.image }}" />
     <meta name="twitter:creator" content="{{ site.Data.meta.twitter_site }}" />
-    <meta name="twitter:title" content="{{ site.Data.meta.title }}" />
+    <meta name="twitter:title" content="{{ site.Data.meta.site_title }}" />
     {{ with site.Data.meta.twitter_image }}
     <meta name="twitter:image" content="{{ . }}" />
     {{ else }}

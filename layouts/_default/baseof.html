@@ -8,7 +8,7 @@
     <link href="/vendor/phosphor-icons/css/phosphor.css" rel="stylesheet" />
     <link href="/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" />
     
-    {{ $style := resources.Get "/scss/theme.scss" | resources.ToCSS |
+    {{ $style := resources.Get "/scss/theme.scss" | css.Sass |
     resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{$style.Permalink}}" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -19,6 +19,10 @@
     <script src="/vendor/magnific-popup/magnific-popup.min.js" defer></script>
     <script src="/js/script.js" defer></script>
     <title>{{print .Page.Title " | " .Site.Title}}</title>
+
+    <!-- CloudCannon editable regions. Self-gates on window.inEditorMode, so
+         this is inert outside the Visual Editor. -->
+    {{ partial "editable-regions" . }}
   </head>
   <body>
     {{ partial "navbar.html" . }} {{ block "main" . }} {{ end }} {{ partial

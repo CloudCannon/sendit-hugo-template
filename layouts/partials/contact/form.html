@@ -1,0 +1,118 @@
+{{/*
+  Contact block. data-props are absolute from the component root so they stay
+  correct inside the `with` scopes (e.g. phone.cell, form.fullName.heading).
+  Placeholders are attributes, so they are sidebar-only. The address is
+  data-type="span": it renders raw, so rich text would save literal markdown.
+*/}}
+<section class="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 me-auto order-2 order-lg-1">
+        <div class="contact-form-Information">
+          <div class="address">
+            {{ with .address }}
+            <h3 data-editable="text" data-prop="address.heading" data-type="span">{{ .heading }}</h3>
+            <p data-editable="text" data-prop="address.address" data-type="span">{{ .address }}</p>
+            {{ end }}
+            <div class="item mb-4">
+              {{ with .phone }}
+              <h3 data-editable="text" data-prop="phone.heading" data-type="span">{{ .heading }}</h3>
+              <a href="tel:{{ .cell }}"
+                ><editable-text data-prop="phone.cell" data-type="span">{{ .cell }}</editable-text>
+                <span>
+                  <img src="/images/contact/call-add.svg" alt="call-add" loading="lazy" />
+                </span>
+              </a>
+              {{ end }}
+            </div>
+            <div class="item">
+              {{ with .email }}
+              <h3 data-editable="text" data-prop="email.heading" data-type="span">{{ .heading }}</h3>
+              <a href="mailto:{{ .email }}"
+                ><editable-text data-prop="email.email" data-type="span">{{ .email }}</editable-text>
+                <span>
+                  <img src="/images/contact/directbox-send.svg" alt="send-box" loading="lazy" />
+                </span>
+              </a>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2">
+        <div class="contact-form">
+          {{ with .form }}
+          <form method="post">
+            <h3 data-editable="text" data-prop="form.heading" data-type="span">{{ .heading }}</h3>
+            {{ with .fullName }}
+            <div class="col-md-12">
+              <label for="contact-name" class="label"
+                data-editable="text" data-prop="form.fullName.heading" data-type="span">{{ .heading }}</label>
+              <input
+                type="text"
+                class="form-control"
+                id="contact-name"
+                name="name"
+                placeholder="{{ .placeHolder }}"
+                required=""
+              />
+            </div>
+            {{ end }} {{ with .phoneNumber }}
+            <div class="col-md-12">
+              <label for="contact-phone" class="label"
+                data-editable="text" data-prop="form.phoneNumber.heading" data-type="span">{{ .heading }}</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="contact-phone"
+                name="phone-number"
+                placeholder="{{ .placeHolder }}"
+                required=""
+              />
+            </div>
+            {{ end }} {{ with .email }}
+            <div class="col-md-12">
+              <label for="contact-email" class="label"
+                data-editable="text" data-prop="form.email.heading" data-type="span">{{ .heading }}</label>
+              <input
+                type="email"
+                class="form-control mb-6"
+                id="contact-email"
+                name="_replyto"
+                placeholder="{{ .placeHolder }}"
+                required=""
+              />
+            </div>
+            {{ end }} {{ with .message }}
+            <div class="col-12">
+              <label for="contact-message" class="label"
+                data-editable="text" data-prop="form.message.heading" data-type="span">{{ .heading }}</label>
+              <textarea
+                class="form-control mb-4"
+                id="contact-message"
+                name="message"
+                placeholder="{{ .placeHolder }}"
+                rows="8"
+                spellcheck="false"
+              ></textarea>
+            </div>
+            {{ end }}
+            <input type="text" name="_gotcha" style="display: none" />
+            {{ with .submitBtn }}
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-lg mt-7">
+                <span class="position-relative"
+                  data-editable="text" data-prop="form.submitBtn.text" data-type="span">{{ .text }}</span>
+              </button>
+            </div>
+            {{ end }}
+          </form>
+          {{ end }}
+          <div class="effect">
+            <img src="/images/contact/effects.png" alt="effects" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

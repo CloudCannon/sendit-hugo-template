@@ -1,0 +1,56 @@
+{{/*
+  Counter block. `numbers` carries a <template> blueprint so an empty array can
+  gain a first row; data-direction is explicit because the runtime would infer
+  it from flex-direction, which is wrong for a grid.
+
+  `number` is a string: text regions only accept strings. script.js skips the
+  count-up in the editor, where it would fight the region runtime for innerHTML.
+*/}}
+<section class="counter-up {{ if .alternateStyle }}counter-up-two pb-xxl-14 pb-lg-13{{ end }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-header">
+          <h2>
+            <editable-text data-prop="title" data-type="span">{{ .title }}</editable-text>
+            <span data-editable="text" data-prop="title_suffix" data-type="span">{{ .title_suffix }}</span>
+          </h2>
+          <p data-editable="text" data-prop="description" data-type="text">{{ .description | markdownify }}</p>
+        </div>
+      </div>
+      <div class="col-12">
+        {{ if or .numbers site.Params.ENV_CLIENT }}
+        <div class="counter-up-wrapper d-grid" data-editable="array" data-prop="numbers"
+          data-direction="row">
+          <template>
+            <div class="counter-up-content">
+              <div class="counter-up-content-item">
+                <div class="counter-percent">
+                  <span class="counter" data-editable="text" data-prop="number" data-type="span"></span>
+                </div>
+                <p data-editable="text" data-prop="text" data-type="span"></p>
+              </div>
+            </div>
+          </template>
+          {{ range .numbers }}
+          <div class="counter-up-content" data-editable="array-item">
+            <div class="counter-up-content-item">
+              <div class="counter-percent">
+                {{ if or .prefix site.Params.ENV_CLIENT }}
+                <span class="percent" data-editable="text" data-prop="prefix" data-type="span">{{ .prefix }}</span>
+                {{ end }}
+                <span class="counter" data-editable="text" data-prop="number" data-type="span">{{ .number }}</span>
+                {{ if or .suffix site.Params.ENV_CLIENT }}
+                <span class="percent" data-editable="text" data-prop="suffix" data-type="span">{{ .suffix }}</span>
+                {{ end }}
+              </div>
+              <p data-editable="text" data-prop="text" data-type="span">{{ .text }}</p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
