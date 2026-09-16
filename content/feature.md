@@ -9,7 +9,7 @@ seo:
   no_index: false
 content_blocks:
    -
-      _bookshop_name: feature/hero
+      _name: feature/hero
       title: Run the best campaigns
       description: >-
          Sendit will change the way you think about email and marketing
@@ -19,13 +19,13 @@ content_blocks:
          text: Try This Free
       image_path: /images/feature/feature-hero.png
    -
-      _bookshop_name: global/header
+      _name: global/header
       title: "Sendit "
       title_suffix: Features
       description: >-
          Sendit is the most complete solution to create beautiful email designs, manage mails and send them out at the best price.
    -
-      _bookshop_name: global/feature
+      _name: global/feature
       image_path: /images/feature/feature-card-one.png
       title: Simply click and send
       description: >-
@@ -37,7 +37,7 @@ content_blocks:
          text: Try This Free
       reversed: false
    -
-      _bookshop_name: global/feature
+      _name: global/feature
       image_path: /images/feature/feature-card-two.png
       title: See every lead in one place
       description: >-
@@ -48,7 +48,7 @@ content_blocks:
          text: Try This Free
       reversed: true
    -
-      _bookshop_name: global/feature
+      _name: global/feature
       image_path: /images/feature/feature-card-three.png
       title: Free templates to get you started
       description: >-
@@ -60,7 +60,7 @@ content_blocks:
          text: Try This Free
       reversed: false
    -
-      _bookshop_name: global/testimonial
+      _name: global/testimonial
       title: Build relationships that
       title_suffix: last
       description: >-

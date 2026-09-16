@@ -1,3 +1,17 @@
-{{ define "main" }} {{ partial "bookshop_bindings" `.Params` }} {{ partial
-"bookshop_bindings" `.Params.content_blocks` }} {{ partial "bookshop_partial"
-(slice "page" .Params.content_blocks) }} {{ end }}
+{{ define "main" }}
+  {{/*
+    Page builder: each block's _name is both a partial name and a structure key.
+    Rendered unguarded so an empty page still has an array region. The wrapper
+    div carries the array-item attributes, which a partial's root cannot.
+  */}}
+  <div
+    data-editable="array"
+    data-prop="content_blocks"
+    data-component-key="_name">
+    {{ range .Params.content_blocks }}
+      <div data-editable="array-item" data-id="{{ ._name }}" data-component="{{ ._name }}">
+        {{ partial ._name . }}
+      </div>
+    {{ end }}
+  </div>
+{{ end }}

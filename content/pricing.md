@@ -1,25 +1,26 @@
 ---
+_schema: default
 title: Pricing
 seo:
-  page_description: 
-  canonical_url: 
-  featured_image: 
-  author_twitter_handle: 
+  page_description:
+  canonical_url:
+  featured_image:
+  author_twitter_handle:
   open_graph_type:
   no_index: false
 content_blocks:
-  - _bookshop_name: pricing/hero
+  - _name: pricing/hero
     title: A plan for everyone
     description: >-
       Sendit is easy to get started and we have a pricing plan for businesses of
       all sizes.
-  - _bookshop_name: pricing/table
+  - _name: pricing/table
     pricing_tier:
       - tier: Free
         description: Everything you need to get started.
-        price: 0
+        price: '0'
         hasDiscount: false
-        discountPrice: 0
+        discountPrice: '0'
         isActive: false
         feature:
           - item: 1 Email Campaign
@@ -28,7 +29,7 @@ content_blocks:
             isActive: true
           - item: Regular Update for 1 Year
             isActive: true
-          - item: 90+ Widgets & Extensions
+          - item: 90+ Widgets &amp; Extensions
             isActive: true
           - item: 23+ Templates
             isActive: true
@@ -45,9 +46,9 @@ content_blocks:
           text: Try This Free
       - tier: Pro
         description: More collaborative power.
-        price: 199
+        price: '199'
         hasDiscount: true
-        discountPrice: 125
+        discountPrice: '125'
         isActive: true
         feature:
           - item: 5 Email Campaigns
@@ -56,7 +57,7 @@ content_blocks:
             isActive: true
           - item: Regular Update for 1 Year
             isActive: true
-          - item: 90+ Widgets & Extensions
+          - item: 90+ Widgets &amp; Extensions
             isActive: true
           - item: 23+ Templates
             isActive: true
@@ -73,9 +74,9 @@ content_blocks:
           text: Try This Free
       - tier: Business
         description: All the bells and whistles.
-        price: 499
+        price: '499'
         hasDiscount: true
-        discountPrice: 350
+        discountPrice: '350'
         isActive: false
         feature:
           - item: 20 Email Campaigns
@@ -84,7 +85,7 @@ content_blocks:
             isActive: true
           - item: Regular Update for 1 Year
             isActive: true
-          - item: 90+ Widgets & Extensions
+          - item: 90+ Widgets &amp; Extensions
             isActive: true
           - item: 23+ Templates
             isActive: true
@@ -99,7 +100,7 @@ content_blocks:
         btn:
           link: /#
           text: Try This Free
-  - _bookshop_name: global/faq
+  - _name: global/faq
     title: Have
     title_suffix: Questions?
     description: We're always here to help. Here are the most frequently asked questions.

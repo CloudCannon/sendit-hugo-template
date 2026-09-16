@@ -10,7 +10,7 @@
       </div>
    </div>
 </section>
-<section class="blog @@padding @@blog-two">
+<section class="blog">
    <div class="container">
       <div class="row">
          {{ range (.Paginator 9).Pages }}
@@ -22,7 +22,7 @@
                   </a>
                </div>
                <div class="blog-post-content">
-                  <div class="blog-post-tag @@category">
+                  <div class="blog-post-tag">
                      {{ range .Params.categories }} {{ $href := print (absURL "categories/") (urlize
                      .) }}
                      <a href="{{ $href }}">{{ . | humanize }}</a>

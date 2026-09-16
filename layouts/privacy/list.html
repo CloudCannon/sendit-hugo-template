@@ -4,7 +4,9 @@
     <div class="row">
       <div class="col-md-12">
         <div class="privacy-hero-content text-center">
-          <h1>{{.Params.hero.title}}</h1>
+          {{/* Primitive region: this page template is never bundled, so the
+               `privacy` array stays read-only — edit it from the data editor. */}}
+          <h1 data-editable="text" data-prop="hero.title" data-type="span">{{.Params.hero.title}}</h1>
         </div>
       </div>
     </div>

@@ -87,7 +87,9 @@
         padding-bottom: $base-padding * 3;
       }
     }
-    .shows {
+    // Keyed off Bootstrap's own open state so it needs no JS and survives a
+    // re-render in the editor.
+    .accordion-item:has(> .accordion-collapse.show) {
       border: 1px solid $color-anchor;
     }
   }

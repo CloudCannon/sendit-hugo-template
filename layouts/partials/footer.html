@@ -1,3 +1,11 @@
+{{/*
+  Site footer, backed by data/footer.yaml: selectors are @data references and
+  `footer` must be registered in data_config. `sections` is addressed by index
+  rather than wrapped as an array region, because an array container may hold
+  only its items and these columns share a Bootstrap .row. Paths are
+  `sections.0.title` — selectors split on `.`, so `sections[0]` resolves to
+  nothing.
+*/}}
 {{ with .Site.Data.footer }}
 <footer class="footer pt-xxl-19 pt-8 pb-sm-7 pb-5" id="footer">
   <div class="container-fluid">
@@ -5,31 +13,51 @@
       <div class="row">
         <div class="col-12 col-lg-4 me-auto order-2 order-lg-1">
           <div class="footer-logo mt-7 mt-md-0">
-            <a href="{{.logo_url}}" class="">
-              <img src="{{.logo}}" alt="logo" />
+            <a href="{{ .logo_url }}" class="">
+              <img src="{{ .logo }}" alt="logo"
+                data-editable="image" data-prop-src="@data[footer].logo" />
             </a>
             <p>
-              © Copyright <span>{{ dateFormat "2006" now }}</span> {{.copyright}}
+              © Copyright <span>{{ dateFormat "2006" now }}</span>
+              <editable-text data-prop="@data[footer].copyright" data-type="span">{{ .copyright }}</editable-text>
             </p>
           </div>
           <div class="social-icon">
-            <ul class="list-unstyled">
+            {{/* Icon-and-href items with no inline text, so this region gives
+                 add/remove/reorder only. data-direction is explicit: the runtime
+                 otherwise infers "column" from computed flex-direction, and this
+                 list is horizontal via inline-block. */}}
+            <ul class="list-unstyled" data-editable="array" data-prop="@data[footer].social"
+              data-direction="row">
+              <template>
+                <li>
+                  <a href="/"><i class=""></i></a>
+                </li>
+              </template>
               {{ range .social }}
-              <li>
-                <a href="{{.link}}"> <i class="{{.icon}}"></i> </a>
+              <li data-editable="array-item">
+                <a href="{{ .link }}"> <i class="{{ .icon }}"></i> </a>
               </li>
               {{ end }}
             </ul>
           </div>
         </div>
-        {{ range .sections }}
+        {{ range $i, $section := .sections }}
         <div class="col-6 col-md-3 col-lg-2 order-1">
           <div class="footer-widget">
-            <h3 class="">{{.title}}</h3>
-            <ul class="list-unstyled">
-              {{ range .links }}
-              <li>
-                <a href="{{.link}}">{{.text}}</a>
+            <h3 class="" data-editable="text"
+              data-prop="@data[footer].sections.{{ $i }}.title" data-type="span">{{ $section.title }}</h3>
+            <ul class="list-unstyled"
+              data-editable="array" data-prop="@data[footer].sections.{{ $i }}.links">
+              <template>
+                <li>
+                  <a href="/" data-editable="text" data-prop="text" data-type="span"></a>
+                </li>
+              </template>
+              {{ range $section.links }}
+              <li data-editable="array-item">
+                <a href="{{ .link }}"
+                  data-editable="text" data-prop="text" data-type="span">{{ .text }}</a>
               </li>
               {{ end }}
             </ul>

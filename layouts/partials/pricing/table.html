@@ -1,0 +1,84 @@
+{{/*
+  Pricing table: a row of tiers, each with a nested `feature` list backed by
+  _structures.features. The card modifier resolves to a variable so there is a
+  clean place to hang attributes. Decorative shape/vector images stay read-only.
+*/}}
+<section class="pricing pb-xxl-20 pb-lg-15 pb-md-5">
+  <div class="container">
+    {{ if or .pricing_tier site.Params.ENV_CLIENT }}
+    <div class="row" data-editable="array" data-prop="pricing_tier">
+      <template>
+        <div class="col-lg-4">
+          <div class="card pricing-item">
+            <h5 class="card-title" data-editable="text" data-prop="tier" data-type="span"></h5>
+            <p class="card-text" data-editable="text" data-prop="description" data-type="text"></p>
+            <div class="price">
+              <p><span>$<editable-text data-prop="price" data-type="span"></editable-text></span></p>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled"></ul>
+              <div class="link">
+                <a href="#" class="btn btn-lg btn-white"
+                  data-editable="text" data-prop="btn.text" data-type="span"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+      {{ range .pricing_tier }}
+        <div class="col-lg-4" data-editable="array-item">
+          <div class="card pricing-item{{ if .isActive }} active{{ end }}">
+            <h5 class="card-title" data-editable="text" data-prop="tier" data-type="span">{{ .tier }}</h5>
+            <p class="card-text" data-editable="text" data-prop="description" data-type="text">{{ .description | markdownify }}</p>
+            {{ if .hasDiscount }}
+            <div class="price">
+              <p class="pricingtable">$<editable-text data-prop="discountPrice" data-type="span">{{ .discountPrice }}</editable-text></p>
+              <div class="discount">
+                <p>$<editable-text data-prop="price" data-type="span">{{ .price }}</editable-text></p>
+                <div class="vector vector-one">
+                  <img src="/images/pricing/Vector1.svg" alt="Vector" loading="lazy" />
+                </div>
+              </div>
+              <div class="shape top-0">
+                <img src="/images/pricing/shape-two.png" alt="shape" loading="lazy" />
+              </div>
+            </div>
+            {{ else }}
+            <div class="price">
+              <p><span>$<editable-text data-prop="price" data-type="span">{{ .price }}</editable-text></span></p>
+              <div class="shape">
+                <img src="/images/pricing/shape-one.png" alt="shape" loading="lazy" />
+              </div>
+            </div>
+            {{ end }}
+            <div class="card-body">
+              {{ if or .feature site.Params.ENV_CLIENT }}
+              <ul class="list-unstyled" data-editable="array" data-prop="feature">
+                <template>
+                  <li>
+                    <i class="ph-check"></i>
+                    <editable-text data-prop="item" data-type="span"></editable-text>
+                  </li>
+                </template>
+                {{ range .feature }}
+                <li {{ if not .isActive }}class="deactive"{{ end }} data-editable="array-item">
+                  <i class="ph-check{{ if not .isActive }} deactive{{ end }}"></i>
+                  <editable-text data-prop="item" data-type="span">{{ .item }}</editable-text>
+                </li>
+                {{ end }}
+              </ul>
+              {{ end }}
+              <div class="link">
+                {{ with .btn }}
+                <a href="{{ .link }}" class="btn btn-lg btn-white"
+                  data-editable="text" data-prop="btn.text" data-type="span">{{ .text }}</a>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>

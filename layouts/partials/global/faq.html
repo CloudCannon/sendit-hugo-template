@@ -1,0 +1,72 @@
+{{/*
+  FAQ accordion: one array region, with the index-0 differences (open by
+  default) as conditionals. Bootstrap pairs button to panel by id, so ids are
+  namespaced per block ($uid) in case the block appears twice. The open item's
+  border is a :has() rule on Bootstrap's `.show`, so it needs no JS and survives
+  a re-render in the editor.
+*/}}
+{{ $uid := or (.title | anchorize) "faq" }}
+<section class="faq-two">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="section-header">
+          <h2>
+            <editable-text data-prop="title" data-type="span">{{ .title }}</editable-text>
+            <span data-editable="text" data-prop="title_suffix" data-type="span">{{ .title_suffix }}</span>
+          </h2>
+          <p data-editable="text" data-prop="description" data-type="text">{{ .description | markdownify }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        {{ if or .faq site.Params.ENV_CLIENT }}
+        <div class="accordion" id="accordion-{{ $uid }}" data-editable="array" data-prop="faq">
+          <template>
+            <div class="accordion-item">
+              <span></span>
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button">
+                  <p class="header-content" data-editable="text" data-prop="title" data-type="span"></p>
+                </button>
+              </h2>
+              <div class="accordion-collapse collapse">
+                <div class="accordion-body" data-editable="text" data-prop="description" data-type="block"></div>
+              </div>
+            </div>
+          </template>
+          {{ range $index, $item := .faq }}
+            {{ $first := eq $index 0 }}
+            {{ $panel := printf "collapse-%s-%d" $uid $index }}
+            {{ $head := printf "heading-%s-%d" $uid $index }}
+            <div class="accordion-item" data-editable="array-item">
+              <span>0{{ add $index 1 }}</span>
+              <h2 class="accordion-header" id="{{ $head }}">
+                <button
+                  class="accordion-button{{ if not $first }} collapsed{{ end }}"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#{{ $panel }}"
+                  aria-expanded="{{ if $first }}true{{ else }}false{{ end }}"
+                  aria-controls="{{ $panel }}"
+                >
+                  <p class="header-content" data-editable="text" data-prop="title" data-type="span">{{ $item.title }}</p>
+                </button>
+              </h2>
+              <div
+                id="{{ $panel }}"
+                class="accordion-collapse collapse{{ if $first }} show{{ end }}"
+                aria-labelledby="{{ $head }}"
+                data-bs-parent="#accordion-{{ $uid }}"
+              >
+                <div class="accordion-body" data-editable="text" data-prop="description" data-type="block">{{ $item.description | markdownify }}</div>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>

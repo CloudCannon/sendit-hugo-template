@@ -6,7 +6,11 @@
          <div class="col-lg-12">
             <article class="blog-single">
                <div class="inner-blog-details">
-                  <h2 class="w-xxl-70 w-xl-80 w-100">{{.Params.title}}</h2>
+                  {{/* Primitive regions only: page templates are not bundled, so
+                       these mutate the live DOM and never re-render. @content takes
+                       no data-type, which gets it the _editables.content toolbar. */}}
+                  <h2 class="w-xxl-70 w-xl-80 w-100"
+                     data-editable="text" data-prop="title" data-type="span">{{.Params.title}}</h2>
                   <div class="inner-blog-details-meta">
                      <ul class="list-unstyled">
                         <li class="list-inline-item">
@@ -29,9 +33,12 @@
                      src="{{.Params.featuredImg.image_path}}"
                      class="w-100"
                      alt="featured-image"
+                     data-editable="image"
+                     data-prop-src="featuredImg.image_path"
                   />
                </div>
-               <div style="max-width: 900px; margin: 0 auto">{{.Content}}</div>
+               <div style="max-width: 900px; margin: 0 auto"
+                  data-editable="text" data-prop="@content">{{.Content}}</div>
             </article>
          </div>
       </div>
