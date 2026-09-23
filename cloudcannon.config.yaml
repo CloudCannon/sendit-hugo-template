@@ -23,14 +23,15 @@ collections_config:
         remove_extra_inputs: true
   articles:
     path: content/blog
+    glob:
+      - '!_index.md'
     icon: article
     url: /blog/[full_slug]/
     disable_url: false
     include_developer_files: false
     preview:
+      text: []
       subtext:
-        - template: '{"Draft"|if=draft}'
-        - template: '{date|date_long}'
         - key: url
       image:
         - key: thumbImg.image_path
@@ -38,6 +39,20 @@ collections_config:
         - text:
             - key: author
           icon: person
+        - text:
+            - template: '{"Draft"|if=draft}'
+          icon:
+            - text: draft_orders
+          icon_color:
+          icon_background_color:
+          image:
+        - text:
+            - template: '{date|date_long}'
+          icon:
+            - text: calendar_month
+          icon_color:
+          icon_background_color:
+          image:
     _enabled_editors:
       - content
       - visual
