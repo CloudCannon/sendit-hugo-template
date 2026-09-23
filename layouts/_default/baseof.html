@@ -8,7 +8,7 @@
     <link href="/vendor/phosphor-icons/css/phosphor.css" rel="stylesheet" />
     <link href="/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" />
     
-    {{ $style := resources.Get "/scss/theme.scss" | resources.ToCSS |
+    {{ $style := resources.Get "/scss/theme.scss" | css.Sass |
     resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{$style.Permalink}}" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />

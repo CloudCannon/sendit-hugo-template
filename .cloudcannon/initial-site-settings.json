@@ -2,7 +2,7 @@
   "ssg": "hugo",
   "mode": "hosted",
   "build": {
-    "hugoVersion": "0.157.0",
+    "hugoVersion": "0.166.0",
     "rubyVersion": "3.4.8",
     "nodeVersion": "22",
     "denoVersion": "2.7.1",
