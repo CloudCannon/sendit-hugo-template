@@ -1,47 +1,81 @@
-data_config:
-  blog-tags:
-    path: data/blog-tags.yaml  
-  
+paths:
+  uploads: static/images
+  uploads_use_relative_path: false
+  static: static
 collections_config:
   pages:
-    icon: wysiwyg
-    disable_add_folder: true
     path: content
+    icon: wysiwyg
+    url: /[full_slug]/
+    disable_url: false
+    include_developer_files: false
+    _enabled_editors:
+      - visual
+    disable_add: false
+    disable_add_folder: true
+    disable_file_actions: false
     schemas:
       default:
         path: schemas/page.html
-    _enabled_editors:
-      - visual
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
   articles:
-    icon: article
     path: content/blog
-    disable_add_folder: true
+    glob:
+      - '!_index.md'
+    icon: article
+    url: /blog/[full_slug]/
+    disable_url: false
+    include_developer_files: false
     preview:
+      text: []
       subtext:
-        - template: '{"Draft"|if=draft}'
-        - template: '{date|date_long}'
         - key: url
       image:
         - key: thumbImg.image_path
       metadata:
-        - icon: person
-          text:
+        - text:
             - key: author
-    schemas:
-      default:
-        path: schemas/post.md
+          icon: person
+        - text:
+            - template: '{"Draft"|if=draft}'
+          icon:
+            - text: draft_orders
+          icon_color:
+          icon_background_color:
+          image:
+        - text:
+            - template: '{date|date_long}'
+          icon:
+            - text: calendar_month
+          icon_color:
+          icon_background_color:
+          image:
     _enabled_editors:
       - content
       - visual
+    disable_add: false
+    disable_add_folder: true
+    disable_file_actions: false
+    schemas:
+      default:
+        path: schemas/post.md
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
   data:
     path: data
     icon: settings
-    disable_add: true
-    disable_add_folder: true
     disable_url: true
+    include_developer_files: false
     _enabled_editors:
       - data
-
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: false
 collection_groups:
   - heading: Pages
     collections:
@@ -50,153 +84,260 @@ collection_groups:
   - heading: Data
     collections:
       - data
-paths:
-  static: static
-  uploads: static/images
-
 _inputs:
   content:
     type: markdown
+    cascade: true
   icon:
     type: select
     options:
+      allow_empty: true
       values:
         - ph-user-square
+      required: false
+    cascade: true
   description:
     type: markdown
     options:
+      allow_resize: true
+      allow_custom_markup: false
+      remove_custom_markup: false
+      initial_height: 320
+      blockquote: true
       bold: true
+      bulletedlist: true
+      code: false
+      copyformatting: false
+      embed: false
+      expandable: false
+      horizontalrule: false
+      image: true
+      image_size_attributes: false
+      indent: false
       italic: true
       link: true
+      numberedlist: true
+      outdent: false
+      redo: false
       removeformat: true
+      resize_style: contain
+      snippet: true
+      strike: false
+      subscript: false
+      superscript: false
+      table: false
+      underline: false
+      undo: false
+      required: false
+    cascade: true
   isActive:
     type: switch
+    cascade: true
   social[*].icon:
     type: select
     options:
+      allow_empty: true
       values:
         - ph-facebook-logo
         - ph-instagram-logo
         - ph-twitter-logo
         - ph-github-logo
         - ph-youtube-logo
+      required: false
+    cascade: true
   page_description:
+    type: text
     comment: If empty, defaults to the description set in the Site SEO data file
-    type: text
+    cascade: true
   canonical_url:
-    comment: If empty, defaults to the URL of the page
     type: text
+    comment: If empty, defaults to the URL of the page
+    cascade: true
   featured_image:
     comment: If empty, defaults to the image set in the Site SEO data file
+    cascade: true
   featured_image.image:
     type: image
     options:
-      width: 1296
+      disable_upload_file: false
+      disable_direct_input: false
+      disable_upload_file_in_file_browser: false
       resize_style: crop
+      width: 1296
+      expandable: false
+      prevent_resize_existing_files: false
+      required: false
+    cascade: true
   thumb_image.image:
     type: image
     options:
+      disable_upload_file: false
+      disable_direct_input: false
+      disable_upload_file_in_file_browser: false
+      resize_style: crop
       width: 500
       height: 413
-      resize_style: crop
+      expandable: false
+      prevent_resize_existing_files: false
+      required: false
+    cascade: true
   author_twitter_handle:
     type: twitter
     comment: Defaults to the twitter site value set in the Site SEO data file
+    cascade: true
   no_index:
     type: checkbox
-    comment: When selected this removes the page from your sitemap and adds the noindex robots meta tag
+    comment: When selected this removes the page from your sitemap and adds the
+      noindex robots meta tag
+    cascade: true
   open_graph_type:
     type: select
     options:
+      allow_empty: true
       values:
         - website
         - article
         - profile
+      required: false
+    cascade: true
   favicon_icon:
     type: image
     comment: For the shortcut icon meta tag
+    cascade: true
   favicon_image:
     type: image
     comment: For the icon meta tag
+    cascade: true
   enable_dropdown:
     type: switch
+    cascade: true
   dropdown:
     type: array
     options:
       structures: _structures.dropdown
+      disable_add: false
+      disable_remove: false
+      disable_reorder: false
+      required: false
     label: Dropdown Items
-    hidden: "!enable_dropdown"
+    hidden: '!enable_dropdown'
+    cascade: true
   dropdown_link:
     type: url
     label: Link
+    cascade: true
   dropdown_text:
     type: text
     label: Name
+    cascade: true
   items:
     type: array
     options:
       structures: _structures.items
+      disable_add: false
+      disable_remove: false
+      disable_reorder: false
+      required: false
+    cascade: true
   logo:
     type: image
+    cascade: true
   categories:
     type: multiselect
     options:
+      allow_empty: true
       values: data.blog-tags
+      required: false
+    cascade: true
   twitter_site:
     type: twitter
     label: Twitter Username
+    cascade: true
   logo_url:
-      comment: Link for the logo in the top left of the footer
+    comment: Link for the logo in the top left of the footer
+    cascade: true
   copyright:
     comment: Automatically prefixed with the current year
+    cascade: true
   enable_nav_btn:
-    label: Enable Navigation Button
     type: switch
+    label: Enable Navigation Button
+    cascade: true
   nav_btn:
     label: Navigation Button
-    hidden: "!enable_nav_btn"
+    hidden: '!enable_nav_btn'
+    cascade: true
   thumbImg:
     label: Thumbnail Image
+    cascade: true
   featuredImg:
     label: Featured Image
+    cascade: true
   image_alt:
     label: Image Description
-
+    cascade: true
 _structures:
   content_blocks:
     style: modal
   dropdown:
+    style: select
     values:
-      - value:
+      - default: false
+        place_groups_below: false
+        tabbed: false
+        value:
           dropdown_text:
           dropdown_link:
   social:
+    style: select
     values:
-      - value:
+      - default: false
+        place_groups_below: false
+        tabbed: false
+        value:
           link:
           icon:
   sections:
+    style: select
     values:
-      - value:
+      - default: false
+        place_groups_below: false
+        tabbed: false
+        value:
           title:
           links:
   links:
+    style: select
     values:
-      - value:
+      - default: false
+        place_groups_below: false
+        tabbed: false
+        value:
           link:
           text:
   features:
+    style: select
     values:
-      - value:
+      - default: false
+        place_groups_below: false
+        tabbed: false
+        value:
           item:
           isActive:
   items:
+    style: select
     values:
-      - value:
+      - default: false
+        place_groups_below: false
+        tabbed: false
+        value:
           link:
           text:
           enable_dropdown:
           dropdown:
-
 _snippets_imports:
   hugo: true
+data_config:
+  blog-tags:
+    path: data/blog-tags.yaml
+timezone: Etc/UTC
