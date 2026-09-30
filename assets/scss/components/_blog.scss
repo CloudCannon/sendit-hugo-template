@@ -14,7 +14,7 @@
    }
    // start block hero section
    &-hero {
-      background: $color-header-light;
+      background: tint($color-primary, 10%);
       text-align: center;
       h1 {
          margin-bottom: $base-margin * 1.5;
@@ -64,7 +64,7 @@
       }
       &-tag {
          a {
-            background: $color-secondary-light;
+            background: tint($color-primary, 20%);
             border-radius: 6px;
             padding: 4px 10px;
             text-decoration: none;
@@ -73,6 +73,10 @@
             font-weight: 500;
             margin-bottom: $base-margin * 0.9;
             font-family: $font-primary;
+            &:hover {
+               background: $color-primary;
+               color: $color-secondary;
+            }
          }
       }
       &-title {
@@ -194,7 +198,7 @@
                   }
                   li p {
                     font-size: $base-font-size;
-                    color: $color-text-light;
+                    color: $color-primary;
                     font-family: $font-primary;
                     font-weight: 600;
                     margin-bottom: 0;
@@ -319,18 +323,21 @@
          font-size: 20px;
 
          border-radius: 20px !important;
+         // Fixed grey border, as in the Astro version
+         border-color: #d1d5db;
          &.active {
-            background: #e53b2a !important;
-            border-color: #e53b2a !important;
+            color: $color-secondary !important;
+            background: $color-primary !important;
+            border-color: $color-primary !important;
          }
          svg {
             margin-right: -2px;
          }
          &:hover {
-            svg {
-               g {
-                  fill: #e53b2a;
-               }
+            color: $color-secondary;
+            border-color: $color-primary;
+            svg path {
+               fill: $color-secondary;
             }
          }
       }
@@ -338,7 +345,7 @@
    /* start Related Blog Style */
    &-related {
       padding: $base-padding * 7 0 $base-padding * 5;
-      background: $color-gray-dark;
+      // No background, as in the Astro version
       @include media-breakpoint-down-xl {
          padding: $base-padding * 5 0 $base-padding * 0;
       }

@@ -17,7 +17,7 @@
   }
   &-hero-two {
     padding: $base-padding * 9 0 $base-padding * 3;
-    background: $color-secondary-dark;
+    background: tint($color-primary, 5%);
     overflow: hidden;
     @include media-breakpoint-down-xxl {
       padding: $base-padding * 10 0 $base-padding * 11;
@@ -130,12 +130,13 @@
           position: absolute;
           content: "";
           background: $color-primary;
+          mix-blend-mode: multiply;
           width: 100%;
           height: 100%;
           border-radius: 20px;
           top: 0;
           left: 0;
-          opacity: 0.2;
+          opacity: 0.3;
         }
       }
       .image-one {
@@ -196,6 +197,7 @@
         position: absolute;
         top: 0;
         left: -20px;
+        @include theme-mask(tint($color-primary, 50%), "/images/about/patterns-two.png");
         img {
           max-width: 100%;
         }

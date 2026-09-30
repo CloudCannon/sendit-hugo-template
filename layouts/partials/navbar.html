@@ -98,7 +98,10 @@
                         {{ $url := .link }}
                         <li class="nav-item dropdown" data-editable="array-item">
                             {{ if and .enable_dropdown .dropdown }}
-                                <a class="nav-link dropdown-link {{ if eq $current $url }}active{{ end }}" href="{{ .link }}" id="navbarDropdown" role="button" aria-expanded="false" data-editable="text" data-prop="text" data-type="span">{{ .text }}</a>
+                                {{/* A parent is active when it or one of its children is the current page. */}}
+                                {{ $active := eq $current $url }}
+                                {{ range .dropdown }}{{ if eq $current .dropdown_link }}{{ $active = true }}{{ end }}{{ end }}
+                                <a class="nav-link dropdown-link {{ if $active }}active{{ end }}" href="{{ .link }}" id="navbarDropdown" role="button" aria-expanded="false" data-editable="text" data-prop="text" data-type="span">{{ .text }}</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
                                     data-editable="array" data-prop="dropdown">
                                     <template>
@@ -108,7 +111,7 @@
                                     </template>
                                     {{ range .dropdown }}
                                         <li data-editable="array-item">
-                                            <a class="dropdown-item" href="{{ .dropdown_link }}"
+                                            <a class="dropdown-item {{ if eq $current .dropdown_link }}active{{ end }}" href="{{ .dropdown_link }}"
                                               data-editable="text" data-prop="dropdown_text" data-type="span">{{ .dropdown_text }}</a>
                                         </li>
                                     {{ end }}

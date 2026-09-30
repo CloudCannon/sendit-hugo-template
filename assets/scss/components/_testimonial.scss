@@ -24,7 +24,7 @@
          font-size: $base-font-size * 2.8;
          margin-bottom: $base-margin * 1.4;
          span {
-            color: $color-anchor;
+            color: $color-primary;
          }
          @include media-breakpoint-down-xl {
             font-size: $base-font-size * 2.5;

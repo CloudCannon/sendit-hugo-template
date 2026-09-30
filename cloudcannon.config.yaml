@@ -9,6 +9,9 @@ data_config:
     path: data/footer.yaml
   meta:
     path: data/meta.yaml
+  # Backs the theme selector button in the Visual Editor (baseof.html).
+  theme:
+    path: data/theme.json
 paths:
   uploads: static/images
   uploads_use_relative_path: false
@@ -82,6 +85,33 @@ collections_config:
     icon: settings
     disable_url: true
     include_developer_files: false
+    _inputs:
+      # Theme colours (data/theme.json), edited from the theme selector button.
+      theme:
+        type: object
+        options:
+          preview:
+            text: Theme
+            icon: palette
+        cascade: true
+      $.primary_color:
+        type: color
+        options:
+          format: hex
+          required: true
+        cascade: true
+      $.secondary_color:
+        type: color
+        options:
+          format: hex
+          required: true
+        cascade: true
+      $.anchor_color:
+        type: color
+        options:
+          format: hex
+          required: true
+        cascade: true
     _enabled_editors:
       - data
     disable_add: true
@@ -303,10 +333,10 @@ _inputs:
           subtext: Solid primary color fill
         - id: secondary
           name: Secondary
-          subtext: Solid white background with primary color border
+          subtext: Secondary color background with primary color border
         - id: outline
           name: Outline
-          subtext: Transparent background with primary color border
+          subtext: Smaller, secondary color background with primary color border
         - id: text
           name: Text link
           subtext: Plain primary color text link

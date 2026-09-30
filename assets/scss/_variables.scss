@@ -12,6 +12,9 @@ $extbold-font-weight: 800;
 $base-letter-spacing: 0.5px;
 
 //Colors Variables
+// primary, secondary and anchor are CSS custom properties so the
+// CloudCannon theme selector (data/theme.json) can change them live. Sass
+// colour functions can't operate on them; use color-mix() instead.
 $color-white: #fff;
 $color-gray: #fcfcfc;
 $color-cyan: #808080;
@@ -19,13 +22,13 @@ $color-cyan-dark: #f3f3f3;
 $color-cyan-light: #5f5f5f;
 $color-gray-light: #fdfdfd;
 $color-gray-dark: #fff4f2;
-$color-primary: #e53b2a;
+$color-primary: var(--color-primary, #e53b2a);
 $color-primary-light: #e6ebf4;
 $color-primary-dark: #e8e8e8;
-$color-secondary: #fffbf3;
+$color-secondary: var(--color-secondary, #ffffff);
 $color-secondary-dark: #f7f8fa;
 $color-secondary-light: #ffe1dd;
-$color-anchor: #ffba08;
+$color-anchor: var(--color-link, #ffba08);
 $color-anchor-dark: #ffebb5;
 
 $color-header: #000;

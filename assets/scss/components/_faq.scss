@@ -74,7 +74,7 @@
   // start faq-two section
   &-two {
     padding-bottom: $base-padding * 9.4;
-    background: $color-gray-dark;
+    background: tint($color-primary, 10%);
     @include media-breakpoint-down-xl {
       padding-bottom: $base-padding * 5;
     }
@@ -86,11 +86,6 @@
       @include media-breakpoint-down-sm {
         padding-bottom: $base-padding * 3;
       }
-    }
-    // Keyed off Bootstrap's own open state so it needs no JS and survives a
-    // re-render in the editor.
-    .accordion-item:has(> .accordion-collapse.show) {
-      border: 1px solid $color-anchor;
     }
   }
 }

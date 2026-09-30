@@ -11,6 +11,7 @@
     {{ $style := resources.Get "/scss/theme.scss" | css.Sass |
     resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{$style.Permalink}}" />
+    {{ partial "global/theme-style.html" hugo.Data.theme.theme }}
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
     <script src="/vendor/jQuery/jquery.min.js" defer></script>
@@ -28,6 +29,22 @@
     {{ partial "navbar.html" . }} {{ block "main" . }} {{ end }} {{ partial
     "footer.html" . }}
 
-  
+    <!-- Theme selector: hidden until the Visual Editor loads (see
+         partials/global/theme-selector.html). Clicking anywhere on the
+         button opens its edit panel, standing in for the hidden pencil. -->
+    <editable-component class="theme-selector" data-component="global/theme-selector"
+      data-prop="@data[theme].theme" title="Theme selector" hidden>
+      {{ partial "global/theme-selector.html" hugo.Data.theme.theme }}
+    </editable-component>
+    <script type="module">
+      const selector = document.querySelector(".theme-selector");
+      const show = () => { selector.hidden = false; };
+      if (window.inEditorMode) show();
+      document.addEventListener("cloudcannon:load", show);
+      selector.addEventListener("click", () => {
+        selector.querySelector("editable-component-controls")
+          ?.dispatchEvent(new CustomEvent("edit"));
+      });
+    </script>
   </body>
 </html>

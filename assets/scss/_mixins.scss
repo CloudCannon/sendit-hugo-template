@@ -84,3 +84,24 @@
     @content;
   }
 }
+
+// Theme colour helpers. The theme colours are CSS custom properties (see
+// _variables.scss), so Sass colour functions can't touch them.
+
+// tint($color-primary, 10%) is Tailwind's `primary/10`.
+@function tint($color, $amount) {
+  @return color-mix(in srgb, #{$color} #{$amount}, transparent);
+}
+
+// Recolours a decorative image by using it as an alpha mask over $color. The
+// images are flat #ffaa8f with alpha, so the result matches Astro's masked
+// shapes. The <img> stays in place, hidden, to keep the element's size.
+@mixin theme-mask($color, $image) {
+  background: $color;
+  -webkit-mask: url($image) center / 100% 100% no-repeat;
+  mask: url($image) center / 100% 100% no-repeat;
+  img {
+    display: block;
+    visibility: hidden;
+  }
+}

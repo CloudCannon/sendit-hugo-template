@@ -11,3 +11,35 @@ editable-array-item {
   anchor-name: --cc-editable-region;
   anchor-scope: --cc-editable-region;
 }
+
+/* Theme selector button (partials/global/theme-selector.html). Only shown in
+   the Visual Editor. The whole button opens the edit panel, so its own pencil
+   is hidden. */
+.theme-selector {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background: #034ad8;
+  outline: 1px solid $color-secondary;
+  outline-offset: -4px;
+  box-shadow: 0 10px 15px -3px rgba(3, 74, 216, 0.2), 0 4px 6px -4px rgba(3, 74, 216, 0.2);
+  cursor: pointer;
+  &[hidden] {
+    display: none;
+  }
+  svg {
+    fill: $color-white;
+  }
+  // !important: the module shows controls on hover with a more specific
+  // selector (.cms-region-highlighted editable-component:hover > ...)
+  editable-component-controls {
+    display: none !important;
+  }
+}

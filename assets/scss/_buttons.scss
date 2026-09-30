@@ -45,14 +45,14 @@
   transition: all 0.3s ease-in-out;
 
   &-primary {
-    color: $color-white;
+    color: $color-secondary;
     background: $color-primary;
     border: $base-border-width solid $color-primary;
     font-weight: 700;
 
     &:hover {
       color: $color-primary;
-      background: $color-white;
+      background: $color-secondary;
       border-color: $color-primary;
     }
     .btn-check:focus + &,
@@ -60,9 +60,9 @@
     &:active,
     &:active:focus,
     &:hover:focus {
-      color: $color-white !important;
+      color: $color-secondary !important;
       background: $color-primary !important;
-      border: $base-border-width solid transparent;
+      border: $base-border-width solid $color-primary;
     }
   }
   &-secondary {
@@ -70,7 +70,7 @@
     color: $color-primary;
     text-align: center;
     text-transform: capitalize;
-    background: $color-white;
+    background: $color-secondary;
     border: $base-border-width solid $color-primary;
     transition: 0.3s all ease-in-out;
     padding: 1rem 1.9rem !important;
@@ -97,7 +97,7 @@
         }
       }
     }
-    btn-check:focus + &,
+    .btn-check:focus + &,
     &:focus,
     &:active,
     &:active:focus,
@@ -114,9 +114,9 @@
   }
 
   &-links {
-    background: transparent;
+    background: $color-secondary;
     color: $color-primary;
-    border: 1px solid rgba(229, 59, 42, 0.3);
+    border: 1px solid $color-primary;
     position: relative;
     transition: all 0.3s ease-in-out;
 
@@ -126,9 +126,9 @@
     &:active:focus,
     &:hover:focus,
     &:hover {
-      color: $color-white;
+      color: $color-secondary;
       background: $color-primary;
-      border: $base-border-width solid rgba(229, 59, 42, 0.3);
+      border: $base-border-width solid $color-primary;
     }
   }
   &-white {
@@ -234,7 +234,7 @@
   }
   &:hover,
   &:focus {
-    color: $color-primary;
+    color: tint($color-primary, 80%);
     transform: translateY(-5px);
     i {
       margin-left: 15px;

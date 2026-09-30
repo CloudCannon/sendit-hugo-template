@@ -19,8 +19,16 @@ body {
   background: $color-white;
   line-height: 1.5;
 }
+// Links in rich text (block descriptions, FAQ answers, post content) are
+// underlined in the anchor colour, like the Astro version's `.prose a`.
+section p a:not([class]),
+.post-content a:not([class]) {
+  text-decoration: underline;
+  text-decoration-color: $color-anchor;
+}
 .bg-nav {
-  background: rgba($color-secondary, 0.95);
+  background: $color-white;
+  box-shadow: 0 20px 25px -5px tint($color-primary, 10%), 0 8px 10px -6px tint($color-primary, 10%);
   &.sticky-nav {
     background: $color-white;
   }
@@ -320,7 +328,8 @@ a {
   background: $color-secondary;
 }
 .pricing-inner {
-  background: $color-gray-dark;
+  // Astro: a primary/10 hero, then a band behind the cards fading to white
+  background: linear-gradient(tint($color-primary, 10%) calc(100% - 280px), $color-white);
 }
 .pricing-inner-two {
   background: $color-secondary;
@@ -328,7 +337,7 @@ a {
 // 404 page style
 .error {
   position: relative;
-  background: $color-secondary;
+  background: $color-white;
   &-content {
     position: relative;
     h3 {
@@ -484,8 +493,9 @@ a {
     width: 49px;
     height: 49px;
     line-height: 49px;
-    background: $color-secondary-dark;
-    border: 2px solid $color-primary-light;
+    color: $color-white;
+    background: $color-primary;
+    border: 2px solid $color-primary;
     border-radius: 50%;
     margin-right: 0px;
     font-size: 20px;
