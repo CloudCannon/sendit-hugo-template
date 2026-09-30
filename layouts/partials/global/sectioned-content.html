@@ -1,0 +1,64 @@
+{{/*
+  Sectioned content: a title banner, headed sections, and a scrollspy nav. The
+  nav mirrors the section headings, so it is plain output rather than a second
+  array region; it catches up when the block re-renders.
+*/}}
+<section class="sectioned-content-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="sectioned-content-hero-content text-center">
+          <h1 data-editable="text" data-prop="title" data-type="span">{{ .title }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sectioned-content">
+  <div class="container">
+    <div class="row">
+      <div class="sectioned-content-wrapper">
+        <div class="col-lg-7 mx-auto">
+          {{ if or .sections site.Params.ENV_CLIENT }}
+          <div
+            data-bs-spy="scroll"
+            data-bs-target="#sectioned-content-nav"
+            data-bs-offset="0"
+            tabindex="0"
+            data-editable="array"
+            data-prop="sections"
+          >
+            <template>
+              <div class="sectioned-content-items">
+                <div class="card">
+                  <h3 class="sub-title" data-editable="text" data-prop="heading" data-type="span"></h3>
+                  <div class="card-body" data-editable="text" data-prop="body" data-type="block"></div>
+                </div>
+              </div>
+            </template>
+            {{ range $index, $section := .sections }}
+            <div class="sectioned-content-items" id="section{{ add $index 1 }}" data-editable="array-item">
+              <div class="card">
+                <h3 class="sub-title" data-editable="text" data-prop="heading" data-type="span">{{ .heading }}</h3>
+                <div class="card-body" data-editable="text" data-prop="body" data-type="block">{{ .body | markdownify }}</div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+        <div class="col-lg-4">
+          <nav id="sectioned-content-nav" class="navbar navbar-light sectioned-content-nav">
+            <ul class="nav nav-pills">
+              {{ range $index, $section := .sections }}
+              <li class="nav-item">
+                <a class="nav-link {{ if eq $index 0 }}active{{ end }}" href="#section{{ add $index 1 }}">{{ .heading }}</a>
+              </li>
+              {{ end }}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

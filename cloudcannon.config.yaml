@@ -641,6 +641,37 @@ _structures:
           faq:
             - title: Is there a maximum numbers of emails I can send each month?
               description: No, the prices include unlimited emails. Send to your heart's content.
+
+      - label: Sectioned Content
+        description: Title banner with headed sections of text and a side navigation
+        icon: article
+        tags: []
+        value:
+          _name: global/sectioned-content
+          title: Terms & Conditions
+          sections:
+            - heading: Section heading
+              body: Section text
+        _inputs:
+          # Inline structure: the global `sections` structure is the footer's
+          # title/links shape, which would otherwise match by key.
+          sections:
+            type: array
+            options:
+              structures:
+                values:
+                  - value:
+                      heading: null
+                      body: null
+          sections[*].body:
+            type: markdown
+            options:
+              bold: true
+              italic: true
+              link: true
+              bulletedlist: true
+              numberedlist: true
+              removeformat: true
   dropdown:
     style: select
     values:

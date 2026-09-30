@@ -8,7 +8,7 @@ seo:
   open_graph_type:
   no_index: false
 content_blocks:
-  - _bookshop_name: global/sectioned-content
+  - _name: global/sectioned-content
     title: Terms & Condition
     sections:
       - heading: SendIt Terms And Conditions
