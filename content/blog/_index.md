@@ -1,4 +1,5 @@
 ---
+_schema: blog_list
 title: Resources to grow your email campaigns
 description: >-
   We believe that a good email marketing strategy is the key to growth. So we’re

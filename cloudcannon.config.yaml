@@ -35,6 +35,19 @@ collections_config:
         hide_extra_inputs: false
         remove_empty_inputs: false
         remove_extra_inputs: true
+      # content/blog/_index.md: the blog list hero reads title and description,
+      # which the default schema would strip (remove_extra_inputs).
+      blog_list:
+        path: schemas/blog-list.md
+        name: Blog List
+        icon: view_list
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        _inputs:
+          url:
+            hidden: true
   articles:
     path: content/blog
     glob:
