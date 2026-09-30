@@ -96,7 +96,7 @@ collections_config:
     _inputs:
       date:
         type: datetime
-        comment: This and other computed values (reading time, word count) won't live update in the CloudCannon Visual Editor.
+        comment: Date and other computed values (reading time, word count) won't live update in the CloudCannon Visual Editor.
   data:
     path: data
     icon: settings
