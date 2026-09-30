@@ -21,9 +21,11 @@ content_blocks:
         placer: back_top_right
       - image_path: /images/about/aboutfeature-four.jpg
         placer: back_top_left
-    link:
+    button:
       text: Try This Free
-      url: /#
+      link: /#
+      style: primary
+      arrow: false
   - _name: global/counter
     title: Built for your
     title_suffix: Business
@@ -51,9 +53,11 @@ content_blocks:
     description: >-
       Our team has decades of experience working with email marketing campaigns
       and we’re passionate about helping you connect with your customers.
-    btn:
+    button:
       link: https://www.instagram.com/staticmania
       text: Follow on Linkedin
+      style: secondary
+      arrow: false
     video:
       image_path: /images/works/banner.jpg
       link: https://vimeo.com/45830194

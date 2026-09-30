@@ -125,8 +125,9 @@
                 <div class="d-none d-lg-block">
                     <div class="nav-item">
                     {{ with .nav_btn }}
-                    <a href="{{ .link }}" class="btn btn-sm btn-links"
-                      data-editable="text" data-prop="@data[nav].nav_btn.text" data-type="span">{{ .text }}</a>
+                    <editable-component data-component="global/button" data-prop="@data[nav].nav_btn">
+                      {{ partial "global/button.html" . }}
+                    </editable-component>
                     {{ end }}
                     </div>
                 </div> 

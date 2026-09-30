@@ -41,9 +41,11 @@ content_blocks:
             isActive: false
           - item: Unlimited activity history
             isActive: false
-        btn:
+        button:
           link: /#
           text: Try This Free
+          style: secondary
+          arrow: false
       - tier: Pro
         description: More collaborative power.
         price: '199'
@@ -69,9 +71,11 @@ content_blocks:
             isActive: false
           - item: Unlimited activity history
             isActive: false
-        btn:
+        button:
           link: /#
           text: Try This Free
+          style: primary
+          arrow: false
       - tier: Business
         description: All the bells and whistles.
         price: '499'
@@ -97,9 +101,11 @@ content_blocks:
             isActive: true
           - item: Unlimited activity history
             isActive: true
-        btn:
+        button:
           link: /#
           text: Try This Free
+          style: secondary
+          arrow: false
   - _name: global/faq
     title: Have
     title_suffix: Questions?

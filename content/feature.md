@@ -14,9 +14,11 @@ content_blocks:
       description: >-
          Sendit will change the way you think about email and marketing
          automation.
-      btn:
+      button:
          link: /#
          text: Try This Free
+         style: primary
+         arrow: false
       image_path: /images/feature/feature-hero.png
    -
       _name: global/header
@@ -32,9 +34,11 @@ content_blocks:
          Make your message stand out, thanks to the guided copywriting and
          design features, triggering a positive response from your
          customers.
-      btn:
+      button:
          link: /#
          text: Try This Free
+         style: text
+         arrow: true
       reversed: false
    -
       _name: global/feature
@@ -43,9 +47,11 @@ content_blocks:
       description: >-
          Sales analytics and automation made simple: see every sales lead
          in one place, regardless of where it came from.
-      btn:
+      button:
          link: /#
          text: Try This Free
+         style: text
+         arrow: true
       reversed: true
    -
       _name: global/feature
@@ -55,9 +61,11 @@ content_blocks:
          SendIt is used by everyone from small businesses to fortune 500
          companies. Browse our collection of email marketing templates and
          start sending beautiful emails in minutes.
-      btn:
+      button:
          link: /#
          text: Try This Free
+         style: text
+         arrow: true
       reversed: false
    -
       _name: global/testimonial

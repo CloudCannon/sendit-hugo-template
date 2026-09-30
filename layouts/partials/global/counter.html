@@ -3,8 +3,11 @@
   gain a first row; data-direction is explicit because the runtime would infer
   it from flex-direction, which is wrong for a grid.
 
-  `number` is a string: text regions only accept strings. script.js skips the
-  count-up in the editor, where it would fight the region runtime for innerHTML.
+  `number` is stored as a string (text regions only accept strings; the input
+  pattern keeps it numeric) and cast with `float` here, so "0132" renders as
+  132. A value that slipped past validation renders as-is rather than failing
+  the build. script.js skips the count-up in the editor, where it would fight
+  the region runtime for innerHTML.
 */}}
 <section class="counter-up {{ if .alternateStyle }}counter-up-two pb-xxl-14 pb-lg-13{{ end }}">
   <div class="container">
@@ -39,7 +42,12 @@
                 {{ if or .prefix site.Params.ENV_CLIENT }}
                 <span class="percent" data-editable="text" data-prop="prefix" data-type="span">{{ .prefix }}</span>
                 {{ end }}
-                <span class="counter" data-editable="text" data-prop="number" data-type="span">{{ .number }}</span>
+                <span class="counter" data-editable="text" data-prop="number" data-type="span">
+                  {{- with .number -}}
+                    {{- $n := string . -}}
+                    {{- if findRE `^\d+(\.\d+)?$` $n -}}{{ float $n }}{{- else -}}{{ $n }}{{- end -}}
+                  {{- end -}}
+                </span>
                 {{ if or .suffix site.Params.ENV_CLIENT }}
                 <span class="percent" data-editable="text" data-prop="suffix" data-type="span">{{ .suffix }}</span>
                 {{ end }}

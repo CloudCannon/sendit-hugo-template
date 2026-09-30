@@ -74,7 +74,8 @@
     border: $base-border-width solid $color-primary;
     transition: 0.3s all ease-in-out;
     padding: 1rem 1.9rem !important;
-    display: flex;
+    // inline-flex so it sizes to its label like the other button styles
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     svg {
@@ -212,5 +213,31 @@
   &:hover {
     background: transparent;
     color: $color-white !important;
+  }
+}
+
+// Text link button style (partials/global/button.html, style: text). Styled
+// on its own class so it looks the same in every block; the doubled selector
+// outranks the blocks' own `.section a` link colours.
+.text-link.text-link {
+  color: $color-primary;
+  display: inline-flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: $font-primary;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  i {
+    margin-left: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+  &:hover,
+  &:focus {
+    color: $color-primary;
+    transform: translateY(-5px);
+    i {
+      margin-left: 15px;
+    }
   }
 }

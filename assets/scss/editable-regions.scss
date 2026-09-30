@@ -1,0 +1,13 @@
+/* Anchors the Visual Editor's edit controls (the pencil) to their region.
+   editable-regions sets anchor-name inline, but when a parent component
+   re-renders its diff strips that style attribute, so regions nested inside
+   a component (e.g. the left-right button) lose their pencil. A stylesheet
+   anchor survives the diff, and anchor-scope keeps the shared name resolving
+   to each region's own controls. No effect outside the editor. */
+[data-editable="component"],
+[data-editable="array-item"],
+editable-component,
+editable-array-item {
+  anchor-name: --cc-editable-region;
+  anchor-scope: --cc-editable-region;
+}

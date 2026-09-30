@@ -1,0 +1,20 @@
+{{/*
+  Button: { text, link, style, arrow }. Callers wrap it in
+  <editable-component data-component="global/button" data-prop="<key>"> so each
+  button gets its own pencil for the link, which a text region can't edit.
+
+  `style` picks the classes; `text` is a plain red link (.text-link in
+  _buttons.scss). Any style can take the arrow. An unknown style renders
+  unstyled rather than failing the build.
+*/}}
+{{- $classes := dict
+  "primary" "btn btn-primary btn-lg"
+  "secondary" "btn btn-secondary btn-lg"
+  "outline" "btn btn-links btn-sm"
+  "text" "text-link"
+-}}
+{{- $class := index $classes (.style | default "primary") -}}
+<a href="{{ .link }}"{{ with $class }} class="{{ . }}"{{ end }}>
+  <editable-text data-prop="text" data-type="span">{{ .text }}</editable-text>
+  {{- if .arrow }}<i class="ph-arrow-right{{ if ne .style "text" }} ms-2{{ end }}"></i>{{ end }}
+</a>

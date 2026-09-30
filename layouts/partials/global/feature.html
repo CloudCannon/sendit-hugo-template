@@ -23,11 +23,10 @@
           <h2 data-editable="text" data-prop="title" data-type="span">{{ .title }}</h2>
           <p data-editable="text" data-prop="description" data-type="text">{{ .description | markdownify }}</p>
           <div class="Learn-more">
-            {{ with .btn }}
-            <a href="{{ .link }}" class="">
-              <editable-text data-prop="btn.text" data-type="span">{{ .text }}</editable-text>
-              <i class="ph-arrow-right"></i>
-            </a>
+            {{ with .button }}
+            <editable-component data-component="global/button" data-prop="button">
+              {{ partial "global/button.html" . }}
+            </editable-component>
             {{ end }}
           </div>
         </div>
@@ -40,11 +39,10 @@
           <h2 class="pe-xl-0" data-editable="text" data-prop="title" data-type="span">{{ .title }}</h2>
           <p data-editable="text" data-prop="description" data-type="text">{{ .description | markdownify }}</p>
           <div class="Learn-more">
-            {{ with .btn }}
-            <a href="{{ .link }}" class="">
-              <editable-text data-prop="btn.text" data-type="span">{{ .text }}</editable-text>
-              <i class="ph-arrow-right"></i>
-            </a>
+            {{ with .button }}
+            <editable-component data-component="global/button" data-prop="button">
+              {{ partial "global/button.html" . }}
+            </editable-component>
             {{ end }}
           </div>
         </div>

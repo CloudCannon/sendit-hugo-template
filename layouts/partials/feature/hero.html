@@ -7,9 +7,10 @@
           <h1 class="" data-editable="text" data-prop="title" data-type="span">{{ .title }}</h1>
           <p data-editable="text" data-prop="description" data-type="text">{{ .description | markdownify }}</p>
           <div class="d-block mb-6">
-            {{ with .btn }}
-            <a href="{{ .link }}" class="btn btn-primary btn-lg"
-              data-editable="text" data-prop="btn.text" data-type="span">{{ .text }}</a>
+            {{ with .button }}
+            <editable-component data-component="global/button" data-prop="button">
+              {{ partial "global/button.html" . }}
+            </editable-component>
             {{ end }}
           </div>
         </div>

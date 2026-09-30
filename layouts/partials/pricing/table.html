@@ -18,8 +18,11 @@
             <div class="card-body">
               <ul class="list-unstyled"></ul>
               <div class="link">
-                <a href="#" class="btn btn-lg btn-white"
-                  data-editable="text" data-prop="btn.text" data-type="span"></a>
+                <editable-component data-component="global/button" data-prop="button">
+                  <a href="#" class="btn btn-secondary btn-lg">
+                    <editable-text data-prop="text" data-type="span"></editable-text>
+                  </a>
+                </editable-component>
               </div>
             </div>
           </div>
@@ -69,9 +72,10 @@
               </ul>
               {{ end }}
               <div class="link">
-                {{ with .btn }}
-                <a href="{{ .link }}" class="btn btn-lg btn-white"
-                  data-editable="text" data-prop="btn.text" data-type="span">{{ .text }}</a>
+                {{ with .button }}
+                <editable-component data-component="global/button" data-prop="button">
+                  {{ partial "global/button.html" . }}
+                </editable-component>
                 {{ end }}
               </div>
             </div>

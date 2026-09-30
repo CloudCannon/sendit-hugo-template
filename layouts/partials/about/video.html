@@ -10,9 +10,10 @@
         <div class="works-content">
           <h2 data-editable="text" data-prop="title" data-type="span">{{ .title }}</h2>
           <p data-editable="text" data-prop="description" data-type="text">{{ .description | markdownify }}</p>
-          {{ with .btn }}
-          <a href="{{ .link }}" class="btn btn-lg btn-white"
-            data-editable="text" data-prop="btn.text" data-type="span">{{ .text }}</a>
+          {{ with .button }}
+          <editable-component data-component="global/button" data-prop="button">
+            {{ partial "global/button.html" . }}
+          </editable-component>
           {{ end }}
         </div>
       </div>

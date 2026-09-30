@@ -16,9 +16,11 @@ content_blocks:
          With Sendit, you can quickly create beautiful rich emails that capture
          a reader's attention, engage them, and convert them into customers.
       image_path: /images/hero/hero-image-2.png
-      link:
+      button:
          text: Try This Free
-         url: /#
+         link: /#
+         style: primary
+         arrow: false
    -
       _name: global/counter
       title: Scale your
@@ -68,9 +70,11 @@ content_blocks:
       description: >-
          Send an email campaign with one click, in just minutes. Automate your
          emails and content, while keeping the human touch.
-      btn:
+      button:
          link: /#
          text: Try This Free
+         style: text
+         arrow: true
       reversed: false
    -
       _name: global/feature
@@ -79,9 +83,11 @@ content_blocks:
       description: >-
          Sales analytics and automation made simple: see every sales lead in one
          place, regardless of where it came from.
-      btn:
+      button:
          link: /#
          text: Try This Free
+         style: text
+         arrow: true
       reversed: true
    -
       _name: global/feature
@@ -91,9 +97,11 @@ content_blocks:
          SendIt is used by everyone from small businesses to fortune 500
          companies. Browse our collection of email marketing templates and start
          sending beautiful emails in minutes.
-      btn:
+      button:
          link: /#
          text: Try This Free
+         style: text
+         arrow: true
       reversed: false
    -
       _name: global/testimonial

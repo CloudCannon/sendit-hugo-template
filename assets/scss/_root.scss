@@ -353,25 +353,6 @@ a {
   @include media-breakpoint-down-sm {
     margin-top: $base-margin * 1.25;
   }
-  a {
-    color: $color-primary;
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    font-weight: 700;
-    font-family: $font-primary;
-    transition: all 0.3s ease-in-out;
-    i {
-      margin-left: 10px;
-      transition: all 0.3s ease-in-out;
-    }
-    &:hover {
-      transform: translateY(-5px);
-      i {
-        margin-left: 15px;
-      }
-    }
-  }
 }
 /* Cards */
 .card {

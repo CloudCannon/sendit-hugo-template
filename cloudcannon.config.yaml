@@ -278,6 +278,43 @@ _inputs:
     label: Navigation Button
     hidden: '!enable_nav_btn'
     cascade: true
+  # Button fields, read by partials/global/button.html. Buttons live under
+  # `button` (or `nav_btn`), so `link` is always a URL.
+  button:
+    label: Button
+    cascade: true
+  link:
+    type: url
+    cascade: true
+  style:
+    type: select
+    label: Button style
+    options:
+      allow_empty: false
+      value_key: id
+      preview:
+        text:
+          - key: name
+        subtext:
+          - key: subtext
+      values:
+        - id: primary
+          name: Primary
+          subtext: Solid primary color fill
+        - id: secondary
+          name: Secondary
+          subtext: Solid white background with primary color border
+        - id: outline
+          name: Outline
+          subtext: Transparent background with primary color border
+        - id: text
+          name: Text link
+          subtext: Plain primary color text link
+    cascade: true
+  arrow:
+    type: switch
+    label: Show arrow
+    cascade: true
   thumbImg:
     label: Thumbnail Image
     cascade: true
@@ -349,9 +386,11 @@ _structures:
           title: Beautiful email campaigns
           description: With Sendit, you can quickly create beautiful rich emails that capture a reader's attention, engage them, and convert them into customers.
           image_path: /images/hero/hero-image-2.png
-          link:
+          button:
             text: Try Free
-            url: /#
+            link: /#
+            style: primary
+            arrow: false
         _inputs:
           image_path:
             type: image
@@ -384,9 +423,11 @@ _structures:
           hero_images:
             - image_path: /images/about/aboutfeature-three.jpg
               placer: front_bottom
-          link:
+          button:
             text: Try Free
-            url: /#
+            link: /#
+            style: primary
+            arrow: false
         _inputs:
           hero_images[*].placer:
             type: select
@@ -429,9 +470,11 @@ _structures:
           _name: about/video
           title: We love what we do
           description: Our team has decades of experience working with email marketing campaigns and we're passionate about helping you connect with your customers.
-          btn:
+          button:
             link: https://www.instagram.com/example
             text: Follow on Linkedin
+            style: secondary
+            arrow: false
           video:
             image_path: /images/works/banner.jpg
             link: https://vimeo.com/45830194
@@ -444,9 +487,11 @@ _structures:
           _name: feature/hero
           title: Run the best campaigns
           description: Sendit will change the way you think about email and marketing automation.
-          btn:
+          button:
             link: /#
             text: Try This Free
+            style: primary
+            arrow: false
           image_path: /images/feature/feature-hero.png
         _inputs:
           image_path:
@@ -520,9 +565,11 @@ _structures:
               discountPrice: '0'
               isActive: false
               feature: []
-              btn:
+              button:
                 link: /#
                 text: Try This Free
+                style: secondary
+                arrow: false
         _inputs:
           pricing_tier[*].feature:
             type: array
@@ -565,9 +612,11 @@ _structures:
           image_path: /images/feature/feature-card-one.png
           title: Simply click and send
           description: Make your message stand out, thanks to the guided copywriting and design features, triggering a positive response from your customers.
-          btn:
+          button:
             link: /#
             text: Try Free
+            style: text
+            arrow: true
           reversed: false
         _inputs:
           reversed:
@@ -600,9 +649,15 @@ _structures:
             type: array
             options:
               structures: _structures.numbers
-          # String, not number — see the pricing tier note above.
+          # Text, not number: the inline region can only write strings, so a
+          # number input would fight it. The pattern keeps it numeric and the
+          # partial casts it with `float` before rendering.
           numbers[*].number:
             type: text
+            options:
+              placeholder: '100'
+              pattern: '^\d+(\.\d+)?$'
+              pattern_message: Numbers only (e.g. 200 or 4.5). Put symbols like $ or + in the prefix or suffix.
           alternateStyle:
             type: switch
             label: Alternate style
@@ -717,6 +772,16 @@ _structures:
           prefix: null
           suffix: null
           text: null
+        # Pinned here as well as on the Counter block: a row's inputs come from
+        # its own structure, and without this CloudCannon infers a number
+        # input from the key name and rejects the string value.
+        _inputs:
+          number:
+            type: text
+            options:
+              placeholder: '100'
+              pattern: '^\d+(\.\d+)?$'
+              pattern_message: Numbers only (e.g. 200 or 4.5). Put symbols like $ or + in the prefix or suffix.
   features:
     style: select
     values:
@@ -739,7 +804,4 @@ _structures:
           dropdown:
 _snippets_imports:
   hugo: true
-data_config:
-  blog-tags:
-    path: data/blog-tags.yaml
 timezone: Etc/UTC
