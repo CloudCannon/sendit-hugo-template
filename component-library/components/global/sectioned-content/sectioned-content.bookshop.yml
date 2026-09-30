@@ -1,0 +1,30 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Sectioned Content
+  description: Title banner with headed sections of text and a side navigation
+  icon: "article"
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  title: Terms & Conditions
+  sections:
+    - heading: Section heading
+      body: Section text
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  body:
+    type: markdown
+    options:
+      bold: true
+      italic: true
+      link: true
+      bulletedlist: true
+      numberedlist: true
+      removeformat: true

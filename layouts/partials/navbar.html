@@ -1,8 +1,7 @@
 {{/* Must be RelPermalink: compared against each nav item's `link`,
      which is a root-relative path. */}}
 {{ $current := .RelPermalink }}
-{{ with .Site.Data.nav }}
-
+{{ with hugo.Data.nav }}
 <header>
     <nav class="navbar navbar-expand-lg position-fixed w-100 zindex-dropdown" id="mainnavigationBar">
         <div class="container-fluid">

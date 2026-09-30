@@ -98,9 +98,9 @@ a {
   15. Custom Styles 
 **********/
 
-/* Privacy Page */
+/* Sectioned Content */
 
-.privacy {
+.sectioned-content {
   position: relative;
   margin-top: -$base-margin * 33.5;
   padding-bottom: $base-padding * 7.5;
@@ -204,28 +204,38 @@ a {
       }
       &-body {
         padding: 0;
-        .card-text {
-          line-height: 29.7px;
-          color: $color-text-light;
-          font-size: $base_font-size * 1.1;
-          font-weight: 500;
+        line-height: 29.7px;
+        color: $color-text-light;
+        font-size: $base_font-size * 1.1;
+        font-weight: 500;
+        p {
           margin-bottom: $base-margin * 2.5;
           padding-left: $base-padding * 1.5;
           @include media-breakpoint-down-md {
             padding: 0 $base-padding * 1.5;
           }
         }
-        ul {
-          margin-bottom: 0;
+        a {
+          color: $color-primary;
+        }
+        ul,
+        ol {
+          margin-bottom: $base-margin * 2.5;
           padding-left: $base-padding * 1.6;
+          &:last-child {
+            margin-bottom: 0;
+          }
           li {
             position: relative;
-            list-style: none;
-            line-height: 29.7px;
-            color: $color-text-light;
-            font-size: $base_font-size * 1.1;
-            font-weight: 500;
             margin-bottom: $base-margin * 1.25;
+          }
+        }
+        ol li {
+          margin-left: $base-padding * 1.2;
+        }
+        ul {
+          li {
+            list-style: none;
             &::after {
               position: absolute;
               content: "";
