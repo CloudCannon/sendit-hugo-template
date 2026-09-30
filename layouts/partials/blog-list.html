@@ -3,8 +3,11 @@
       <div class="row">
          <div class="col-xl-8 col-lg-10 mx-auto">
             <div class="blog-hero-content">
-               <h1 class="blog-hero-title">{{.Title}}</h1>
-               <p>{{ .Params.description | markdownify }}</p>
+               {{/* Edits content/blog/_index.md. The post cards below read other
+                    files, so they are edited on each post's own page. */}}
+               <h1 class="blog-hero-title"
+                  data-editable="text" data-prop="title" data-type="span">{{.Title}}</h1>
+               <p data-editable="text" data-prop="description" data-type="text">{{ .Params.description | markdownify }}</p>
             </div>
          </div>
       </div>
