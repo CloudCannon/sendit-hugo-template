@@ -4,7 +4,7 @@
          <div class="col-xl-8 col-lg-10 mx-auto">
             <div class="blog-hero-content">
                <h1 class="blog-hero-title">{{.Title}}</h1>
-               <p>{{.Params.description}}</p>
+               <p>{{ .Params.description | markdownify }}</p>
             </div>
          </div>
       </div>

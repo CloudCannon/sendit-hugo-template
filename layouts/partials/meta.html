@@ -1,57 +1,48 @@
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1, maximum-scale=5"
 />
-<!-- Page description for SEO -->
-{{ if .Params.seo.page_description }}
-    <meta name="description" content="{{ .Params.seo.page_description }}">
-    <meta property="og:description" content="{{ .Params.seo.page_description }}" />
-{{ else }}
-    <meta name="description" content="{{ hugo.Data.meta.description }}">
-    <meta property="og:description" content="{{ hugo.Data.meta.description }}" />
+{{/* Page-level seo values override the site-wide ones in data/meta.yaml. */}}
+{{ $meta := hugo.Data.meta }}
+{{/* Full URLs are built from the Site URL in data/meta.yaml, not Hugo's
+     baseURL: CloudCannon builds with --baseURL /. */}}
+{{ $baseURL := strings.TrimSuffix "/" ($meta.base_url | default "") }}
+{{ $description := .Params.seo.page_description | default $meta.description }}
+{{ $title := cond .IsHome $meta.site_title .Title }}
+{{/* Blog posts are articles unless the post says otherwise. */}}
+{{ $type := cond (and .IsPage (eq .Section "blog")) "article" "website" }}
+{{ if not .IsHome }}{{ with .Params.seo.open_graph_type }}{{ $type = . }}{{ end }}{{ end }}
+{{/* Share images are root-relative uploads, so they get the Site URL too. */}}
+{{ $image := .Params.seo.featured_image | default $meta.image }}
+{{ with $image }}{{ if not (urls.Parse .).IsAbs }}{{ $image = printf "%s/%s" $baseURL (strings.TrimPrefix "/" .) }}{{ end }}{{ end }}
+{{ $twitterImage := .Params.seo.featured_image | default $meta.twitter_image | default $meta.image }}
+{{ with $twitterImage }}{{ if not (urls.Parse .).IsAbs }}{{ $twitterImage = printf "%s/%s" $baseURL (strings.TrimPrefix "/" .) }}{{ end }}{{ end }}
+{{ $creator := .Params.seo.author_twitter_handle | default $meta.twitter_site }}
+{{/* canonical_url can be a full URL or a path on this site. */}}
+{{ $canonical := printf "%s%s" $baseURL .RelPermalink }}
+{{ with .Params.seo.canonical_url }}
+  {{ if (urls.Parse .).IsAbs }}
+    {{ $canonical = . }}
+  {{ else }}
+    {{ $canonical = printf "%s/%s" $baseURL (strings.TrimPrefix "/" .) }}
+  {{ end }}
 {{ end }}
 
+<!-- Page description for SEO -->
+<meta name="description" content="{{ $description }}">
+<meta property="og:description" content="{{ $description }}" />
+
 <!-- Meta tags for open graph and twitter -->
+<meta property="og:title" content="{{ $title }}" />
+<meta property="og:type" content="{{ $type }}" />
+<meta property="og:url" content="{{ $canonical }}" />
+{{ with $image }}<meta property="og:image" content="{{ . }}" />{{ end }}
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="{{ hugo.Data.meta.twitter_site }}" />
-{{ if .IsHome }}
-    <meta name="og:title" content="{{ hugo.Data.meta.site_title }}" />
-    <meta property="og:type" content="website" />
-    <meta name="og:image" content="{{ hugo.Data.meta.image }}" />
-    <meta name="twitter:creator" content="{{ hugo.Data.meta.twitter_site }}" />
-    <meta name="twitter:title" content="{{ hugo.Data.meta.title }}" />
-    {{ with hugo.Data.meta.twitter_image }}
-    <meta name="twitter:image" content="{{ . }}" />
-    {{ else }}
-    <meta name="twitter:image" content="{{ hugo.Data.meta.image }}" />
-    {{ end }}
-{{ else }}
-    <meta name="og:title" content="{{ .Title }}" />
-    <meta name="twitter:title" content="{{ .Title }}" />
-    {{ with .Params.seo.open_graph_type }}
-    <meta property="og:type" content="{{ . }}" />
-    {{ else }}
-    <meta property="og:type" content="website" />
-    {{ end }}
-    {{ with .Params.seo.featured_image }}
-    <meta name="og:image" content="{{ . }}" />
-    <meta name="twitter:image" content="{{ . }}" />
-    {{ else }}
-    <meta name="og:image" content="{{ hugo.Data.meta.image }}" />
-    {{ with hugo.Data.meta.twitter_image }}
-        <meta name="twitter:image" content="{{ . }}" />
-    {{ else }}
-        <meta name="twitter:image" content="{{ hugo.Data.meta.image }}" />
-    {{ end }}
-    {{ end }}
-    {{ with .Params.seo.author_twitter_handle }}  
-    <meta name="twitter:creator" content="{{ . }}" />
-    {{ else }}
-    <meta name="twitter:creator" content="{{ .Site.Params.twitter_site }}" />
-    {{ end }}
-{{ end }}
+<meta name="twitter:site" content="{{ $meta.twitter_site }}" />
+<meta name="twitter:creator" content="{{ $creator }}" />
+<meta name="twitter:title" content="{{ $title }}" />
+{{ with $twitterImage }}<meta name="twitter:image" content="{{ . }}" />{{ end }}
 
 <!-- Add robots no index -->
 {{ if .Params.seo.no_index }}
@@ -60,8 +51,8 @@
 {{ end }}
 
 <!-- Canonical URL for SEO -->
-{{ with .Params.seo.canonical_url }}
-    <link rel="canonical" href="{{ hugo.Data.meta.BaseURL }}{{ . | absURL }}" />
-{{ else }}
-    <link rel="canonical" href="{{ hugo.Data.meta.BaseURL }}{{ .RelPermalink }}" />  
-{{ end }}
+<link rel="canonical" href="{{ $canonical }}" />
+
+<!-- Favicons -->
+{{ with $meta.favicon_icon }}<link rel="shortcut icon" href="{{ . }}" type="image/x-icon" />{{ end }}
+{{ with $meta.favicon_image }}<link rel="icon" href="{{ . }}" />{{ end }}

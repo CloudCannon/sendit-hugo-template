@@ -54,8 +54,8 @@ content_blocks:
       Our team has decades of experience working with email marketing campaigns
       and we’re passionate about helping you connect with your customers.
     button:
-      link: https://www.instagram.com/staticmania
-      text: Follow on Linkedin
+      link: https://www.instagram.com/mycompany
+      text: Follow on Instagram
       style: secondary
       arrow: false
     video:

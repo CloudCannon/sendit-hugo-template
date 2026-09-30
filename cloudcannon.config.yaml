@@ -86,6 +86,18 @@ collections_config:
     disable_url: true
     include_developer_files: false
     _inputs:
+      # data/meta.yaml. Absolute URLs (canonical, og:url, share images) are
+      # built from base_url rather than Hugo's baseURL, so editors can change it.
+      base_url:
+        type: url
+        label: Site URL
+        comment: The live address of the site, e.g. https://www.example.com
+        options:
+          required: true
+      description:
+        type: textarea
+        label: Site description
+        comment: Used for search results and social shares when a page has no description of its own
       # Theme colours (data/theme.json), edited from the theme selector button.
       theme:
         type: object
@@ -129,47 +141,18 @@ _inputs:
   content:
     type: markdown
     cascade: true
-  icon:
-    type: select
-    options:
-      allow_empty: true
-      values:
-        - ph-user-square
-      required: false
-    cascade: true
+  # Inline formatting only: descriptions render into a <p> (the "text"
+  # region), which cannot hold lists, images or block quotes. The FAQ answer
+  # renders into a <div>, so it gets lists on its block below.
   description:
     type: markdown
     options:
-      allow_resize: true
-      allow_custom_markup: false
-      remove_custom_markup: false
-      initial_height: 320
-      blockquote: true
       bold: true
-      bulletedlist: true
-      code: false
-      copyformatting: false
-      embed: false
-      expandable: false
-      horizontalrule: false
-      image: true
-      image_size_attributes: false
-      indent: false
       italic: true
       link: true
-      numberedlist: true
-      outdent: false
-      redo: false
       removeformat: true
-      resize_style: contain
-      snippet: true
-      strike: false
-      subscript: false
-      superscript: false
-      table: false
-      underline: false
-      undo: false
-      required: false
+      undo: true
+      redo: true
     cascade: true
   isActive:
     type: switch
@@ -188,43 +171,34 @@ _inputs:
     cascade: true
   page_description:
     type: text
-    comment: If empty, defaults to the description set in the Site SEO data file
+    comment: If empty, defaults to the description set in the Meta data file
     cascade: true
   canonical_url:
     type: text
     comment: If empty, defaults to the URL of the page
     cascade: true
   featured_image:
-    comment: If empty, defaults to the image set in the Site SEO data file
+    type: image
+    label: Social share image
+    comment: If empty, defaults to the image set in the Meta data file
     cascade: true
-  featured_image.image:
+  # Blog post images (thumbImg / featuredImg in schemas/post.md).
+  thumbImg.image_path:
     type: image
     options:
-      disable_upload_file: false
-      disable_direct_input: false
-      disable_upload_file_in_file_browser: false
-      resize_style: crop
-      width: 1296
-      expandable: false
-      prevent_resize_existing_files: false
-      required: false
-    cascade: true
-  thumb_image.image:
-    type: image
-    options:
-      disable_upload_file: false
-      disable_direct_input: false
-      disable_upload_file_in_file_browser: false
       resize_style: crop
       width: 500
       height: 413
-      expandable: false
-      prevent_resize_existing_files: false
-      required: false
+    cascade: true
+  featuredImg.image_path:
+    type: image
+    options:
+      resize_style: crop
+      width: 1296
     cascade: true
   author_twitter_handle:
     type: twitter
-    comment: Defaults to the twitter site value set in the Site SEO data file
+    comment: Defaults to the Twitter username set in the Meta data file
     cascade: true
   no_index:
     type: checkbox
@@ -295,6 +269,7 @@ _inputs:
     label: Twitter Username
     cascade: true
   logo_url:
+    type: url
     comment: Link for the logo in the top left of the footer
     cascade: true
   copyright:
@@ -501,8 +476,8 @@ _structures:
           title: We love what we do
           description: Our team has decades of experience working with email marketing campaigns and we're passionate about helping you connect with your customers.
           button:
-            link: https://www.instagram.com/example
-            text: Follow on Linkedin
+            link: https://www.instagram.com/mycompany
+            text: Follow on Instagram
             style: secondary
             arrow: false
           video:
@@ -726,6 +701,18 @@ _structures:
           faq:
             - title: Is there a maximum numbers of emails I can send each month?
               description: No, the prices include unlimited emails. Send to your heart's content.
+        _inputs:
+          faq[*].description:
+            type: markdown
+            options:
+              bold: true
+              italic: true
+              link: true
+              bulletedlist: true
+              numberedlist: true
+              removeformat: true
+              undo: true
+              redo: true
 
       - label: Sectioned Content
         description: Title banner with headed sections of text and a side navigation

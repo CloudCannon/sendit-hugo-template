@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="{{ site.Language.Locale }}">
   <head>
     
     {{ partial "meta.html" . }}
@@ -12,14 +12,12 @@
     resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{$style.Permalink}}" />
     {{ partial "global/theme-style.html" hugo.Data.theme.theme }}
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
     <script src="/vendor/jQuery/jquery.min.js" defer></script>
     <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
     <script src="/vendor/counter-up/countup.js" defer></script>
     <script src="/vendor/magnific-popup/magnific-popup.min.js" defer></script>
     <script src="/js/script.js" defer></script>
-    <title>{{print .Page.Title " | " .Site.Title}}</title>
+    <title>{{ print .Page.Title " | " (hugo.Data.meta.site_title | default site.Title) }}</title>
 
     <!-- CloudCannon editable regions. Self-gates on window.inEditorMode, so
          this is inert outside the Visual Editor. -->

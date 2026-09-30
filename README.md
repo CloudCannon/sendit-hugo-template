@@ -22,10 +22,10 @@ Get a workflow going to see your site's output (with [CloudCannon](https://app.c
 
 ## Develop
 
-Sendit is built with [Hugo](https://gohugo.io/) `0.145.0` — the version pinned
-in `.cloudcannon/initial-site-settings.json`. Hugo `0.128.0` is the floor: the
-stylesheet is compiled with `css.Sass`, which replaced the `resources.ToCSS`
-this template used to call.
+Sendit is built with [Hugo](https://gohugo.io/) `0.166.0` (extended) — the
+version pinned in `.cloudcannon/initial-site-settings.json`. Use the same
+version locally; the template relies on recent additions such as `hugo.Data`
+and `css.Sass`, so older releases won't build it.
 
 ### Prerequisites
 * Hugo [install](https://gohugo.io/getting-started/installing/). `brew install hugo`
@@ -46,6 +46,7 @@ keyed by `_name` — so a block with `_name: home/hero` renders
 Components are made editable in CloudCannon's Visual Editor with
 [editable regions](https://github.com/CloudCannon/editable-regions), wired up by
 the `github.com/CloudCannon/editable-regions` Hugo module.
+
 ### Editing Locally with CloudCannon
 
 Run CloudCannon against your local files with the [CloudCannon CLI](https://cloudcannon.com/documentation/developer-reference/cli/)
@@ -63,7 +64,6 @@ you see the editing experience without committing and pushing first.
 
    ```bash
    npm run build
-   npx @bookshop/generate
    ```
 
 3. Start CloudCannon locally, pointing it at the build output:
@@ -75,10 +75,6 @@ you see the editing experience without committing and pushing first.
 The dev server runs on port `10101` by default and opens CloudCannon in your browser, pointed at the
 files in this repo. Content edits sync to disk as you make them; re-run the build after changing
 components or templates to refresh the preview.
-
-`@bookshop/generate` is what `.cloudcannon/postbuild` runs after the Hugo build. It writes the
-Bookshop live-editing bundle into the output, and it isn't committed — so skip it and components
-won't be editable on the preview.
 
 Before you commit configuration changes, validate them:
 
@@ -101,11 +97,15 @@ posts open in either the Content Editor or the Visual Editor.
 
 ### Site-wide details
 
-Reused around the site so there is one place to edit each of them. All four are
-in the *Data* section:
+Reused around the site so there is one place to edit each of them. All five
+are in the *Data* section:
 
 * **Nav** — logo, menu items and their dropdowns, and the header button.
 * **Footer** — logo, copyright line, social links, and the link columns.
-* **Meta** — site title, description, favicons and the social share defaults
-  used by every page that does not override them.
+* **Meta** — site title, site URL, description, favicons and the social share
+  defaults used by every page that does not override them. The site URL is the
+  base for canonical links and social share URLs, so update it when the site
+  moves to its own domain.
 * **Blog tags** — the list of categories a post can be assigned.
+* **Theme** — the primary, secondary and link colours. These are also edited
+  from the palette button that appears in the Visual Editor.
