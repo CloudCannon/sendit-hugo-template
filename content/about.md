@@ -16,11 +16,8 @@ content_blocks:
       business.
     hero_images:
       - image_path: /images/about/aboutfeature-two.jpg
-        placer: front_bottom
       - image_path: /images/about/aboutfeature-three.jpg
-        placer: back_top_right
       - image_path: /images/about/aboutfeature-four.jpg
-        placer: back_top_left
     button:
       text: Try This Free
       link: /#

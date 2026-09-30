@@ -1,7 +1,7 @@
 {{/*
-  About hero: copy beside a stack of images positioned by each item's `placer`
-  select. The placement class resolves to a variable before the element so the
-  array-item and image attributes sit on clean markup.
+  About hero: copy beside a stack of images. Each image is positioned by its
+  order in `hero_images` (nth-of-type in _about.scss), so reordering or adding
+  images in the Visual Editor repositions them without extra fields.
 */}}
 <section class="about-hero-two">
   <div class="container">
@@ -24,18 +24,13 @@
           {{ if or .hero_images site.Params.ENV_CLIENT }}
           <div data-editable="array" data-prop="hero_images">
             <template>
-              <div class="rounded-box image-two">
+              <div class="rounded-box hero-image">
                 <img alt="" loading="lazy"
                   data-editable="image" data-prop-src="image_path" />
               </div>
             </template>
             {{ range .hero_images }}
-              {{ $placement := "" }}
-              {{ if eq .placer "back_top_right" }}{{ $placement = "image-one" }}
-              {{ else if eq .placer "front_bottom" }}{{ $placement = "image-two" }}
-              {{ else if eq .placer "back_top_left" }}{{ $placement = "image-three" }}
-              {{ end }}
-              <div class="rounded-box {{ $placement }}" data-editable="array-item">
+              <div class="rounded-box hero-image" data-editable="array-item">
                 <img src="{{ .image_path }}" alt="aboutfeature" loading="lazy"
                   data-editable="image" data-prop-src="image_path" />
               </div>

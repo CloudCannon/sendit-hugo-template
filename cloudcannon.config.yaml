@@ -280,13 +280,29 @@ _inputs:
     label: Enable Navigation Button
     cascade: true
   nav_btn:
+    type: object
     label: Navigation Button
     hidden: '!enable_nav_btn'
+    options:
+      structures: _structures.button
+      preview:
+        text:
+          - key: text
+          - Button
+        icon: buttons_alt
     cascade: true
   # Button fields, read by partials/global/button.html. Buttons live under
   # `button` (or `nav_btn`), so `link` is always a URL.
   button:
+    type: object
     label: Button
+    options:
+      structures: _structures.button
+      preview:
+        text:
+          - key: text
+          - Button
+        icon: buttons_alt
     cascade: true
   link:
     type: url
@@ -427,20 +443,17 @@ _structures:
           description: We're here to breathe new air into email marketing and help grow your business.
           hero_images:
             - image_path: /images/about/aboutfeature-three.jpg
-              placer: front_bottom
           button:
             text: Try Free
             link: /#
             style: primary
             arrow: false
         _inputs:
-          hero_images[*].placer:
-            type: select
+          hero_images:
+            type: array
             options:
-              values:
-                - front_bottom
-                - back_top_right
-                - back_top_left
+              max_items: 3
+              max_items_message: The About Hero has room for up to three images.
           hero_images[*].image_path:
             type: image
             options:
@@ -735,15 +748,29 @@ _structures:
                   - value:
                       heading: null
                       body: null
-          sections[*].body:
-            type: markdown
-            options:
-              bold: true
-              italic: true
-              link: true
-              bulletedlist: true
-              numberedlist: true
-              removeformat: true
+                    # Items take their inputs from this structure, so the
+                    # markdown config lives here rather than as sections[*].body.
+                    _inputs:
+                      body:
+                        type: markdown
+                        options:
+                          bold: true
+                          italic: true
+                          link: true
+                          bulletedlist: true
+                          numberedlist: true
+                          removeformat: true
+                          undo: true
+                          redo: true
+  button:
+    values:
+      - label: Button
+        icon: buttons_alt
+        value:
+          text: Button
+          link: /#
+          style: primary
+          arrow: false
   dropdown:
     style: select
     values:
