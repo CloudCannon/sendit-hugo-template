@@ -12,10 +12,6 @@
                   <h2 class="w-xxl-70 w-xl-80 w-100"
                      data-editable="text" data-prop="title" data-type="span">{{.Params.title}}</h2>
                   <div class="inner-blog-details-meta">
-                     {{/* Date, reading time and word count are computed by Hugo at
-                          build time (date formatting, .ReadingTime, .WordCount), so
-                          they only update on rebuild, not live in the Visual Editor.
-                          Author is a plain front matter string, so it is editable. */}}
                      <ul class="list-unstyled">
                         <li class="list-inline-item">
                            <p>{{.Date | time.Format ":date_long"}}</p>

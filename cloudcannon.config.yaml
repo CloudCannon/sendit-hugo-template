@@ -93,6 +93,10 @@ collections_config:
         hide_extra_inputs: false
         remove_empty_inputs: false
         remove_extra_inputs: true
+    _inputs:
+      date:
+        type: datetime
+        comment: This and other computed values (reading time, word count) won't live update in the CloudCannon Visual Editor.
   data:
     path: data
     icon: settings
