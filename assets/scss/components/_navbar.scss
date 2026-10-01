@@ -96,7 +96,12 @@
         color: $color-primary;
      }
      &:hover {
-        color: $color-primary;
+        background: tint($color-primary, 10%);
+     }
+     @include media-breakpoint-up-lg {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-radius: 0.5rem;
      }
      @include media-breakpoint-only-lg {
         padding-right: 0.75rem !important;
@@ -162,10 +167,14 @@
         font-weight: 600;
         text-align: left;
         font-size: $base-font-size * 1.1;
-        padding: 0;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
         background: none;
       
         &:hover {
+          background: tint($color-primary, 10%);
+        }
+        &.active {
           color: $color-primary;
         }
       }
@@ -193,7 +202,7 @@
            visibility: visible;
            transform: scaleY(0);
            top: 100%;
-           border: 1px solid $color-secondary-light;
+           border: 1px solid #e5e7eb; // Astro: border-gray-200
            transform-origin: 0 0 0;
         }
 
@@ -285,7 +294,7 @@
 .sticky-nav {
   padding: $base-padding $base-padding * 2 !important;
   background: $color-white;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 20px 25px -5px tint($color-primary, 10%), 0 8px 10px -6px tint($color-primary, 10%);
   z-index: 1000;
 }
 

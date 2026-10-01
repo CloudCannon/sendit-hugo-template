@@ -47,6 +47,14 @@
         }
       }
     }
+    .effect-one,
+    .effect-two {
+      @include theme-mask(tint($color-primary, 40%), "/images/feature/effect-1.png");
+    }
+    .effect-two {
+      -webkit-mask-image: url("/images/feature/effect-2.png");
+      mask-image: url("/images/feature/effect-2.png");
+    }
     .effect-one {
       left: -11%;
       @include media-breakpoint-down-lg {
@@ -122,7 +130,7 @@
 
   &-hero,
   &-hero-two {
-    background: $color-gray-dark;
+    background: tint($color-primary, 5%);
     padding: $base-padding * 8 0 $base-padding * 4;
     overflow: hidden;
     @include media-breakpoint-down-lg {
@@ -187,6 +195,7 @@
         top: 2%;
         z-index: -1;
         right: 0%;
+        @include theme-mask(tint($color-primary, 30%), "/images/feature/effect-4.png");
       }
     }
   }

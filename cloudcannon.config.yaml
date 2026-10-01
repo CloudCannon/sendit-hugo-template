@@ -1,3 +1,17 @@
+data_config:
+  blog-tags:
+    path: data/blog-tags.yaml
+  # nav, footer and meta back the @data[...] regions in the navbar and footer
+  # partials. Without an entry here those selectors silently never resolve.
+  nav:
+    path: data/nav.yaml
+  footer:
+    path: data/footer.yaml
+  meta:
+    path: data/meta.yaml
+  # Backs the theme selector button in the Visual Editor (baseof.html).
+  theme:
+    path: data/theme.json
 paths:
   uploads: static/images
   uploads_use_relative_path: false
@@ -21,6 +35,19 @@ collections_config:
         hide_extra_inputs: false
         remove_empty_inputs: false
         remove_extra_inputs: true
+      # content/blog/_index.md: the blog list hero reads title and description,
+      # which the default schema would strip (remove_extra_inputs).
+      blog_list:
+        path: schemas/blog-list.md
+        name: Blog List
+        icon: view_list
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        _inputs:
+          url:
+            hidden: true
   articles:
     path: content/blog
     glob:
@@ -66,11 +93,54 @@ collections_config:
         hide_extra_inputs: false
         remove_empty_inputs: false
         remove_extra_inputs: true
+    _inputs:
+      date:
+        type: datetime
+        comment: Date and other computed values (reading time, word count) won't live update in the CloudCannon Visual Editor.
   data:
     path: data
     icon: settings
     disable_url: true
     include_developer_files: false
+    _inputs:
+      # data/meta.yaml. Absolute URLs (canonical, og:url, share images) are
+      # built from base_url rather than Hugo's baseURL, so editors can change it.
+      base_url:
+        type: url
+        label: Site URL
+        comment: The live address of the site, e.g. https://www.example.com
+        options:
+          required: true
+      description:
+        type: textarea
+        label: Site description
+        comment: Used for search results and social shares when a page has no description of its own
+      # Theme colours (data/theme.json), edited from the theme selector button.
+      theme:
+        type: object
+        options:
+          preview:
+            text: Theme
+            icon: palette
+        cascade: true
+      $.primary_color:
+        type: color
+        options:
+          format: hex
+          required: true
+        cascade: true
+      $.secondary_color:
+        type: color
+        options:
+          format: hex
+          required: true
+        cascade: true
+      $.anchor_color:
+        type: color
+        options:
+          format: hex
+          required: true
+        cascade: true
     _enabled_editors:
       - data
     disable_add: true
@@ -88,47 +158,18 @@ _inputs:
   content:
     type: markdown
     cascade: true
-  icon:
-    type: select
-    options:
-      allow_empty: true
-      values:
-        - ph-user-square
-      required: false
-    cascade: true
+  # Inline formatting only: descriptions render into a <p> (the "text"
+  # region), which cannot hold lists, images or block quotes. The FAQ answer
+  # renders into a <div>, so it gets lists on its block below.
   description:
     type: markdown
     options:
-      allow_resize: true
-      allow_custom_markup: false
-      remove_custom_markup: false
-      initial_height: 320
-      blockquote: true
       bold: true
-      bulletedlist: true
-      code: false
-      copyformatting: false
-      embed: false
-      expandable: false
-      horizontalrule: false
-      image: true
-      image_size_attributes: false
-      indent: false
       italic: true
       link: true
-      numberedlist: true
-      outdent: false
-      redo: false
       removeformat: true
-      resize_style: contain
-      snippet: true
-      strike: false
-      subscript: false
-      superscript: false
-      table: false
-      underline: false
-      undo: false
-      required: false
+      undo: true
+      redo: true
     cascade: true
   isActive:
     type: switch
@@ -147,43 +188,34 @@ _inputs:
     cascade: true
   page_description:
     type: text
-    comment: If empty, defaults to the description set in the Site SEO data file
+    comment: If empty, defaults to the description set in the Meta data file
     cascade: true
   canonical_url:
     type: text
     comment: If empty, defaults to the URL of the page
     cascade: true
   featured_image:
-    comment: If empty, defaults to the image set in the Site SEO data file
+    type: image
+    label: Social share image
+    comment: If empty, defaults to the image set in the Meta data file
     cascade: true
-  featured_image.image:
+  # Blog post images (thumbImg / featuredImg in schemas/post.md).
+  thumbImg.image_path:
     type: image
     options:
-      disable_upload_file: false
-      disable_direct_input: false
-      disable_upload_file_in_file_browser: false
-      resize_style: crop
-      width: 1296
-      expandable: false
-      prevent_resize_existing_files: false
-      required: false
-    cascade: true
-  thumb_image.image:
-    type: image
-    options:
-      disable_upload_file: false
-      disable_direct_input: false
-      disable_upload_file_in_file_browser: false
       resize_style: crop
       width: 500
       height: 413
-      expandable: false
-      prevent_resize_existing_files: false
-      required: false
+    cascade: true
+  featuredImg.image_path:
+    type: image
+    options:
+      resize_style: crop
+      width: 1296
     cascade: true
   author_twitter_handle:
     type: twitter
-    comment: Defaults to the twitter site value set in the Site SEO data file
+    comment: Defaults to the Twitter username set in the Meta data file
     cascade: true
   no_index:
     type: checkbox
@@ -254,6 +286,7 @@ _inputs:
     label: Twitter Username
     cascade: true
   logo_url:
+    type: url
     comment: Link for the logo in the top left of the footer
     cascade: true
   copyright:
@@ -264,8 +297,61 @@ _inputs:
     label: Enable Navigation Button
     cascade: true
   nav_btn:
+    type: object
     label: Navigation Button
     hidden: '!enable_nav_btn'
+    options:
+      structures: _structures.button
+      preview:
+        text:
+          - key: text
+          - Button
+        icon: buttons_alt
+    cascade: true
+  # Button fields, read by partials/global/button.html. Buttons live under
+  # `button` (or `nav_btn`), so `link` is always a URL.
+  button:
+    type: object
+    label: Button
+    options:
+      structures: _structures.button
+      preview:
+        text:
+          - key: text
+          - Button
+        icon: buttons_alt
+    cascade: true
+  link:
+    type: url
+    cascade: true
+  style:
+    type: select
+    label: Button style
+    options:
+      allow_empty: false
+      value_key: id
+      preview:
+        text:
+          - key: name
+        subtext:
+          - key: subtext
+      values:
+        - id: primary
+          name: Primary
+          subtext: Solid primary color fill
+        - id: secondary
+          name: Secondary
+          subtext: Secondary color background with primary color border
+        - id: outline
+          name: Outline
+          subtext: Smaller, secondary color background with primary color border
+        - id: text
+          name: Text link
+          subtext: Plain primary color text link
+    cascade: true
+  arrow:
+    type: switch
+    label: Show arrow
     cascade: true
   thumbImg:
     label: Thumbnail Image
@@ -275,10 +361,433 @@ _inputs:
     cascade: true
   image_alt:
     label: Image Description
-    cascade: true
-_structures:
+  # Every image_path in this site is an image path; per-component sizing is
+  # layered on top in the relevant _structures entry.
+  image_path:
+    type: image
+    label: Image
   content_blocks:
+    type: array
+    options:
+      structures: _structures.content_blocks
+      empty_type: array
+
+# Toolbars keyed by the region's data-type: "span" needs none, "text" maps to
+# _editables.text, "block" to _editables.block, "@content" to _editables.content.
+# Most rich text here is "text" because its host is a <p>, which cannot legally
+# contain the lists and paragraphs the block toolbar offers.
+_editables:
+  text:
+    bold: true
+    italic: true
+    link: true
+    removeformat: true
+    undo: true
+    redo: true
+  block:
+    bold: true
+    italic: true
+    link: true
+    bulletedlist: true
+    numberedlist: true
+    removeformat: true
+    undo: true
+    redo: true
+  content:
+    blockquote: true
+    bold: true
+    format: p h2 h3 h4
+    italic: true
+    link: true
+    bulletedlist: true
+    numberedlist: true
+    horizontalrule: true
+    image: true
+    table: true
+    undo: true
+    redo: true
+    removeformat: true
+
+_structures:
+  # Page builder. id_key is the key the builder dispatches on: a block's _name
+  # picks the structure here and names the partial that renders it.
+  content_blocks:
+    id_key: _name
     style: modal
+    values:
+      - label: Home Hero
+        description: Home Hero section
+        icon: cottage
+        tags: [hero]
+        value:
+          _name: home/hero
+          title: Beautiful email campaigns
+          description: With Sendit, you can quickly create beautiful rich emails that capture a reader's attention, engage them, and convert them into customers.
+          image_path: /images/hero/hero-image-2.png
+          button:
+            text: Try Free
+            link: /#
+            style: primary
+            arrow: false
+        _inputs:
+          image_path:
+            type: image
+            options:
+              width: 716
+              height: 725
+              resize_style: crop
+
+      - label: Home Video
+        description: Home Video section
+        icon: videocam
+        tags: []
+        value:
+          _name: home/video
+          image_path: /images/video/video-thum.jpg
+          videoUrl: https://vimeo.com/45830194
+        _inputs:
+          videoUrl:
+            type: url
+            label: Video URL
+
+      - label: About Hero
+        description: About Hero section
+        icon: apps
+        tags: [hero]
+        value:
+          _name: about/hero
+          title: On a mission to change email marketing
+          description: We're here to breathe new air into email marketing and help grow your business.
+          hero_images:
+            - image_path: /images/about/aboutfeature-three.jpg
+          button:
+            text: Try Free
+            link: /#
+            style: primary
+            arrow: false
+        _inputs:
+          hero_images:
+            type: array
+            options:
+              max_items: 3
+              max_items_message: The About Hero has room for up to three images.
+          hero_images[*].image_path:
+            type: image
+            options:
+              width: 450
+              height: 450
+              resize_style: crop
+
+      - label: About Team
+        description: About Team section
+        icon: groups
+        tags: []
+        value:
+          _name: about/team
+          title: Our leadership
+          team_members:
+            - name: Pete Fish
+              designation: Co-Founder & CEO
+              image_path: /images/team/1.jpg
+        _inputs:
+          team_members[*].image_path:
+            type: image
+            options:
+              width: 516
+              height: 579
+              resize_style: crop
+
+      - label: About Video
+        description: About Video section
+        icon: play_circle
+        tags: []
+        value:
+          _name: about/video
+          title: We love what we do
+          description: Our team has decades of experience working with email marketing campaigns and we're passionate about helping you connect with your customers.
+          button:
+            link: https://www.instagram.com/mycompany
+            text: Follow on Instagram
+            style: secondary
+            arrow: false
+          video:
+            image_path: /images/works/banner.jpg
+            link: https://vimeo.com/45830194
+
+      - label: Feature Hero
+        description: Feature Hero section
+        icon: contactless
+        tags: [hero]
+        value:
+          _name: feature/hero
+          title: Run the best campaigns
+          description: Sendit will change the way you think about email and marketing automation.
+          button:
+            link: /#
+            text: Try This Free
+            style: primary
+            arrow: false
+          image_path: /images/feature/feature-hero.png
+        _inputs:
+          image_path:
+            type: image
+            options:
+              width: 696
+              height: 721
+              resize_style: crop
+
+      - label: Contact Hero
+        description: Contact Hero section
+        icon: contact_support
+        tags: [hero]
+        value:
+          _name: contact/hero
+          title: Let's talk.
+          description: Have a question or suggestion? Feel free to drop us a message!
+
+      - label: Contact Form
+        description: Contact details and enquiry form
+        icon: check_box
+        tags: []
+        value:
+          _name: contact/form
+          address:
+            heading: Office Address
+            address: 123 Franklin St, Los Angeles, CA 90015
+          phone:
+            heading: Phone
+            cell: (123) 345 - 1234
+          email:
+            heading: Email
+            email: hello@example.com
+          form:
+            heading: Say Hello
+            fullName:
+              heading: Full Name
+              placeHolder: Enter First Name
+            phoneNumber:
+              heading: Phone number
+              placeHolder: Enter Phone Number
+            email:
+              heading: Email Address
+              placeHolder: Enter Email Address
+            message:
+              heading: Your Messages
+              placeHolder: Any Message
+            submitBtn:
+              text: Send message
+
+      - label: Pricing Hero
+        description: Pricing Hero section
+        icon: credit_card
+        tags: [hero]
+        value:
+          _name: pricing/hero
+          title: A plan for everyone
+          description: Sendit is easy to get started and we have a pricing plan for businesses of all sizes.
+
+      - label: Pricing Table
+        description: Pricing table section
+        icon: table_rows
+        tags: []
+        value:
+          _name: pricing/table
+          pricing_tier:
+            - tier: free
+              description: Everything you need to get started.
+              price: '0'
+              hasDiscount: false
+              discountPrice: '0'
+              isActive: false
+              feature: []
+              button:
+                link: /#
+                text: Try This Free
+                style: secondary
+                arrow: false
+        _inputs:
+          pricing_tier[*].feature:
+            type: array
+            options:
+              structures: _structures.features
+              empty_type: array
+          # Strings, not numbers: inline text regions only accept strings, and
+          # pinning to `text` stops CloudCannon writing a number back.
+          pricing_tier[*].price:
+            type: text
+          pricing_tier[*].discountPrice:
+            type: text
+          pricing_tier[*].hasDiscount:
+            type: switch
+          pricing_tier[*].isActive:
+            type: switch
+            label: Highlight this tier
+
+      - label: Section Header
+        description: Centred heading and intro text
+        icon: task
+        tags: []
+        value:
+          _name: global/header
+          title: Sendit
+          title_suffix: Features
+          description: Sendit is the most complete solution to create beautiful email designs, manage mails and send them out at the best price.
+          no_top_pad: false
+        _inputs:
+          no_top_pad:
+            type: switch
+            label: Remove top padding
+
+      - label: Feature
+        description: Feature section
+        icon: stars
+        tags: []
+        value:
+          _name: global/feature
+          image_path: /images/feature/feature-card-one.png
+          title: Simply click and send
+          description: Make your message stand out, thanks to the guided copywriting and design features, triggering a positive response from your customers.
+          button:
+            link: /#
+            text: Try Free
+            style: text
+            arrow: true
+          reversed: false
+        _inputs:
+          reversed:
+            type: switch
+            label: Image on the left
+          image_path:
+            type: image
+            options:
+              width: 696
+              height: 752
+              resize_style: crop
+
+      - label: Counter
+        description: Counter section
+        icon: functions
+        tags: []
+        value:
+          _name: global/counter
+          title: 'Scale your '
+          title_suffix: Business
+          description: We have an extensive library of pre-written sales emails, proven marketing templates, and more to get you started on your next project.
+          alternateStyle: false
+          numbers:
+            - number: '200'
+              suffix: m
+              prefix: $
+              text: Venture capital raised
+        _inputs:
+          numbers:
+            type: array
+            options:
+              structures: _structures.numbers
+          # Text, not number: the inline region can only write strings, so a
+          # number input would fight it. The pattern keeps it numeric and the
+          # partial casts it with `float` before rendering.
+          numbers[*].number:
+            type: text
+            options:
+              placeholder: '100'
+              pattern: '^\d+(\.\d+)?$'
+              pattern_message: Numbers only (e.g. 200 or 4.5). Put symbols like $ or + in the prefix or suffix.
+          alternateStyle:
+            type: switch
+            label: Alternate style
+
+      - label: Testimonial
+        description: Testimonial section
+        icon: 3p
+        tags: []
+        value:
+          _name: global/testimonial
+          title: 'Build relationships that'
+          title_suffix: last
+          description: Customers from around the world are building game changing email marketing campaigns.
+          slider:
+            - image_path: /images/testimonial/logo-2.jpg
+              author: Pete Fish
+              designation: CMO at Clear Appeal
+              message: Sendit has taken Clear Appeal to the next level with its beautiful targetted email campaigns.
+        _inputs:
+          slider[*].image_path:
+            type: image
+            options:
+              width: 80
+              height: 80
+              resize_style: crop
+
+      - label: FAQ
+        description: FAQ section
+        icon: checklist
+        tags: []
+        value:
+          _name: global/faq
+          title: Have
+          title_suffix: Questions?
+          description: We're always here to help. Here are the most frequently asked questions.
+          faq:
+            - title: Is there a maximum numbers of emails I can send each month?
+              description: No, the prices include unlimited emails. Send to your heart's content.
+        _inputs:
+          faq[*].description:
+            type: markdown
+            options:
+              bold: true
+              italic: true
+              link: true
+              bulletedlist: true
+              numberedlist: true
+              removeformat: true
+              undo: true
+              redo: true
+
+      - label: Sectioned Content
+        description: Title banner with headed sections of text and a side navigation
+        icon: article
+        tags: []
+        value:
+          _name: global/sectioned-content
+          title: Terms & Conditions
+          sections:
+            - heading: Section heading
+              body: Section text
+        _inputs:
+          # Inline structure: the global `sections` structure is the footer's
+          # title/links shape, which would otherwise match by key.
+          sections:
+            type: array
+            options:
+              structures:
+                values:
+                  - value:
+                      heading: null
+                      body: null
+                    # Items take their inputs from this structure, so the
+                    # markdown config lives here rather than as sections[*].body.
+                    _inputs:
+                      body:
+                        type: markdown
+                        options:
+                          bold: true
+                          italic: true
+                          link: true
+                          bulletedlist: true
+                          numberedlist: true
+                          removeformat: true
+                          undo: true
+                          redo: true
+  button:
+    values:
+      - label: Button
+        icon: buttons_alt
+        value:
+          text: Button
+          link: /#
+          style: primary
+          arrow: false
   dropdown:
     style: select
     values:
@@ -315,6 +824,25 @@ _structures:
         value:
           link:
           text:
+  # Every key the partial renders a region for must exist on a new row: an
+  # absent key resolves to undefined and errors in the editor. null is accepted.
+  numbers:
+    values:
+      - value:
+          number: null
+          prefix: null
+          suffix: null
+          text: null
+        # Pinned here as well as on the Counter block: a row's inputs come from
+        # its own structure, and without this CloudCannon infers a number
+        # input from the key name and rejects the string value.
+        _inputs:
+          number:
+            type: text
+            options:
+              placeholder: '100'
+              pattern: '^\d+(\.\d+)?$'
+              pattern_message: Numbers only (e.g. 200 or 4.5). Put symbols like $ or + in the prefix or suffix.
   features:
     style: select
     values:
@@ -337,7 +865,4 @@ _structures:
           dropdown:
 _snippets_imports:
   hugo: true
-data_config:
-  blog-tags:
-    path: data/blog-tags.yaml
 timezone: Etc/UTC

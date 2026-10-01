@@ -1,0 +1,12 @@
+{{/*
+  Theme colours: { primary_color, secondary_color, anchor_color } from
+  data/theme.json, written as the custom properties the SCSS reads
+  ($color-primary etc. in _variables.scss).
+*/}}
+<style>
+  :root {
+    {{- with .primary_color }} --color-primary: {{ . | safeCSS }};{{ end }}
+    {{- with .secondary_color }} --color-secondary: {{ . | safeCSS }};{{ end }}
+    {{- with .anchor_color }} --color-link: {{ . | safeCSS }};{{ end }}
+  }
+</style>

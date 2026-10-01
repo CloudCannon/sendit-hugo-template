@@ -1,0 +1,47 @@
+{{/*
+  About hero: copy beside a stack of images. Each image is positioned by its
+  order in `hero_images` (nth-of-type in _about.scss), so reordering or adding
+  images in the Visual Editor repositions them without extra fields.
+*/}}
+<section class="about-hero-two">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-5 col-lg-10 mx-auto">
+        <div class="about-hero-two-content position-relative">
+          <h2 data-editable="text" data-prop="title" data-type="span">{{ .title }}</h2>
+          <p class="mb-20 w-xxl-80" data-editable="text" data-prop="description" data-type="text">{{ .description | markdownify }}</p>
+          <div class="">
+            {{ with .button }}
+            <editable-component data-component="global/button" data-prop="button">
+              {{ partial "global/button.html" . }}
+            </editable-component>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-7 col-lg-12">
+        <div class="about-hero-two-banner">
+          {{ if or .hero_images site.Params.ENV_CLIENT }}
+          <div data-editable="array" data-prop="hero_images">
+            <template>
+              <div class="rounded-box hero-image">
+                <img alt="" loading="lazy"
+                  data-editable="image" data-prop-src="image_path" />
+              </div>
+            </template>
+            {{ range .hero_images }}
+              <div class="rounded-box hero-image" data-editable="array-item">
+                <img src="{{ .image_path }}" alt="aboutfeature" loading="lazy"
+                  data-editable="image" data-prop-src="image_path" />
+              </div>
+            {{ end }}
+          </div>
+          {{ end }}
+          <div class="pattern">
+            <img src="/images/about/patterns-two.png" alt="patterns" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

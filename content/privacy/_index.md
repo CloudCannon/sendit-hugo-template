@@ -8,16 +8,26 @@ seo:
   open_graph_type:
   no_index: false
 content_blocks:
-  - _bookshop_name: global/sectioned-content
-    title: Terms & Condition
+  - _name: global/sectioned-content
+    title: Privacy Policy
     sections:
-      - heading: SendIt Terms And Conditions
+      - heading: Information we collect
         body: |-
-          A slider is great way to display a slideshow
+          We collect the details you give us when you sign up, contact us or subscribe to our newsletter, such as your name, email address and phone number.
 
-          The WordPress sites being easy to use, offers many plugins for slider. You could imagine slideshows in your head and make them true on the screen.
-      - heading: Account Information & Payments
+          We also collect basic usage information, like the pages you visit and the device you use, to help us improve the site.
+      - heading: How we use your information
         body: |-
-          * The main benefit of using sliders is presenting all the contents in a visually pleasing manner.
-          * The WordPress sites being easy to use, offers many plugins for slider. You could imagine slideshows in your head and make them true on the screen.
+          * To provide and support your Sendit account.
+          * To reply to your questions and requests.
+          * To send you product updates and marketing emails, which you can unsubscribe from at any time.
+      - heading: Cookies
+        body: |-
+          We use cookies to keep you signed in and to understand how people use the site. You can turn cookies off in your browser settings, but some features may not work without them.
+      - heading: Your rights
+        body: |-
+          You can ask to see, correct or delete the personal information we hold about you at any time. We never sell your information to third parties.
+      - heading: Contact us
+        body: |-
+          If you have any questions about this policy, [get in touch](/contact/).
 ---

@@ -15,6 +15,13 @@
     padding: $base-padding * 4 $base-padding * 0 $base-padding * 0;
   }
   &-content {
+    // Astro's video-left-right button: white rather than secondary, 2px border
+    .btn-secondary {
+      border-width: 2px;
+      &:not(:hover):not(:focus):not(:active) {
+        background: $color-white;
+      }
+    }
     @include media-breakpoint-down-lg {
       padding-bottom: $base-padding * 5;
       text-align: center;
@@ -64,6 +71,7 @@
       top: -96px;
       left: -89px;
       z-index: -1;
+      @include theme-mask(tint($color-primary, 40%), "/images/works/effect.png");
       @include media-breakpoint-down-xxl {
         img {
           max-width: 100%;

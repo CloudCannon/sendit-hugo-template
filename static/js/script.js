@@ -42,7 +42,14 @@ const callback = entries => {
 
 const IO = new IntersectionObserver( callback, { threshold: 1 } )
 
-const els = document.querySelectorAll( '.counter' )
+// Skip the count-up in the Visual Editor: counterUp rewrites the element's
+// innerHTML, but each .counter is also a text editable region, so the region
+// runtime writes to the same element and they conflict. The editor frames the
+// site; the live site is top-level and still animates.
+const inVisualEditor =
+   window.self !== window.top || typeof window.CloudCannon !== 'undefined'
+
+const els = inVisualEditor ? [] : document.querySelectorAll( '.counter' )
 els.forEach(el => {
    IO.observe( el )
 })
@@ -80,16 +87,4 @@ els.forEach(el => {
       }
     });
 
-   // Add active class to the current accordionExample
-   var header = document.getElementById('accordionExample');
-   var btns = header && header.getElementsByClassName('accordion-item');
-   if (btns) {
-      for (var i = 0; i < btns.length; i++) {
-         btns[i].addEventListener('click', function () {
-            var current = document.getElementsByClassName('shows');
-            current[0].className = current[0].className.replace(' shows', '');
-            this.className += ' shows';
-         });
-      }
-   }
 });

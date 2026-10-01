@@ -86,7 +86,7 @@
   }
   &-two {
     position: relative;
-    background: $color-gray-dark;
+    background: tint($color-primary, 5%);
     padding: $base-padding * 11.3 0 $base-padding * 5;
     z-index: 1;
     overflow: hidden;
@@ -107,6 +107,10 @@
       top: 0;
       left: 0;
       z-index: -1;
+      @include theme-mask(tint($color-primary, 70%), "/images/hero/hero-two-shape.png");
+      @include media-breakpoint-down-lg {
+        display: none;
+      }
     }
     &-content {
       margin-top: $base-margin * 3;
@@ -160,6 +164,7 @@
         top: -26%;
         left: 3%;
         z-index: -1;
+        @include theme-mask(tint($color-primary, 30%), "/images/hero/hero-three-shape.png");
         @include media-breakpoint-down-lg {
           top: -27%;
           left: -22%;

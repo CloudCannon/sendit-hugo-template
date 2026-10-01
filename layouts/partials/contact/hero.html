@@ -1,0 +1,16 @@
+{{/*
+  Contact hero. data-props are relative to this block's array-item, so
+  "title" resolves to content_blocks[n].title.
+*/}}
+<section class="contact-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="contact-hero-content">
+          <h1 data-editable="text" data-prop="title" data-type="span">{{ .title }}</h1>
+          <p data-editable="text" data-prop="description" data-type="text">{{ .description | markdownify }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

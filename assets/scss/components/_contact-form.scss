@@ -7,7 +7,11 @@
     padding-bottom: $base-padding * 5;
   }
   &-hero {
-    background: $color-secondary-dark;
+    // Astro: a primary/10 hero, then a band behind the form fading to white
+    background: tint($color-primary, 10%);
+    @include media-breakpoint-up-lg {
+      background: linear-gradient(tint($color-primary, 10%) calc(100% - 240px), $color-white);
+    }
     padding: $base-padding * 17.4 0 $base-padding * 9.6;
     @include media-breakpoint-down-xl {
       padding: $base-padding * 13 0 $base-padding * 5;
@@ -92,7 +96,7 @@
     z-index: 1;
     form {
       border: 1px solid $color-secondary-dark;
-      box-shadow: 0px 0px 80px rgba(150, 0, 0, 0.06);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); // Astro: shadow-lg
       border-radius: 20px;
       z-index: 1;
       margin-top: -$base-margin * 28.2;
@@ -131,10 +135,9 @@
         margin-bottom: $base-margin * 1.9;
 
         &:focus {
-          background: $color-header-dark;
-          border: 1px solid $color-anchor;
+          border: 1px solid $color-primary;
           outline: 0;
-          box-shadow: none;
+          box-shadow: 0 0 0 2px $color-primary;
         }
       }
       textarea {
@@ -149,6 +152,7 @@
       top: -10%;
       left: -14%;
       z-index: -1;
+      @include theme-mask(tint($color-primary, 30%), "/images/contact/effects.png");
       img {
         max-width: 100%;
       }

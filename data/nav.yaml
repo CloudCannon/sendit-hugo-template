@@ -34,3 +34,5 @@ enable_nav_btn: false
 nav_btn:
   link: /contact/
   text: Get Started
+  style: outline
+  arrow: false

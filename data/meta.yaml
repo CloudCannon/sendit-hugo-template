@@ -1,4 +1,4 @@
-BaseURL: "http://example.org"
+base_url: "https://jovial-pipe.cloudvent.net"
 site_title: "Sendit"
 favicon_icon: "/images/favicon.ico"
 favicon_image: "/images/favicon.png"

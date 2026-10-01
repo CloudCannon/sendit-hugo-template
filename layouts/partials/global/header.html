@@ -1,0 +1,20 @@
+{{/*
+  Section header. The title uses <editable-text> rather than a <span> host:
+  _root.scss styles `.section-header h2 span` as the accent colour, so an extra
+  span would recolour it. The suffix is the span that rule is for.
+*/}}
+<section class="feature pt-0 pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="section-header {{ with .no_top_pad }}no-top-pad{{ end }}">
+          <h2>
+            <editable-text data-prop="title" data-type="span">{{ .title }}</editable-text>
+            <span data-editable="text" data-prop="title_suffix" data-type="span">{{ .title_suffix }}</span>
+          </h2>
+          <p data-editable="text" data-prop="description" data-type="text">{{ .description | markdownify }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -45,14 +45,14 @@
   transition: all 0.3s ease-in-out;
 
   &-primary {
-    color: $color-white;
+    color: $color-secondary;
     background: $color-primary;
     border: $base-border-width solid $color-primary;
     font-weight: 700;
 
     &:hover {
       color: $color-primary;
-      background: $color-white;
+      background: $color-secondary;
       border-color: $color-primary;
     }
     .btn-check:focus + &,
@@ -60,9 +60,9 @@
     &:active,
     &:active:focus,
     &:hover:focus {
-      color: $color-white !important;
+      color: $color-secondary !important;
       background: $color-primary !important;
-      border: $base-border-width solid transparent;
+      border: $base-border-width solid $color-primary;
     }
   }
   &-secondary {
@@ -70,11 +70,12 @@
     color: $color-primary;
     text-align: center;
     text-transform: capitalize;
-    background: $color-white;
+    background: $color-secondary;
     border: $base-border-width solid $color-primary;
     transition: 0.3s all ease-in-out;
     padding: 1rem 1.9rem !important;
-    display: flex;
+    // inline-flex so it sizes to its label like the other button styles
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     svg {
@@ -96,7 +97,7 @@
         }
       }
     }
-    btn-check:focus + &,
+    .btn-check:focus + &,
     &:focus,
     &:active,
     &:active:focus,
@@ -113,9 +114,9 @@
   }
 
   &-links {
-    background: transparent;
+    background: $color-secondary;
     color: $color-primary;
-    border: 1px solid rgba(229, 59, 42, 0.3);
+    border: 1px solid $color-primary;
     position: relative;
     transition: all 0.3s ease-in-out;
 
@@ -125,9 +126,9 @@
     &:active:focus,
     &:hover:focus,
     &:hover {
-      color: $color-white;
+      color: $color-secondary;
       background: $color-primary;
-      border: $base-border-width solid rgba(229, 59, 42, 0.3);
+      border: $base-border-width solid $color-primary;
     }
   }
   &-white {
@@ -212,5 +213,31 @@
   &:hover {
     background: transparent;
     color: $color-white !important;
+  }
+}
+
+// Text link button style (partials/global/button.html, style: text). Styled
+// on its own class so it looks the same in every block; the doubled selector
+// outranks the blocks' own `.section a` link colours.
+.text-link.text-link {
+  color: $color-primary;
+  display: inline-flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: $font-primary;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  i {
+    margin-left: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+  &:hover,
+  &:focus {
+    color: tint($color-primary, 80%);
+    transform: translateY(-5px);
+    i {
+      margin-left: 15px;
+    }
   }
 }

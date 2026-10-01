@@ -1,7 +1,0 @@
-[[module.mounts]]
-source = "."
-target = "layouts/partials/bookshop"
-
-[[module.mounts]]
-source = "."
-target = "assets/bookshop"

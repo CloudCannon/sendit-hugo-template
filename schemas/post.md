@@ -9,7 +9,7 @@ seo:
   open_graph_type: article
   no_index: false
 categories:
-  - blog
+  - Blog
 author:
 thumbImg:
   image_path:

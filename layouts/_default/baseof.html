@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="{{ site.Language.Locale }}">
   <head>
     
     {{ partial "meta.html" . }}
@@ -11,19 +11,38 @@
     {{ $style := resources.Get "/scss/theme.scss" | css.Sass |
     resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{$style.Permalink}}" />
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    {{ partial "global/theme-style.html" hugo.Data.theme.theme }}
     <script src="/vendor/jQuery/jquery.min.js" defer></script>
     <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
     <script src="/vendor/counter-up/countup.js" defer></script>
     <script src="/vendor/magnific-popup/magnific-popup.min.js" defer></script>
     <script src="/js/script.js" defer></script>
-    <title>{{print .Page.Title " | " .Site.Title}}</title>
+    <title>{{ print .Page.Title " | " (hugo.Data.meta.site_title | default site.Title) }}</title>
+
+    <!-- CloudCannon editable regions. Self-gates on window.inEditorMode, so
+         this is inert outside the Visual Editor. -->
+    {{ partial "editable-regions" . }}
   </head>
   <body>
     {{ partial "navbar.html" . }} {{ block "main" . }} {{ end }} {{ partial
     "footer.html" . }}
 
-  
+    <!-- Theme selector: hidden until the Visual Editor loads (see
+         partials/global/theme-selector.html). Clicking anywhere on the
+         button opens its edit panel, standing in for the hidden pencil. -->
+    <editable-component class="theme-selector" data-component="global/theme-selector"
+      data-prop="@data[theme].theme" title="Theme selector" hidden>
+      {{ partial "global/theme-selector.html" hugo.Data.theme.theme }}
+    </editable-component>
+    <script type="module">
+      const selector = document.querySelector(".theme-selector");
+      const show = () => { selector.hidden = false; };
+      if (window.inEditorMode) show();
+      document.addEventListener("cloudcannon:load", show);
+      selector.addEventListener("click", () => {
+        selector.querySelector("editable-component-controls")
+          ?.dispatchEvent(new CustomEvent("edit"));
+      });
+    </script>
   </body>
 </html>

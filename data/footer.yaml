@@ -1,6 +1,6 @@
 ---
 logo: /images/footer-logo.svg
-logo_url: /home
+logo_url: /
 copyright: "MyCompany. All rights reserved."
 social:
   - link: "https://www.facebook.com/mycompany"
@@ -36,4 +36,4 @@ sections:
       - link: "/contact"
         text: "Contact"
       - link: "/privacy"
-        text: "Privacy and Policy"
+        text: "Privacy Policy"

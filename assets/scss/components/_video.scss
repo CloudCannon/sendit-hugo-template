@@ -34,6 +34,14 @@
         }
       }
     }
+    .effect-one,
+    .effect-two {
+      @include theme-mask(tint($color-primary, 40%), "/images/video/effect-one.png");
+    }
+    .effect-two {
+      -webkit-mask-image: url("/images/video/effect-two.png");
+      mask-image: url("/images/video/effect-two.png");
+    }
     .effect-one {
       position: absolute;
       top: 54%;
